@@ -286,7 +286,9 @@ struct Graphics::Impl {
         if (!api.eglQuerySurface(display,c->surface,0x3057,&actual_width) ||
             !api.eglQuerySurface(display,c->surface,0x3056,&actual_height) ||
             actual_width!=w || actual_height!=h)
-          throw std::runtime_error("Native window drawing buffer differs from requested size; check Windows DPI setup");
+          throw std::runtime_error("Native window drawing buffer differs from requested size: requested " +
+              std::to_string(w) + "x" + std::to_string(h) + ", actual " +
+              std::to_string(actual_width) + "x" + std::to_string(actual_height));
         if (!api.eglSwapInterval(display,static_cast<int>(swap_interval)))
           throw std::runtime_error("ANGLE could not apply requested swap interval");
       }

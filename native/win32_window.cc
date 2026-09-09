@@ -33,6 +33,10 @@ struct Win32Window::Impl {
     }
     if (!self) return DefWindowProcW(hwnd, message, w, l);
     switch (message) {
+      case WM_GETMINMAXINFO:
+        // Fixture buffers may be smaller than the system's caption minimum.
+        reinterpret_cast<MINMAXINFO*>(l)->ptMinTrackSize = {1, 1};
+        return 0;
       case WM_CLOSE:
         self->closed = true; self->Release(); self->Add({"close"});
         return 0; // EGL destroys its surface before the HWND is destroyed.
@@ -99,6 +103,13 @@ struct Win32Window::Impl {
         style, CW_USEDEFAULT, CW_USEDEFAULT, rect.right - rect.left, rect.bottom - rect.top,
         nullptr, nullptr, instance, this);
     if (!hwnd) throw std::runtime_error("Win32 window creation failed: " + std::to_string(GetLastError()));
+    // Creation can clamp small captioned windows before WM_NCCREATE installs
+    // our instance. Apply the requested size after our handler is available.
+    if (!SetWindowPos(hwnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top,
+                      SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOSENDCHANGING)) {
+      const auto error = GetLastError(); DestroyWindow(hwnd); hwnd = nullptr;
+      throw std::runtime_error("Win32 window sizing failed: " + std::to_string(error));
+    }
     // No RIDEV_INPUTSINK: only receive raw input while this app is foreground.
     RAWINPUTDEVICE device{0x01, 0x02, 0, hwnd};
     if (!RegisterRawInputDevices(&device, 1, sizeof(device))) {
