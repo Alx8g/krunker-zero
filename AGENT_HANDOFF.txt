@@ -1,0 +1,56 @@
+Krunker Zero: Windows acceptance and first bootstrap contract
+
+Use branch fix/windows-native-acceptance, not main. Main retains the original untested v0.4 handoff. Read AGENTS.md first. Its independent-implementation exclusion remains absolute. Earlier validation and LOCAL_AGENT_HANDOFF.md are historical starting-state documents, not the current Windows result.
+
+The native Windows runtime works in tested fixtures. Krunker is not playable. No complete game bootstrap, menu, login, match, audio, asset pipeline or networking acceptance is claimed.
+
+Verified on this Windows machine
+- Standalone pinned V8 and ANGLE source builds completed. V8 reports Windows-x64, sandbox and pointer compression enabled, Intl disabled.
+- Final graphics-enabled executable: 67 core cases, 52 graphics cases, two native CTest executables. Both D3D11 and explicit software WARP passed.
+- Windows platform checks: 10 noninteractive, 13 with interactive mode. Real window swap, prototype setter safety and close cancellation passed.
+- Core and graphics own-child module/import audits passed.
+- Native 640x480 demo presented 300 frames on Intel Iris Xe through D3D11. This is not game performance evidence.
+- Python tools: 97 unit tests passed.
+- Physical keyboard/raw mouse, capture release, minimize/restore and multiple DPI settings remain UNVERIFIED. The demo recorded zero raw mouse events.
+
+Evidence in Git
+reports/windows-interactive/ and reports/windows-warp/ contain final post-URLSearchParams suites and audits. reports/windows/ contains final noninteractive D3D11 evidence and demo output. reports/windows-core/ is an earlier graphics-free build with 61 cases, before URLSearchParams was added. Do not confuse its binary hash with the final executable.
+reports/capabilities.json records the observed query-parameter contract.
+
+Changes
+- tools/windows_deps.py supplies a managed Git launcher, invokes pinned GN/Ninja Python entry points with the validated interpreter, passes GN's script interpreter explicitly, forwards the custom VS 2022 installation path and limits dependency sync to two jobs.
+- SDK 28000 was installed alongside SDK 26100. The pinned ANGLE source requires SDK 10.0.28000.0. Doctor still does not check component-specific SDK versions before downloads.
+- native/win32_window.cc corrects small captioned-window buffer sizing. Requested 64x64 had become 120x64. Post-creation SetWindowPos with SWP_NOSENDCHANGING passed the unchanged fixtures. native/graphics.cc now reports requested and actual sizes on mismatch.
+- runtime/core.js implements URLSearchParams in the optional core profile. Six new native tests cover representative query semantics. This is not exhaustive WHATWG conformance. Bare profile still lacks the API.
+
+Private game capture and unchanged probe
+A fresh capture obtained 33 network response bodies and 123 compiled-source snapshots with zero collector issues. Every saved hash was checked. This does not establish complete asset coverage or execution order for every snapshot.
+The selected initial parser order is first inline timestamp assignment, frvr-sdk.min.js, then frvr-channel-web.min.js. The HTML script tags established this order. The inline source is a CDP compiled-source string, not original HTTP wire bytes. Network text bodies are also CDP UTF-8 reencodings. Do not treat eval snapshots as independent scripts.
+Input SHA-256 records are retained in the private probe reports. These files and the capture are deliberately NOT in GitHub.
+The first inline timestamp script and FRVR SDK completed in the standalone core host. Adding the channel script first failed on URLSearchParams. After implementation, the same ordered, hashed copies advance to ReferenceError: document is not defined. The failing channel detection constructs a context containing query, document, location and buildTimePlatform. Location is also absent. Do not invent placeholder document/location objects to hide this failure. Establish the actual page-context operations and input semantics before implementing the next contract.
+
+Local files retained on the original machine, not available from a Git clone
+Repository checkout: C:\Users\verom\Downloads\krunker-zero
+Leased development worktree: C:\Users\verom\.treehouse\krunker-zero-1bfdef\1\krunker-zero
+Lease identity: 2345ef2e4790237366662bea8823b36d
+Lease holder: pi-krunker-zero-windows
+Within that worktree:
+  build/windows/zero.exe and matching app-local ANGLE DLLs
+  deps/windows-x64/ verified SDKs
+  input/krunker-capture/browser-capture.json and content-addressed private bodies
+  input/krunker-capture/ordered-bootstrap-3.json: pre-implementation failure
+  input/krunker-capture/ordered-bootstrap-query.json: post-implementation failure
+  .working/tmp/: initial failures, local launchers and additional diagnostic logs
+Dependency work: C:\kz-deps
+Visual Studio: C:\VSBuildTools
+Raw captures may contain session data. Do not commit, upload to CI or publish them. A remote agent must obtain authorized private access or capture fresh permitted inputs. Windows executables/SDKs are not committed either. Keep the lease because these valuable ignored files are still held there.
+
+Reproduce on the original machine in the x64 VS developer environment
+uv run --no-project python tools/windows.py doctor
+uv run --no-project python tools/windows.py build
+uv run --no-project python tools/windows.py test --angle-backend d3d11 --interactive --reports reports/windows-interactive
+uv run --no-project python tools/windows.py test --angle-backend warp --reports reports/windows-warp
+uv run --no-project python tools/windows.py demo
+uv run --no-project python -m unittest discover -s tests
+
+On another machine, build matching pinned SDKs first. Read docs/WINDOWS.md, with the additional SDK 28000 requirement above. No GitHub CI run, release, distributable package or OS-isolation/security certification is claimed. Changes are pushed on the development branch, not merged into main. No process is currently running.
