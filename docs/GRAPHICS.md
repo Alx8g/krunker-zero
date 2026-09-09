@@ -1,3 +1,9 @@
+# Windows port note (0.4)
+
+Windows source adds standalone ANGLE/D3D11 (or explicit WARP) plus an optional
+Win32 fixture window. It remains locally unvalidated; see [WINDOWS.md](WINDOWS.md).
+The Linux pbuffer observations below describe the tested Linux path, not Windows.
+
 # Experimental native graphics contract
 
 The `graphics` profile is a **fixture-driven bring-up subset**, not WebGL 1

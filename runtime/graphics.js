@@ -41,6 +41,13 @@
     if(r.context!==s){error(s,0x0502);return -1;}
     return r.id;
   }
+  function bindContext(canvas,c,id,preserve=false) {
+    const gl=create(WebGLRenderingContext.prototype);
+    set(glState,gl,{id,canvas,attributes:{alpha:true,depth:true,stencil:false,antialias:false,
+      premultipliedAlpha:true,preserveDrawingBuffer:preserve,
+      failIfMajorPerformanceCaveat:false,desynchronized:false,powerPreference:'default'}});
+    c.gl=gl;return gl;
+  }
   class OffscreenCanvas {
     constructor(width,height) {set(canvasState,this,{width:dimension(width),height:dimension(height),gl:null});}
     get width(){const s=get(canvasState,this);if(!s)throw TypeErr('Illegal invocation');return s.width;}
@@ -58,11 +65,7 @@
       // native surface as one we did not create. No silent software fallback.
       if(options.alpha===false||options.premultipliedAlpha===false||options.failIfMajorPerformanceCaveat===true)return null;
       const id=native('create',c.width,c.height);
-      const gl=create(WebGLRenderingContext.prototype);
-      set(glState,gl,{id,canvas:this,attributes:{alpha:true,depth:true,stencil:false,antialias:false,
-        premultipliedAlpha:true,preserveDrawingBuffer:!!options.preserveDrawingBuffer,
-        failIfMajorPerformanceCaveat:false,desynchronized:false,powerPreference:'default'}});
-      c.gl=gl;return gl;
+      return bindContext(this,c,id,!!options.preserveDrawingBuffer);
     }
   }
   class WebGLRenderingContext {
@@ -128,4 +131,22 @@
     Object.defineProperty(object,name,{value,enumerable:true});
   Object.defineProperties(globalThis,{OffscreenCanvas:{value:OffscreenCanvas,writable:true,configurable:true},
     WebGLRenderingContext:{value:WebGLRenderingContext,writable:true,configurable:true}});
+  // Explicit fixture-only extension. Absent unless the operator passes --window.
+  // This does not pretend to implement DOM events or the browser pointer-lock API.
+  if (native('windowEnabled')) {
+    Object.defineProperty(globalThis,'zeroWindow',{value:Object.freeze({
+      create(width,height) {
+        const canvas=new OffscreenCanvas(width,height),c=get(canvasState,canvas);
+        const id=native('createWindow',c.width,c.height);
+        bindContext(canvas,c,id);return canvas;
+      },
+      present(canvas) {
+        const c=get(canvasState,canvas);if(!c||!c.gl)throw TypeErr('Expected native window canvas');
+        return native('present',state(c.gl).id);
+      },
+      pollEvents() {return native('windowEvents');},
+      capturePointer(enabled) {return native('capturePointer',!!enabled);},
+      close() {native('closeWindow');}
+    }),configurable:true});
+  }
 })(globalThis.__zeroGraphicsNative);

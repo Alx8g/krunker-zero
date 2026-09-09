@@ -1,0 +1,57 @@
+name: Windows source-port acceptance
+# Manual only: dependency source builds consume runner resources. This workflow
+# has been supplied, NOT dispatched or claimed successful in the handoff.
+on:
+  workflow_dispatch:
+    inputs:
+      build_dependencies:
+        description: Build pinned V8 and ANGLE, then run non-interactive WARP acceptance
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 180
+    defaults:
+      run:
+        shell: cmd
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4 pin checked 2026-09-09
+        with:
+          persist-credentials: false
+      - name: Python and native platform-only checks
+        run: |
+          for /f "usebackq delims=" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do set "VSROOT=%%i"
+          if not defined VSROOT exit /b 1
+          call "%VSROOT%\Common7\Tools\VsDevCmd.bat" -arch=x64 -host_arch=x64
+          if errorlevel 1 exit /b 1
+          set PYTHONUTF8=1
+          python -m unittest discover -s tests -p "test_*.py" -v
+          if errorlevel 1 exit /b 1
+          cmake -S . -B build\platform -G Ninja -DCMAKE_BUILD_TYPE=Release
+          if errorlevel 1 exit /b 1
+          cmake --build build\platform
+          if errorlevel 1 exit /b 1
+          ctest --test-dir build\platform --output-on-failure
+          if errorlevel 1 exit /b 1
+      - name: Build SDKs and actual host; test explicit WARP backend
+        if: inputs.build_dependencies
+        run: |
+          for /f "usebackq delims=" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do set "VSROOT=%%i"
+          if not defined VSROOT exit /b 1
+          call "%VSROOT%\Common7\Tools\VsDevCmd.bat" -arch=x64 -host_arch=x64
+          if errorlevel 1 exit /b 1
+          set PYTHONUTF8=1
+          python tools\windows.py doctor
+          if errorlevel 1 exit /b 1
+          python tools\windows.py deps --work C:\kz-deps
+          if errorlevel 1 exit /b 1
+          python tools\windows.py build
+          if errorlevel 1 exit /b 1
+          python tools\windows.py test --angle-backend warp
+          if errorlevel 1 exit /b 1
+      # Logs are streamed into the Actions job and retained under reports/windows
+      # locally. Add an organization-approved artifact upload action when adopting
+      # this workflow. No capture files, SDK binaries or credentials are uploaded.

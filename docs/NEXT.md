@@ -1,3 +1,9 @@
+# Windows-first handoff
+
+The current next steps are in [LOCAL_AGENT_HANDOFF.md](../LOCAL_AGENT_HANDOFF.md).
+Validate the Windows source build and native fixtures before original-game integration.
+The earlier milestone notes below are preserved for context.
+
 # Next acceptance gates
 
 ## 1. Standalone bring-up — passed, production hardening still open

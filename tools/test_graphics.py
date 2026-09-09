@@ -8,6 +8,8 @@ from pathlib import Path
 import subprocess
 import tempfile
 
+from host_paths import default_host, backend_args
+
 ROOT = Path(__file__).resolve().parents[1]
 PRELUDE = r'''
 function assert(x,m='assertion failed'){if(!x)throw Error(m)}
@@ -25,6 +27,17 @@ function setup(){const p=program();gl.useProgram(p);const loc=gl.getUniformLocat
 function error(e){eq(gl.getError(),e);eq(gl.getError(),0)}
 '''
 CASES = [
+ ('window_extension_absent_by_default', "eq(typeof zeroWindow,'undefined');"),
+ ('window_demo_uniform_contract_on_pbuffer', """
+const p=gl.createProgram();
+gl.attachShader(p,compile(gl.VERTEX_SHADER,'attribute vec2 pos;uniform vec4 shift;void main(){gl_Position=vec4(pos+shift.xy,0.0,1.0);}'));
+gl.attachShader(p,compile(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec4 tint;void main(){gl_FragColor=tint;}'));
+gl.linkProgram(p);assert(gl.getProgramParameter(p,gl.LINK_STATUS),gl.getProgramInfoLog(p));gl.useProgram(p);
+const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-.65,-.6,.65,-.6,0,.65]),gl.STATIC_DRAW);
+const v=gl.getAttribLocation(p,'pos');gl.enableVertexAttribArray(v);gl.vertexAttribPointer(v,2,gl.FLOAT,false,0,0);
+gl.uniform4f(gl.getUniformLocation(p,'shift'),0,0,0,0);gl.uniform4f(gl.getUniformLocation(p,'tint'),1,0,0,1);
+gl.drawArrays(gl.TRIANGLES,0,3);eq(pixel(),[255,0,0,255]);error(0);
+"""),
  ('zero_initialized_framebuffer', 'eq(pixel(),[0,0,0,0]);error(0);'),
  ('clear_pixels', 'gl.clearColor(.25,.5,.75,1);gl.clear(gl.COLOR_BUFFER_BIT);let p=pixel();assert(Math.abs(p[0]-64)<=1&&Math.abs(p[1]-128)<=1&&Math.abs(p[2]-191)<=1&&p[3]===255);error(0);'),
  ('native_triangle_pixels', 'setup();gl.drawArrays(gl.TRIANGLES,0,3);eq(pixel(),[255,0,0,255]);eq(pixel(0,31),[0,0,0,0]);error(0);'),
@@ -77,14 +90,14 @@ CASES = [
  ('context_cap_bounded', "for(let i=1;i<8;i++)assert(new OffscreenCanvas(1,1).getContext('webgl'));let caught=false;try{new OffscreenCanvas(1,1).getContext('webgl')}catch(e){caught=true}assert(caught);"),
 ]
 
-def run(host: Path, report: Path) -> int:
+def run(host: Path, report: Path, backend: str | None = None) -> int:
     results=[]
     for name,body in CASES:
         raw=(PRELUDE+'\n'+body+'\nconsole.log("PASS");').encode()
         with tempfile.TemporaryDirectory(prefix='zero-graphics-') as tmp:
             path=Path(tmp)/'fixture.js';path.write_bytes(raw)
             try:
-                cp=subprocess.run([str(host),'--profile','graphics','--timeout-ms','10000',str(path)],capture_output=True,text=True,timeout=15)
+                cp=subprocess.run([str(host),*backend_args(backend),'--profile','graphics','--timeout-ms','10000',str(path)],capture_output=True,text=True, encoding='utf-8',timeout=15)
                 r=json.loads(cp.stdout)
                 passed=cp.returncode==0 and r.get('status')=='completed' and [x['text'] for x in r.get('logs',[])]==['PASS']
                 if name == 'delete_releases_allocation_budget':
@@ -102,5 +115,6 @@ def run(host: Path, report: Path) -> int:
     return 0 if outcome['passed']==len(results) else 1
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--host',type=Path,default=ROOT/'build/standalone/zero');p.add_argument('--report',type=Path,default=ROOT/'reports/graphics-tests.json')
-    args=p.parse_args();raise SystemExit(run(args.host.resolve(strict=True),args.report))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--host',type=Path,default=default_host());p.add_argument('--report',type=Path,default=ROOT/'reports/graphics-tests.json')
+    p.add_argument('--angle-backend',choices=['d3d11','warp'])
+    args=p.parse_args();raise SystemExit(run(args.host.resolve(strict=True),args.report,args.angle_backend))

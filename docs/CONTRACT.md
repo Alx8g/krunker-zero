@@ -65,13 +65,35 @@ loading/imports and worker creation are not claimed to work.
 `ZERO_BUILD_GRAPHICS=ON` plus `--profile graphics` enables the experimental native
 EGL pbuffer surface and a real, small GL-shaped API. See [GRAPHICS.md](GRAPHICS.md)
 for exact supported calls, caps, error behavior and deliberate omissions. This
-profile still has no document, window presentation, input, audio or networking.
+profile still has no document, audio or networking. Without `--window` it has
+no window presentation or input; the Windows-only opt-in is described below.
 `bare` and `core` do not acquire these APIs merely because graphics is compiled.
 
 Rendering is independent-fixture-tested, not current-game-tested. The native
 renderer may itself be software (the observed device is llvmpipe). Presentation
-counts remain zero. No complete WebGL, secure-shader-sandbox or hardware-latency
+counts remain zero on the pbuffer path. No complete WebGL, secure-shader-sandbox or hardware-latency
 claim is made. Native driver calls cannot be preempted by the JS watchdog.
+
+## Optional Windows fixture window (source implementation; local acceptance required)
+
+`--profile graphics --window` adds only `zeroWindow`. It is absent otherwise and
+requires native Windows plus real scheduler time. This is deliberately a fixture
+extension, not a DOM Window, KeyboardEvent, MouseEvent or Pointer Lock implementation.
+
+| Method | Explicit contract |
+| --- | --- |
+| `zeroWindow.create(width,height)` | One fixed-size HWND and EGL window surface; returns a canvas-shaped wrapper for the existing real GLES subset. No CSS or DOM. |
+| `zeroWindow.present(canvas)` | Swap that window's buffers; true only for successful EGL swap, false when minimized/closed. Increments `presented_frames`, not callback count. |
+| `zeroWindow.pollEvents()` | Bounded foreground Win32 event records, with `type`, `x`, `y`, `code`, `repeat`. Key `code` is a virtual-key value; raw relative motion is `rawmousemove`. No fabricated input. |
+| `zeroWindow.capturePointer(bool)` | Foreground-only pointer clip/capture. Escape/focus loss releases. Not browser pointer-lock semantics; explicit opt-in. |
+| `zeroWindow.close()` | Release capture and stop remaining host callbacks, including same-batch callbacks. Report `window_closed`; destroy EGL surface before HWND. |
+
+The queue caps at 2048 events and reports dropped events. Message dispatch caps at
+256 messages per host-loop iteration. Driver calls can still stall; the JS watchdog
+cannot preempt them. Fullscreen, resize/DPI transitions, IME, gamepad, browser input
+semantics and game bindings remain open. Reports distinguish hardware `d3d11` from
+explicit `warp`; no automatic backend fallback. These Windows paths have not run
+in the Linux handoff environment. See `docs/WINDOWS.md` and local acceptance tests.
 
 ## Evidence rules
 

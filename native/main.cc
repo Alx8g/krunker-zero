@@ -1,4 +1,8 @@
 #include "host.h"
+#include "platform.h"
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include <libplatform/libplatform.h>
 #include <fstream>
 #include <iostream>
@@ -12,6 +16,9 @@ void Usage() {
   std::cout << "krunker-zero: browserless, headless JavaScript dependency probe\n"
     "Usage: zero [options] script.js [more scripts, in execution order]\n"
     "  --profile bare|core|graphics  Default: bare; graphics requires opt-in build\n"
+    "  --window            Enable optional native Win32 fixture window APIs\n"
+    "  --swap-interval 0|1 Window presentation interval (default: 1)\n"
+    "  --angle-backend d3d11|warp  Windows graphics device (default: d3d11)\n"
     "  --engine-info       Report compile-time engine features as JSON\n"
     "  --virtual-time      Advance a synthetic clock; NOT a performance benchmark\n"
     "  --timeout-ms N      Wall-clock budget, 1..60000 (default 2000)\n"
@@ -29,7 +36,7 @@ unsigned Number(const std::string& value) {
   return static_cast<unsigned>(number);
 }
 zero::Script Load(const std::string& path) {
-  std::ifstream file(path, std::ios::binary | std::ios::ate);
+  std::ifstream file(zero::platform::PathFromUtf8(path), std::ios::binary | std::ios::ate);
   if (!file) throw std::runtime_error("cannot open input: " + path);
   const auto size = file.tellg();
   if (size < 0 || size > 16 * 1024 * 1024) throw std::runtime_error("invalid input size: " + path);
@@ -39,7 +46,7 @@ zero::Script Load(const std::string& path) {
   return {path, std::move(source)};
 }
 }  // namespace
-int main(int argc, char** argv) {
+int RunMain(int argc, char** argv) {
   zero::Options options;
   unsigned memory_mb = 256;
   std::vector<zero::Script> scripts;
@@ -75,14 +82,23 @@ int main(int argc, char** argv) {
 #else
                   << "false"
 #endif
+                  << ",\"platform\":"
+#ifdef _WIN32
+                  << "\"windows-x64\""
+#else
+                  << "\"linux\""
+#endif
                   << "}\n";
         return 0;
       }
+      if (!positional && arg == "--window") { options.window = true; continue; }
       if (!positional && arg == "--virtual-time") { options.virtual_time = true; continue; }
       if (!positional && arg.rfind("--", 0) == 0) {
         if (i + 1 >= argc) throw std::invalid_argument("missing value: " + arg);
         std::string value = argv[++i];
         if (arg == "--profile") options.profile = value;
+        else if (arg == "--swap-interval") options.swap_interval = Number(value);
+        else if (arg == "--angle-backend") options.angle_backend = value;
         else if (arg == "--timeout-ms") options.timeout_ms = Number(value);
         else if (arg == "--max-tasks") options.max_tasks = Number(value);
         else if (arg == "--max-pending") options.max_pending = Number(value);
@@ -124,3 +140,24 @@ int main(int argc, char** argv) {
   v8::V8::DisposePlatform();
   return status;
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t** argv) {
+  // Avoid modal loader/crash dialogs in unattended local tests.
+  SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
+  if (!SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_APPLICATION_DIR | LOAD_LIBRARY_SEARCH_SYSTEM32)) {
+    std::cerr << "Cannot restrict DLL search paths: " << GetLastError() << '\n';
+    return 70;
+  }
+  try {
+    std::vector<std::string> text;
+    text.reserve(argc);
+    for (int i = 0; i < argc; ++i) text.push_back(zero::platform::PathToUtf8(std::filesystem::path(argv[i])));
+    std::vector<char*> args;
+    for (auto& value : text) args.push_back(value.data());
+    return RunMain(argc, args.data());
+  } catch (const std::exception& e) { std::cerr << e.what() << '\n'; return 70; }
+}
+#else
+int main(int argc, char** argv) { return RunMain(argc, argv); }
+#endif

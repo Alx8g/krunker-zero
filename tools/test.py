@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / 'build'
 
 def command(argv: list[str], **kwargs) -> subprocess.CompletedProcess:
-    return subprocess.run(argv, check=True, cwd=ROOT, text=True, **kwargs)
+    return subprocess.run(argv, check=True, cwd=ROOT, text=True, encoding='utf-8', **kwargs)
 
 def build(node: str, include: Path) -> Path:
     BUILD.mkdir(exist_ok=True)
@@ -73,7 +73,7 @@ def main() -> int:
     def execute(cfg):
         if not host:
             return subprocess.run([node, 'tools/smoke_driver.cjs', str(addon)], cwd=ROOT,
-                                  input=json.dumps(cfg), text=True, capture_output=True, timeout=10)
+                                  input=json.dumps(cfg), text=True, encoding='utf-8', capture_output=True, timeout=10)
         # One fresh native process per case, including V8 startup and teardown.
         with tempfile.TemporaryDirectory(prefix='zero-test-') as tmp:
             argv = [str(host), '--profile', cfg['profile']]
@@ -87,7 +87,7 @@ def main() -> int:
                 path = Path(tmp) / f'{index:03d}-{Path(script["name"]).name}'
                 path.write_bytes(script['source'].encode('utf-8'))
                 argv.append(str(path))
-            return subprocess.run(argv, text=True, capture_output=True, timeout=10)
+            return subprocess.run(argv, text=True, encoding='utf-8', capture_output=True, timeout=10)
     results = []
     started = time.monotonic()
 
@@ -122,7 +122,7 @@ def main() -> int:
     case('bare_ecmascript', 'if ([1,2,3].map(x=>x*2).join() !== "2,4,6") throw Error("bad JS");', profile='bare')
     case('bare_globals_absent', '''
       for (const key of ['window','document','navigator','console','setTimeout','fetch','WebSocket',
-                         'process','require','Buffer','__zeroNative'])
+                         'process','require','Buffer','__zeroNative','zeroWindow'])
         if (key in globalThis) throw Error('unexpected global: '+key);
     ''', profile='bare')
     case('missing_document', 'document.createElement("canvas");', profile='bare',

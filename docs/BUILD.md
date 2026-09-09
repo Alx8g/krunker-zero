@@ -1,5 +1,8 @@
 # Building the standalone host
 
+For the new Windows x64 source-port workflow, start with [WINDOWS.md](WINDOWS.md).
+The offline SDK instructions below are specifically Linux, not Windows.
+
 ## Verified offline route
 
 Tested on Linux x86-64 with GCC 14.2, CMake, Python 3.13, and the locked V8 SDK.

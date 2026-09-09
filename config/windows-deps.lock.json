@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "target": "windows-x64",
+  "configuration": "Release",
+  "crt": "MultiThreaded",
+  "depot_tools": {
+    "url": "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
+    "commit": "2cea9cdd785391335d448773124631cb711225e2"
+  },
+  "v8": {
+    "url": "https://chromium.googlesource.com/v8/v8.git",
+    "commit": "b0a55a7dad7f536cce1f9aaddba89894c8533946",
+    "version": "13.6.233.17",
+    "gn_args": {
+      "target_cpu": "x64",
+      "is_debug": false,
+      "is_component_build": false,
+      "is_clang": true,
+      "use_custom_libcxx": false,
+      "symbol_level": 0,
+      "treat_warnings_as_errors": false,
+      "v8_monolithic": true,
+      "v8_static_library": true,
+      "v8_enable_pointer_compression": true,
+      "v8_enable_sandbox": true,
+      "v8_enable_i18n_support": false,
+      "v8_use_external_startup_data": false
+    }
+  },
+  "angle": {
+    "url": "https://chromium.googlesource.com/angle/angle.git",
+    "commit": "041e83047db3e3b45f51cf98daba407583a1b2eb",
+    "gn_args": {
+      "target_cpu": "x64",
+      "is_debug": false,
+      "is_component_build": false,
+      "is_clang": true,
+      "use_custom_libcxx": false,
+      "symbol_level": 0,
+      "treat_warnings_as_errors": false,
+      "angle_enable_d3d11": true,
+      "angle_enable_gl": false,
+      "angle_enable_vulkan": false,
+      "angle_enable_metal": false,
+      "angle_enable_null": false,
+      "angle_enable_wgpu": false,
+      "angle_has_frame_capture": false
+    }
+  },
+  "notes": [
+    "Source-build recipe, not a claim that Windows SDK binaries have been built or tested.",
+    "Dependencies within each upstream checkout are resolved through that commit's DEPS; depot_tools bootstrap services can still evolve.",
+    "V8 sandbox is requested for Windows. This does not establish OS isolation, safe guest execution or a current security-patch level.",
+    "The known Linux bring-up SDK is a different build with sandbox disabled. Never substitute its headers or library on Windows."
+  ]
+}

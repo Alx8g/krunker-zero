@@ -265,7 +265,7 @@ class Recorder:
                 'Only explicit origins and selected GET entity types are saved; no font files are captured.',
                 'DevTools can affect game execution. No anti-debugging or integrity bypass is performed.',
                 'URLs and response bodies can contain sensitive content; keep input/ private and out of Git.'])
-        path=self.output/'browser-capture.json';path.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n');path.chmod(0o600)
+        path=self.output/'browser-capture.json';path.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8');path.chmod(0o600)
         self.finished_result = result
         return result
 

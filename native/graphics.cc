@@ -1,15 +1,24 @@
 #include "graphics.h"
 #include "host.h"
+#include "platform.h"
+#ifdef _WIN32
+#include "win32_window.h"
+#endif
 #include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstring>
 #include <deque>
-#include <dlfcn.h>
 #include <map>
 #include <sstream>
 #include <stdexcept>
 #include <vector>
+
+#ifdef _WIN32
+#define ZERO_GL_CALL __stdcall
+#else
+#define ZERO_GL_CALL
+#endif
 
 namespace zero {
 namespace {
@@ -23,21 +32,28 @@ constexpr Enum ARRAY_BUFFER=0x8892, ELEMENT_BUFFER=0x8893, FLOAT=0x1406;
 constexpr std::size_t MAX_BYTES=64*1024*1024, MAX_OBJECTS=4096;
 constexpr int MAX_DIMENSION=2048, MAX_CONTEXTS=8;
 struct Api {
-  void* lib=nullptr;
+  platform::SharedLibrary lib, gles;
   bool loaded=false;
   std::string load_failure;
-  void* (*eglGetProcAddress)(const char*)=nullptr;
-  EDisplay (*eglGetPlatformDisplayEXT)(unsigned,void*,const int*)=nullptr;
-  unsigned (*eglInitialize)(EDisplay,int*,int*)=nullptr;
-  unsigned (*eglBindAPI)(unsigned)=nullptr;
-  unsigned (*eglChooseConfig)(EDisplay,const int*,EConfig*,int,int*)=nullptr;
-  unsigned (*eglGetConfigAttrib)(EDisplay,EConfig,int,int*)=nullptr;
-  ESurface (*eglCreatePbufferSurface)(EDisplay,EConfig,const int*)=nullptr;
-  EContext (*eglCreateContext)(EDisplay,EConfig,EContext,const int*)=nullptr;
-  unsigned (*eglMakeCurrent)(EDisplay,ESurface,ESurface,EContext)=nullptr;
-  unsigned (*eglDestroySurface)(EDisplay,ESurface)=nullptr;
-  unsigned (*eglDestroyContext)(EDisplay,EContext)=nullptr;
-  unsigned (*eglTerminate)(EDisplay)=nullptr;
+  using Proc = void (ZERO_GL_CALL *)();
+  Proc (ZERO_GL_CALL *eglGetProcAddress)(const char*)=nullptr;
+  EDisplay (ZERO_GL_CALL *eglGetPlatformDisplayEXT)(unsigned,void*,const int*)=nullptr;
+  unsigned (ZERO_GL_CALL *eglInitialize)(EDisplay,int*,int*)=nullptr;
+  unsigned (ZERO_GL_CALL *eglBindAPI)(unsigned)=nullptr;
+  unsigned (ZERO_GL_CALL *eglChooseConfig)(EDisplay,const int*,EConfig*,int,int*)=nullptr;
+  unsigned (ZERO_GL_CALL *eglGetConfigAttrib)(EDisplay,EConfig,int,int*)=nullptr;
+  ESurface (ZERO_GL_CALL *eglCreatePbufferSurface)(EDisplay,EConfig,const int*)=nullptr;
+  EContext (ZERO_GL_CALL *eglCreateContext)(EDisplay,EConfig,EContext,const int*)=nullptr;
+  unsigned (ZERO_GL_CALL *eglMakeCurrent)(EDisplay,ESurface,ESurface,EContext)=nullptr;
+  unsigned (ZERO_GL_CALL *eglDestroySurface)(EDisplay,ESurface)=nullptr;
+  unsigned (ZERO_GL_CALL *eglDestroyContext)(EDisplay,EContext)=nullptr;
+  unsigned (ZERO_GL_CALL *eglTerminate)(EDisplay)=nullptr;
+#ifdef _WIN32
+  ESurface (ZERO_GL_CALL *eglCreateWindowSurface)(EDisplay,EConfig,void*,const int*)=nullptr;
+  unsigned (ZERO_GL_CALL *eglSwapBuffers)(EDisplay,ESurface)=nullptr;
+  unsigned (ZERO_GL_CALL *eglSwapInterval)(EDisplay,int)=nullptr;
+  unsigned (ZERO_GL_CALL *eglQuerySurface)(EDisplay,ESurface,int,int*)=nullptr;
+#endif
 #define GL_FUNCTIONS(X) \
   X(const unsigned char*,GetString,(Enum)) \
   X(void,GetIntegerv,(Enum,Int*)) X(void,GetFloatv,(Enum,Float*)) \
@@ -61,11 +77,16 @@ struct Api {
   X(void,EnableVertexAttribArray,(UInt)) X(void,DisableVertexAttribArray,(UInt)) \
   X(void,VertexAttribPointer,(UInt,Int,Enum,Bool,Size,const void*)) \
   X(void,DrawArrays,(Enum,Int,Size)) X(void,DrawElements,(Enum,Size,Enum,const void*))
-#define DECL(ret,name,args) ret (*gl##name)args=nullptr;
+#define DECL(ret,name,args) ret (ZERO_GL_CALL *gl##name)args=nullptr;
   GL_FUNCTIONS(DECL)
 #undef DECL
   template<class T> void Symbol(T& out,const char* name,bool gl=false) {
-    auto p=gl?eglGetProcAddress(name):dlsym(lib,name);
+    auto p = gl ? gles.Find(name) : lib.Find(name);
+    if (gl && !p) {
+      const auto proc = eglGetProcAddress(name);
+      static_assert(sizeof(p) == sizeof(proc));
+      std::memcpy(&p, &proc, sizeof(p));
+    }
     if(!p) throw std::runtime_error(std::string("required graphics entry point absent: ")+name);
     static_assert(sizeof(out)==sizeof(p)); std::memcpy(&out,&p,sizeof(p));
   }
@@ -73,13 +94,23 @@ struct Api {
     if(loaded) return;
     if(!load_failure.empty()) throw std::runtime_error(load_failure);
     try {
-    lib=dlopen("libEGL.so.1",RTLD_NOW|RTLD_LOCAL);
-    if(!lib) throw std::runtime_error("libEGL.so.1 unavailable; no graphics fallback");
+#ifdef _WIN32
+    const auto directory = platform::ExecutableDirectory();
+    // Both DLLs must come from one deliberate, app-local ANGLE installation.
+    // Load GLES first because the EGL dispatch library may import it.
+    gles.Open(directory / "libGLESv2.dll");
+    lib.Open(directory / "libEGL.dll");
+#else
+    lib.OpenSystem("libEGL.so.1");
+#endif
     Symbol(eglGetProcAddress,"eglGetProcAddress");
 #define EGL_BIND(name) Symbol(name,#name)
     EGL_BIND(eglInitialize); EGL_BIND(eglBindAPI); EGL_BIND(eglChooseConfig); EGL_BIND(eglGetConfigAttrib);
     EGL_BIND(eglCreatePbufferSurface); EGL_BIND(eglCreateContext); EGL_BIND(eglMakeCurrent);
     EGL_BIND(eglDestroySurface); EGL_BIND(eglDestroyContext); EGL_BIND(eglTerminate);
+#ifdef _WIN32
+    EGL_BIND(eglCreateWindowSurface); EGL_BIND(eglSwapBuffers); EGL_BIND(eglSwapInterval); EGL_BIND(eglQuerySurface);
+#endif
 #undef EGL_BIND
     Symbol(eglGetPlatformDisplayEXT,"eglGetPlatformDisplayEXT",true);
 #define LOAD(ret,name,args) Symbol(gl##name,"gl" #name,true);
@@ -91,7 +122,6 @@ struct Api {
       throw;
     }
   }
-  ~Api(){if(lib) dlclose(lib);}
 };
 struct Resource {
   enum Kind { Buffer, Shader, Program, Uniform } kind;
@@ -102,6 +132,7 @@ struct Resource {
 };
 struct Attribute {bool enabled=false; unsigned buffer=0; int size=4,stride=0; std::size_t offset=0;};
 struct Context {
+  bool window_surface=false;
   ESurface surface=nullptr; EContext context=nullptr; int width=0,height=0;
   unsigned next=1,array=0,elements=0,program=0;
   std::size_t allocated=0; std::map<unsigned,Resource> objects;
@@ -146,12 +177,16 @@ struct Bytes {
 };
 }
 struct Graphics::Impl {
-  v8::Isolate* isolate; Api api; EDisplay display=nullptr; EConfig config=nullptr;
+  v8::Isolate* isolate; std::string requested_backend; bool window_enabled; unsigned swap_interval; Api api; EDisplay display=nullptr; EConfig config=nullptr;
   std::vector<std::unique_ptr<Context>> contexts;
   std::size_t draws=0,reads=0,compiles=0,uploaded=0; std::string last_error;
+  std::size_t presented=0;
+#ifdef _WIN32
+  std::unique_ptr<Win32Window> window;
+#endif
   bool initialized=false;
   std::string init_failure;
-  explicit Impl(v8::Isolate* i):isolate(i){}
+  explicit Impl(v8::Isolate* i, const Options& options):isolate(i),requested_backend(options.angle_backend),window_enabled(options.window),swap_interval(options.swap_interval){}
   ~Impl(){
     if(display) {
       api.eglMakeCurrent(display,nullptr,nullptr,nullptr);
@@ -165,20 +200,39 @@ struct Graphics::Impl {
     if(!init_failure.empty()) throw std::runtime_error(init_failure);
     try {
     api.Load();
+#ifdef _WIN32
+    // EGL_ANGLE_platform_angle + EGL_ANGLE_platform_angle_d3d. Explicit device
+    // selection: hardware never silently falls back to WARP or a no-op driver.
+    const int attributes[] = {0x3203, 0x3208, 0x3209,
+        requested_backend == "warp" ? 0x320B : 0x320A, 0x3038};
+    auto candidate=api.eglGetPlatformDisplayEXT(0x3202,nullptr,attributes);
+#else
     auto candidate=api.eglGetPlatformDisplayEXT(0x31DD,nullptr,nullptr); // MESA surfaceless
+#endif
     int major=0,minor=0;
-    if(!candidate||!api.eglInitialize(candidate,&major,&minor)) throw std::runtime_error("surfaceless EGL initialization failed");
+    if(!candidate||!api.eglInitialize(candidate,&major,&minor)) throw std::runtime_error("requested EGL display initialization failed; no backend fallback");
     display=candidate;
     if(!api.eglBindAPI(0x30A0)) throw std::runtime_error("EGL OpenGL ES API unavailable");
-    const int attrs[]={0x3033,1,0x3040,4,0x3024,8,0x3023,8,0x3022,8,0x3021,8,0x3025,16,0x3038};
-    int n=0;if(!api.eglChooseConfig(display,attrs,&config,1,&n)||!n) throw std::runtime_error("EGL RGBA8/depth16 pbuffer config unavailable");
-    // Do not report a format that merely satisfied EGL's minimum-size request.
-    // This bring-up path only supports exact RGBA8, no stencil, no multisampling.
-    for(int key : {0x3024,0x3023,0x3022,0x3021,0x3026,0x3032}) {
-      int value=0;
-      if(!api.eglGetConfigAttrib(display,config,key,&value) || value!=(key==0x3026||key==0x3032?0:8))
-        throw std::runtime_error("EGL returned an unsupported buffer format");
+    const int attrs[]={0x3033,window_enabled?5:1,0x3040,4,0x3024,8,0x3023,8,0x3022,8,0x3021,8,0x3025,16,0x3038};
+    int n=0;
+    if(!api.eglChooseConfig(display,attrs,nullptr,0,&n)||n<1||n>4096)
+      throw std::runtime_error("EGL RGBA8/depth16 surface config unavailable");
+    std::vector<EConfig> candidates(static_cast<std::size_t>(n));
+    int count=0;
+    if(!api.eglChooseConfig(display,attrs,candidates.data(),n,&count)||count<1||count>n)
+      throw std::runtime_error("EGL config enumeration failed");
+    // EGL attributes express MINIMUM sizes. Search for the exact supported
+    // format instead of assuming the first driver-sorted result is suitable.
+    for(int index=0;index<count;++index) {
+      bool supported=true;
+      for(int key : {0x3024,0x3023,0x3022,0x3021,0x3026,0x3032}) {
+        int value=0;
+        if(!api.eglGetConfigAttrib(display,candidates[index],key,&value) ||
+            value!=(key==0x3026||key==0x3032?0:8)) supported=false;
+      }
+      if(supported){config=candidates[index];break;}
     }
+    if(!config) throw std::runtime_error("EGL returned no exact RGBA8/no-stencil/no-multisample format");
     initialized=true;
     } catch(const std::exception& e) {
       init_failure=e.what();
@@ -203,21 +257,51 @@ struct Graphics::Impl {
     api.glColorMask(cm[0],cm[1],cm[2],cm[3]);api.glDepthMask(dm);
     if(scissor) api.glEnable(0x0C11);
   }
-  unsigned Create(int w,int h){
+  unsigned Create(int w,int h,bool onscreen=false){
     if(w<1||h<1||w>MAX_DIMENSION||h>MAX_DIMENSION) throw std::invalid_argument("drawing buffer dimensions must be 1..2048");
     if(contexts.size()>=MAX_CONTEXTS) throw std::runtime_error("native context cap (8) reached");
-    Init(); auto c=std::make_unique<Context>(); c->width=w;c->height=h;c->surface=Surface(w,h);
+    Init(); auto c=std::make_unique<Context>(); c->width=w;c->height=h;
+#ifdef _WIN32
+    std::unique_ptr<Win32Window> candidate;
+    if (onscreen) {
+      if (!window_enabled) throw std::invalid_argument("native window requires --window");
+      if (window) throw std::invalid_argument("only one native fixture window is supported");
+      candidate = std::make_unique<Win32Window>(w,h);
+      c->surface=api.eglCreateWindowSurface(display,config,candidate->Handle(),nullptr);
+      if(!c->surface) throw std::runtime_error("ANGLE window surface creation failed");
+      c->window_surface=true;
+    } else
+#else
+    if (onscreen) throw std::invalid_argument("native window is Windows-only");
+#endif
+    { c->surface=Surface(w,h); }
     const int attrs[]={0x3098,2,0x3038};
     c->context=api.eglCreateContext(display,config,nullptr,attrs);
     if(!c->context){api.eglDestroySurface(display,c->surface);throw std::runtime_error("EGL ES context creation failed");}
     try {
-      Current(*c); Int n=0;api.glGetIntegerv(0x8869,&n);
+      Current(*c);
+#ifdef _WIN32
+      if (onscreen) {
+        int actual_width=0,actual_height=0;
+        if (!api.eglQuerySurface(display,c->surface,0x3057,&actual_width) ||
+            !api.eglQuerySurface(display,c->surface,0x3056,&actual_height) ||
+            actual_width!=w || actual_height!=h)
+          throw std::runtime_error("Native window drawing buffer differs from requested size; check Windows DPI setup");
+        if (!api.eglSwapInterval(display,static_cast<int>(swap_interval)))
+          throw std::runtime_error("ANGLE could not apply requested swap interval");
+      }
+#endif
+      Int n=0;api.glGetIntegerv(0x8869,&n);
       if(n<1||n>256) throw std::runtime_error("invalid vertex attribute limit");
       c->attributes.resize(n);
       auto text=[&](Enum p){auto t=api.glGetString(p);return t?std::string(reinterpret_cast<const char*>(t)):std::string();};
       c->renderer=text(0x1F01);c->version=text(0x1F02);ClearNew();api.glViewport(0,0,w,h);
     } catch(...) {api.eglDestroyContext(display,c->context);api.eglDestroySurface(display,c->surface);throw;}
-    contexts.push_back(std::move(c));return contexts.size();
+    contexts.push_back(std::move(c));
+#ifdef _WIN32
+    if(candidate) window=std::move(candidate);
+#endif
+    return static_cast<unsigned>(contexts.size());
   }
   Resource* Obj(Context& c,unsigned id,Resource::Kind kind,bool allow_deleted=false){
     auto it=c.objects.find(id);
@@ -252,14 +336,45 @@ struct Graphics::Impl {
     if(a.Length()<1)throw std::invalid_argument("missing graphics operation");
     auto op=Text(isolate,a[0]);auto ret=a.GetReturnValue();
     auto num=[&](int n){return Number(a[n]);};auto in=[&](int n){return Integer(a[n]);};
+    if(op=="windowEnabled"){ret.Set(window_enabled);return;}
     if(op=="create"){ret.Set(Create(in(1),in(2)));return;}
+#ifdef _WIN32
+    if(op=="createWindow"){ret.Set(Create(in(1),in(2),true));return;}
+    if(op=="windowEvents" || op=="closeWindow" || op=="capturePointer") {
+      if(!window) throw std::invalid_argument("native fixture window has not been created");
+      if(op=="closeWindow"){window->Close();return;}
+      if(op=="capturePointer"){ret.Set(window->CapturePointer(a[1]->BooleanValue(isolate)));return;}
+      const auto events=window->DrainEvents();
+      auto values=v8::Array::New(isolate,static_cast<int>(events.size()));
+      const auto current=isolate->GetCurrentContext();
+      for(std::size_t index=0;index<events.size();++index) {
+        const auto& event=events[index];auto value=v8::Object::New(isolate);
+        if(!value->CreateDataProperty(current,Str(isolate,"type"),Str(isolate,event.type)).FromMaybe(false))return;
+        if(!value->CreateDataProperty(current,Str(isolate,"x"),v8::Integer::New(isolate,event.x)).FromMaybe(false))return;
+        if(!value->CreateDataProperty(current,Str(isolate,"y"),v8::Integer::New(isolate,event.y)).FromMaybe(false))return;
+        if(!value->CreateDataProperty(current,Str(isolate,"code"),v8::Integer::New(isolate,event.code)).FromMaybe(false))return;
+        if(!value->CreateDataProperty(current,Str(isolate,"repeat"),v8::Boolean::New(isolate,event.repeat)).FromMaybe(false))return;
+        if(!values->CreateDataProperty(current,static_cast<unsigned>(index),value).FromMaybe(false))return;
+      }
+      ret.Set(values);return;
+    }
+#endif
     if(a.Length()<2)throw std::invalid_argument("missing context");
     int cid=in(1);
     if(cid<1||static_cast<std::size_t>(cid)>contexts.size()) throw std::invalid_argument("unknown context");
     auto& c=*contexts[cid-1];Current(c);
+#ifdef _WIN32
+    if(op=="present") {
+      if(!c.window_surface || !window) throw std::invalid_argument("present requires the native window canvas");
+      if(window->Closed() || window->Minimized()) {ret.Set(false);return;}
+      if(!api.eglSwapBuffers(display,c.surface)) throw std::runtime_error("ANGLE swap failed");
+      ++presented;ret.Set(true);return;
+    }
+#endif
     if(op=="error"){c.Error(in(2));return;}
     if(op=="getError") {ErrorFree(c);Enum e=0;if(!c.errors.empty()){e=c.errors.front();c.errors.pop_front();}ret.Set(e);return;}
     if(op=="resize"){
+      if(c.window_surface) throw std::invalid_argument("native fixture window resizing is not implemented");
       int w=in(2),h=in(3);if(w<1||h<1||w>MAX_DIMENSION||h>MAX_DIMENSION) throw std::invalid_argument("drawing buffer dimensions must be 1..2048");
       auto next=Surface(w,h);auto prev=c.surface;c.surface=next;
       if(!api.eglMakeCurrent(display,next,next,c.context)){c.surface=prev;api.eglDestroySurface(display,next);throw std::runtime_error("resize make-current failed");}
@@ -408,8 +523,20 @@ struct Graphics::Impl {
     throw std::invalid_argument("unimplemented graphics operation: "+op);
   }
 };
-Graphics::Graphics(v8::Isolate* isolate):impl_(std::make_unique<Impl>(isolate)){}
+Graphics::Graphics(v8::Isolate* isolate, const Options& options):impl_(std::make_unique<Impl>(isolate, options)){}
 Graphics::~Graphics()=default;
+void Graphics::PumpEvents() {
+#ifdef _WIN32
+  if(impl_->window) impl_->window->Pump();
+#endif
+}
+bool Graphics::WindowClosed() const {
+#ifdef _WIN32
+  return impl_->window && impl_->window->Closed();
+#else
+  return false;
+#endif
+}
 void Graphics::Bind(v8::Local<v8::Context> c){
   auto i=c->GetIsolate();c->Global()->Set(c,Str(i,"__zeroGraphicsNative"),v8::Function::New(c,Impl::Call,v8::External::New(i,impl_.get())).ToLocalChecked()).Check();
 }
@@ -419,9 +546,18 @@ std::string Graphics::ReportJson()const {
   for(const auto& c:g.contexts) for(const auto& entry:c->objects) {
     shadow_bytes+=entry.second.bytes.size();shadow_capacity+=entry.second.bytes.capacity();
   }
-  o<<"{\"backend\":\"egl-surfaceless-pbuffer\",\"experimental_subset\":true,\"presented_frames\":0,\"contexts\":"<<g.contexts.size()
+#ifdef _WIN32
+  const std::string backend = std::string(g.requested_backend == "warp" ? "angle-warp" : "angle-d3d11") + (g.window ? "-window" : "-pbuffer");
+#else
+  const std::string backend = "egl-surfaceless-pbuffer";
+#endif
+  o<<"{\"backend\":"<<JsonString(backend)<<",\"experimental_subset\":true,\"presented_frames\":"<<g.presented<<",\"contexts\":"<<g.contexts.size()
    <<",\"draw_calls\":"<<g.draws<<",\"shader_compiles\":"<<g.compiles<<",\"pixel_reads\":"<<g.reads<<",\"bytes_uploaded\":"<<g.uploaded
    <<",\"cpu_shadow_bytes\":"<<shadow_bytes<<",\"cpu_shadow_capacity_bytes\":"<<shadow_capacity
+#ifdef _WIN32
+   <<",\"window_created\":"<<(g.window?"true":"false")
+   <<",\"input_events_dropped\":"<<(g.window?g.window->DroppedEvents():0)
+#endif
    <<",\"last_error\":"<<JsonString(g.last_error)<<",\"devices\":[";
   bool first=true;for(auto& c:g.contexts){if(!first)o<<',';first=false;o<<"{\"renderer\":"<<JsonString(c->renderer)<<",\"version\":"<<JsonString(c->version)<<",\"width\":"<<c->width<<",\"height\":"<<c->height<<'}';}
   return o.str()+"]}";

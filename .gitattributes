@@ -1,0 +1,9 @@
+# Preserve source and independent-fixture bytes across Windows/Linux checkouts.
+* text=auto eol=lf
+*.png binary
+*.zip binary
+*.bundle binary
+*.a binary
+*.lib binary
+*.dll binary
+*.exe binary

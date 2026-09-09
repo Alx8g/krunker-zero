@@ -27,3 +27,14 @@ Always distinguish compile-only checks, development-adapter execution, standalon
 execution, actual game execution, and measured performance. Test counts are not
 compatibility percentages. Future graphics must preserve WebGL's relevant
 validation and object/typed-array lifetime rules.
+
+## Windows handoff rules
+
+Windows x64 is the primary local acceptance target. Read `LOCAL_AGENT_HANDOFF.md`
+and `docs/WINDOWS.md` first. Source portability work is not a Windows execution
+pass; use `tools/windows.py test` on native Windows, and retain its JSON/logs.
+Keep MSVC CRT, generated V8 ABI header and static library matched. Keep ANGLE DLLs
+app-local and matched; no CWD/PATH search or silent WARP fallback. `zeroWindow` is
+an optional fixture API, not a claim that DOM/pointer-lock behavior exists.
+Never package raw captures. Do not trigger expensive CI source builds, publish a
+release or modify another repository merely because the workflow file exists.

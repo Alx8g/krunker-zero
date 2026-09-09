@@ -12,6 +12,8 @@ import subprocess
 import sys
 import tempfile
 
+from host_paths import default_host, backend_args
+
 ROOT = Path(__file__).resolve().parents[1]
 MAX_SOURCE = 16 * 1024 * 1024
 
@@ -37,10 +39,11 @@ def main() -> int:
     parser.add_argument('--virtual-time', action='store_true')
     parser.add_argument('--timeout-ms', type=int, default=2000)
     parser.add_argument('--max-tasks', type=int, default=10000)
-    parser.add_argument('--host', type=Path, default=ROOT/'build/standalone/zero')
+    parser.add_argument('--host', type=Path, default=default_host())
     parser.add_argument('--dev-node-smoke', action='store_true',
                         help='explicitly use the development harness, NOT the standalone host')
     parser.add_argument('--output', type=Path, default=ROOT/'reports/probe-latest.json')
+    parser.add_argument('--angle-backend',choices=['d3d11','warp'])
     args = parser.parse_args()
     if not 1 <= args.timeout_ms <= 60000 or not 1 <= args.max_tasks <= 1000000:
         parser.error('invalid timeout/task budget')
@@ -49,13 +52,15 @@ def main() -> int:
         cfg = dict(profile=args.profile, virtual_time=args.virtual_time,
                    timeout_ms=args.timeout_ms,max_tasks=args.max_tasks,
                    scripts=[dict(name=m['name'],source=b.decode('utf-8')) for b,m in inputs])
+        if args.dev_node_smoke and args.angle_backend:
+            raise ValueError('ANGLE selection belongs to standalone Windows graphics only')
         if args.dev_node_smoke:
             node = shutil.which('node')
             addon = ROOT/'build/zero_smoke.node'
             if not node or not addon.exists():
                 raise ValueError('development adapter missing; run python3 tools/test.py')
             cmd = [node, str(ROOT/'tools/smoke_driver.cjs'), str(addon)]
-            completed = subprocess.run(cmd,input=json.dumps(cfg),capture_output=True,text=True,
+            completed = subprocess.run(cmd,input=json.dumps(cfg),capture_output=True,text=True, encoding='utf-8',
                                        timeout=args.timeout_ms/1000+5)
             environment = 'development-only Node/V8 adapter, NOT standalone'
         else:
@@ -70,10 +75,10 @@ def main() -> int:
                     copy = Path(folder)/f'{index:03d}-{metadata["name"]}'
                     copy.write_bytes(raw)
                     copies.append(str(copy))
-                cmd = [str(host),'--profile',args.profile,'--timeout-ms',str(args.timeout_ms),
+                cmd = [str(host),*backend_args(args.angle_backend),'--profile',args.profile,'--timeout-ms',str(args.timeout_ms),
                        '--max-tasks',str(args.max_tasks)]
                 if args.virtual_time: cmd.append('--virtual-time')
-                completed = subprocess.run([*cmd,'--',*copies],capture_output=True,text=True,
+                completed = subprocess.run([*cmd,'--',*copies],capture_output=True,text=True, encoding='utf-8',
                                            timeout=args.timeout_ms/1000+5)
             environment = 'standalone V8 host'
         report = json.loads(completed.stdout)

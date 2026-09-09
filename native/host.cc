@@ -313,6 +313,29 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
     report.exit_code = 64;
     return report;
   }
+  if (options.swap_interval > 1 || (options.window && (options.profile != "graphics" || options.virtual_time
+#ifndef _WIN32
+      || true
+#endif
+      ))) {
+    report.status = "configuration_error";
+    report.message = "window requires Windows graphics, real time, and swap-interval 0 or 1";
+    report.exit_code = 64;
+    return report;
+  }
+  if (!options.angle_backend.empty() &&
+      (options.profile != "graphics"
+#ifdef _WIN32
+       || (options.angle_backend != "d3d11" && options.angle_backend != "warp")
+#else
+       || true
+#endif
+       )) {
+    report.status = "configuration_error";
+    report.message = "angle-backend is Windows graphics-only: d3d11 or warp";
+    report.exit_code = 64;
+    return report;
+  }
   HandleScope handles(isolate);
   auto microtasks = MicrotaskQueue::New(isolate, MicrotasksPolicy::kExplicit);
   auto context = Context::New(isolate, nullptr, {}, {}, {}, microtasks.get());
@@ -336,7 +359,7 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
   }
 #ifdef ZERO_ENABLE_GRAPHICS
   if (ok && options.profile == "graphics") {
-    graphics = std::make_unique<Graphics>(isolate);
+    graphics = std::make_unique<Graphics>(isolate, options);
     graphics->Bind(context);
     ok = Evaluate(state, context,
         {"zero:graphics", reinterpret_cast<const char*>(kGraphicsPrelude)}, "graphics-bootstrap");
@@ -359,6 +382,16 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
     }
   }
   while (ok) {
+#ifdef ZERO_ENABLE_GRAPHICS
+    if (graphics) {
+      graphics->PumpEvents();
+      if (graphics->WindowClosed()) {
+        report.status = "window_closed";
+        report.message = "native window closed; remaining callbacks were not executed";
+        break;
+      }
+    }
+#endif
     const auto pending = PendingPromises(state);
     if (report.promise_observation_overflow) {
       report.status = "promise_observation_limit";
@@ -443,6 +476,10 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
         ok = false;
         break;
       }
+#ifdef ZERO_ENABLE_GRAPHICS
+      // A close in one callback must also stop other callbacks in the same batch.
+      if (graphics && graphics->WindowClosed()) break;
+#endif
     }
   }
   watchdog.Stop();

@@ -10,6 +10,9 @@ struct Script { std::string name, source; };
 struct Options {
   std::string profile = "bare";
   bool virtual_time = false;
+  bool window = false;
+  unsigned swap_interval = 1;
+  std::string angle_backend;  // Windows graphics: empty/d3d11 or explicit warp.
   double frame_hz = 60;
   std::uint32_t timeout_ms = 2000;
   std::uint32_t max_tasks = 10000;

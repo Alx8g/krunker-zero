@@ -14,6 +14,8 @@ import subprocess
 import sys
 import zlib
 
+from host_paths import default_host, backend_args
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -26,7 +28,7 @@ def frame_pixels(report: dict) -> tuple[int, int, bytes]:
     graphics = report.get('graphics', {})
     if (graphics.get('contexts') != 1 or graphics.get('draw_calls') != 1
             or graphics.get('shader_compiles') != 2 or graphics.get('pixel_reads') != 1
-            or graphics.get('backend') != 'egl-surfaceless-pbuffer'):
+            or graphics.get('backend') not in ('egl-surfaceless-pbuffer','angle-d3d11-pbuffer','angle-warp-pbuffer')):
         raise ValueError('Required real native graphics operations were not recorded')
     logs = report.get('logs', [])
     if not logs or not isinstance(logs[0].get('text'), str):
@@ -69,15 +71,16 @@ def png_bytes(width: int, height: int, rgb: bytes) -> bytes:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--host', type=Path, default=ROOT/'build/standalone/zero')
+    parser.add_argument('--host', type=Path, default=default_host())
     parser.add_argument('--out', type=Path, default=ROOT/'reports/native-triangle.png')
     parser.add_argument('--report', type=Path, default=ROOT/'reports/render-probe.json')
+    parser.add_argument('--angle-backend',choices=['d3d11','warp'])
     args = parser.parse_args()
     try:
         host = args.host.resolve(strict=True)
         fixture = ROOT/'fixtures/native-triangle.js'
-        run = subprocess.run([str(host), '--profile', 'graphics', '--timeout-ms', '10000', str(fixture)],
-                             capture_output=True, text=True, timeout=20)
+        run = subprocess.run([str(host), *backend_args(args.angle_backend), '--profile', 'graphics', '--timeout-ms', '10000', str(fixture)],
+                             capture_output=True, text=True, encoding='utf-8', timeout=20)
         if run.returncode:
             raise ValueError('Native renderer failed: ' + (run.stdout + run.stderr)[:4096])
         report = json.loads(run.stdout)
