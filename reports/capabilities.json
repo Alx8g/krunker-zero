@@ -1,20 +1,94 @@
 {
-  "schema": 1,
+  "schema": 2,
   "game_bundle": null,
   "game_trace_collected": false,
   "note": "Optional implemented features are fixture-proven only, not a measured minimum for Krunker.",
   "capabilities": [
-    {"name":"ECMAScript execution","profile":"bare","status":"native-V8-adapter-tested","evidence":"tests in reports/test-results.json","game_required":"unknown"},
-    {"name":"console.log/info/warn/error","profile":"core","status":"bounded-capture-subset","evidence":"console and escaping fixtures","game_required":"unknown"},
-    {"name":"performance.now","profile":"core","status":"monotonic-or-explicit-virtual-clock","evidence":"real_clock and timer fixtures","game_required":"unknown"},
-    {"name":"function timers and cancellation","profile":"core","status":"documented-subset","evidence":"timer fixtures","game_required":"unknown"},
-    {"name":"requestAnimationFrame","profile":"core","status":"headless-simulation-only","evidence":"raf fixtures; no GPU presentation","game_required":"unknown"},
-    {"name":"window/self","profile":"core","status":"aliases-only","evidence":"window_identity","game_required":"unknown"},
-    {"name":"DOM/layout/canvas","status":"absent","game_required":"unknown"},
-    {"name":"WebGL/GPU","status":"absent","game_required":"unknown"},
-    {"name":"native keyboard/mouse/pointer lock","status":"absent","game_required":"unknown"},
-    {"name":"HTTP/WebSocket/TLS/assets","status":"absent","game_required":"unknown"},
-    {"name":"audio and image decoding","status":"absent","game_required":"unknown"},
-    {"name":"storage/navigation/worker/module loading","status":"absent","game_required":"unknown"}
+    {
+      "name": "ECMAScript execution",
+      "profile": "bare",
+      "status": "standalone-V8-tested",
+      "evidence": "reports/standalone-tests.json",
+      "game_required": "unknown"
+    },
+    {
+      "name": "V8 foreground tasks and sync/async WebAssembly",
+      "profile": "bare and core",
+      "status": "standalone-fixture-tested",
+      "evidence": "Wasm value 42, compile failure and pending-Promise cases",
+      "game_required": "unknown"
+    },
+    {
+      "name": "pending Promise observation",
+      "profile": "diagnostics",
+      "status": "weak-handles-bounded-incomplete-reporting",
+      "evidence": "unresolved, adoption, capacity and settlement cases",
+      "game_required": "not a game API"
+    },
+    {
+      "name": "console.log/info/warn/error",
+      "profile": "core",
+      "status": "bounded-capture-subset",
+      "evidence": "console and escaping fixtures",
+      "game_required": "unknown"
+    },
+    {
+      "name": "performance.now",
+      "profile": "core",
+      "status": "monotonic-or-explicit-virtual-clock",
+      "evidence": "real_clock and timer fixtures",
+      "game_required": "unknown"
+    },
+    {
+      "name": "function timers and cancellation",
+      "profile": "core",
+      "status": "documented-subset",
+      "evidence": "timer fixtures",
+      "game_required": "unknown"
+    },
+    {
+      "name": "requestAnimationFrame",
+      "profile": "core",
+      "status": "headless-simulation-only",
+      "evidence": "raf fixtures; no GPU presentation",
+      "game_required": "unknown"
+    },
+    {
+      "name": "window/self",
+      "profile": "core",
+      "status": "aliases-only",
+      "evidence": "window_identity",
+      "game_required": "unknown"
+    },
+    {
+      "name": "DOM/layout/canvas",
+      "status": "absent",
+      "game_required": "unknown"
+    },
+    {
+      "name": "WebGL/GPU",
+      "status": "absent",
+      "game_required": "unknown"
+    },
+    {
+      "name": "native keyboard/mouse/pointer lock",
+      "status": "absent",
+      "game_required": "unknown"
+    },
+    {
+      "name": "HTTP/WebSocket/TLS/assets",
+      "status": "absent",
+      "game_required": "unknown"
+    },
+    {
+      "name": "audio and image decoding",
+      "status": "absent",
+      "game_required": "unknown"
+    },
+    {
+      "name": "storage/navigation/worker/module loading",
+      "status": "absent",
+      "game_required": "unknown"
+    }
   ]
 }

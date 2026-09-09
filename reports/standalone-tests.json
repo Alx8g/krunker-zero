@@ -1,13 +1,13 @@
 {
   "schema": 2,
-  "test_environment": "development-only Node/V8 native adapter; NOT standalone runtime",
+  "test_environment": "standalone V8 executable",
   "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
-  "engine_version": "12.4.254.21-node.26",
-  "native_cli": "compiled to object; standalone link not exercised",
+  "engine_version": "13.6.233.17",
+  "native_cli": "linked and executed, fresh process per case",
   "game_bundle_executed": false,
-  "elapsed_seconds": 1.536,
-  "passed": 55,
-  "total": 55,
+  "elapsed_seconds": 0.629,
+  "passed": 61,
+  "total": 61,
   "tests": [
     {
       "name": "bare_ecmascript",
@@ -16,7 +16,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "bare",
         "mode": "headless",
         "virtual_time": true,
@@ -35,7 +35,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.236648,
+        "elapsed_ms": 0.354005,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -48,7 +48,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "bare",
         "mode": "headless",
         "virtual_time": true,
@@ -67,7 +67,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.232081,
+        "elapsed_ms": 0.261956,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -80,7 +80,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "bare",
         "mode": "headless",
         "virtual_time": true,
@@ -88,9 +88,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught ReferenceError: document is not defined",
-        "stack": "ReferenceError: document is not defined",
+        "stack": "ReferenceError: document is not defined\n    at /tmp/zero-test-mx8caa2m/000-missing_document.js:1:1",
         "missing_global": "document",
-        "source": "missing_document.js",
+        "source": "/tmp/zero-test-mx8caa2m/000-missing_document.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -99,7 +99,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.262927,
+        "elapsed_ms": 0.328547,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -112,7 +112,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "bare",
         "mode": "headless",
         "virtual_time": true,
@@ -120,9 +120,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught ReferenceError: window is not defined",
-        "stack": "ReferenceError: window is not defined",
+        "stack": "ReferenceError: window is not defined\n    at /tmp/zero-test-8pq2_yg9/000-missing_window.js:1:1",
         "missing_global": "window",
-        "source": "missing_window.js",
+        "source": "/tmp/zero-test-8pq2_yg9/000-missing_window.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -131,7 +131,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.272091,
+        "elapsed_ms": 0.402518,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -144,7 +144,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -163,7 +163,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.550502,
+        "elapsed_ms": 0.706038,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -181,7 +181,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -200,7 +200,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.441447,
+        "elapsed_ms": 0.517583,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -222,7 +222,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -241,7 +241,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.490261,
+        "elapsed_ms": 0.713949,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -259,7 +259,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -267,9 +267,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: Cannot read properties of undefined (reading 'createElement')",
-        "stack": "TypeError: Cannot read properties of undefined (reading 'createElement')",
+        "stack": "TypeError: Cannot read properties of undefined (reading 'createElement')\n    at /tmp/zero-test-pmfsgj_8/000-nested_property_not_invented.js:1:17",
         "missing_global": "",
-        "source": "nested_property_not_invented.js",
+        "source": "/tmp/zero-test-pmfsgj_8/000-nested_property_not_invented.js",
         "line": 1,
         "column": 17,
         "callbacks": 0,
@@ -278,7 +278,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.508408,
+        "elapsed_ms": 1.54167,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -291,7 +291,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -310,7 +310,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.443711,
+        "elapsed_ms": 0.730514,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -328,7 +328,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -338,7 +338,7 @@
         "message": "Uncaught SyntaxError: Unexpected token '='",
         "stack": "SyntaxError: Unexpected token '='",
         "missing_global": "",
-        "source": "syntax_error.js",
+        "source": "/tmp/zero-test-nzfni68j/000-syntax_error.js",
         "line": 1,
         "column": 7,
         "callbacks": 0,
@@ -347,7 +347,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.48338,
+        "elapsed_ms": 0.685956,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -360,7 +360,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -368,9 +368,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught Error: sentinel",
-        "stack": "Error: sentinel",
+        "stack": "Error: sentinel\n    at /tmp/zero-test-0x3s70q9/000-synchronous_throw.js:1:7",
         "missing_global": "",
-        "source": "synchronous_throw.js",
+        "source": "/tmp/zero-test-0x3s70q9/000-synchronous_throw.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -379,7 +379,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.470671,
+        "elapsed_ms": 0.567177,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -392,7 +392,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -411,7 +411,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.402409,
+        "elapsed_ms": 0.566977,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -429,7 +429,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -448,7 +448,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.446675,
+        "elapsed_ms": 0.56903,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -466,7 +466,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -485,7 +485,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.481057,
+        "elapsed_ms": 0.700338,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -511,7 +511,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -530,7 +530,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.519264,
+        "elapsed_ms": 0.66147,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -556,7 +556,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -575,7 +575,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.493906,
+        "elapsed_ms": 0.599456,
         "clock_ms": 10,
         "logs_dropped": 0,
         "logs": [
@@ -601,7 +601,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -620,7 +620,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.497291,
+        "elapsed_ms": 0.54908,
         "clock_ms": 2,
         "logs_dropped": 0,
         "logs": [
@@ -638,7 +638,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -657,7 +657,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.507517,
+        "elapsed_ms": 0.898567,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -675,7 +675,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -694,7 +694,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.446245,
+        "elapsed_ms": 0.499686,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -712,7 +712,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -731,7 +731,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.575029,
+        "elapsed_ms": 0.678315,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -749,7 +749,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -768,7 +768,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.603582,
+        "elapsed_ms": 0.60204,
         "clock_ms": 15,
         "logs_dropped": 0,
         "logs": [
@@ -794,7 +794,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -813,7 +813,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.578264,
+        "elapsed_ms": 0.672366,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -831,7 +831,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -850,7 +850,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.558524,
+        "elapsed_ms": 0.624614,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -876,7 +876,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -895,7 +895,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.516701,
+        "elapsed_ms": 0.507216,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -917,7 +917,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -936,7 +936,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.506626,
+        "elapsed_ms": 0.693428,
         "clock_ms": 33.3333333333,
         "logs_dropped": 0,
         "logs": [
@@ -954,7 +954,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -973,7 +973,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.609832,
+        "elapsed_ms": 0.575165,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -991,7 +991,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1010,7 +1010,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.488519,
+        "elapsed_ms": 0.501237,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -1028,7 +1028,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1036,9 +1036,9 @@
         "exit_code": 2,
         "phase": "timer",
         "message": "Uncaught Error: timer failed",
-        "stack": "Error: timer failed",
+        "stack": "Error: timer failed\n    at /tmp/zero-test-nerwpark/000-timer_throw_visible.js:1:23\n    at zero:core:30:40",
         "missing_global": "",
-        "source": "timer_throw_visible.js",
+        "source": "/tmp/zero-test-nerwpark/000-timer_throw_visible.js",
         "line": 1,
         "column": 17,
         "callbacks": 1,
@@ -1047,7 +1047,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.691355,
+        "elapsed_ms": 0.703784,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1060,7 +1060,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1068,9 +1068,9 @@
         "exit_code": 2,
         "phase": "animation-frame",
         "message": "Uncaught Error: frame failed",
-        "stack": "Error: frame failed",
+        "stack": "Error: frame failed\n    at /tmp/zero-test-g_sizu3f/000-raf_throw_visible.js:1:34",
         "missing_global": "",
-        "source": "raf_throw_visible.js",
+        "source": "/tmp/zero-test-g_sizu3f/000-raf_throw_visible.js",
         "line": 1,
         "column": 28,
         "callbacks": 1,
@@ -1079,7 +1079,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.657264,
+        "elapsed_ms": 0.835243,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": []
@@ -1092,7 +1092,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1111,7 +1111,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.561849,
+        "elapsed_ms": 0.591965,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1124,7 +1124,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1143,7 +1143,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.484913,
+        "elapsed_ms": 0.452504,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1161,7 +1161,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1180,7 +1180,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.877776,
+        "elapsed_ms": 0.493326,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1198,7 +1198,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1217,7 +1217,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.570512,
+        "elapsed_ms": 0.433125,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1230,7 +1230,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1238,7 +1238,7 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: setTimeout: only function callbacks are implemented",
-        "stack": "TypeError: setTimeout: only function callbacks are implemented",
+        "stack": "TypeError: setTimeout: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:29:5\n    at /tmp/zero-test-hslzk25j/000-reject_string_timer.js:1:1",
         "missing_global": "",
         "source": "zero:core",
         "line": 12,
@@ -1249,7 +1249,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.676322,
+        "elapsed_ms": 0.531684,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1262,7 +1262,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1270,7 +1270,7 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: requestAnimationFrame: only function callbacks are implemented",
-        "stack": "TypeError: requestAnimationFrame: only function callbacks are implemented",
+        "stack": "TypeError: requestAnimationFrame: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:39:5\n    at /tmp/zero-test-nw6oa7cj/000-reject_nonfunction_raf.js:1:1",
         "missing_global": "",
         "source": "zero:core",
         "line": 12,
@@ -1281,7 +1281,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.558474,
+        "elapsed_ms": 0.55599,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1294,7 +1294,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1302,7 +1302,7 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught RangeError: pending task limit",
-        "stack": "RangeError: pending task limit",
+        "stack": "RangeError: pending task limit\n    at zero:core:30:17\n    at /tmp/zero-test-u0f39sea/000-pending_cap.js:1:22",
         "missing_global": "",
         "source": "zero:core",
         "line": 30,
@@ -1313,7 +1313,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 0.920321,
+        "elapsed_ms": 0.683483,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1326,7 +1326,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1345,7 +1345,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 0.614899,
+        "elapsed_ms": 0.522821,
         "clock_ms": 4,
         "logs_dropped": 0,
         "logs": []
@@ -1358,7 +1358,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": false,
@@ -1377,8 +1377,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 40.48041,
-        "clock_ms": 40.48036,
+        "elapsed_ms": 40.252936,
+        "clock_ms": 40.252796,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1390,7 +1390,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": false,
@@ -1409,8 +1409,8 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 40.453739,
-        "clock_ms": 40.453709,
+        "elapsed_ms": 40.501977,
+        "clock_ms": 40.501927,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1422,7 +1422,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": false,
@@ -1441,8 +1441,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 40.795822,
-        "clock_ms": 40.795772,
+        "elapsed_ms": 40.868807,
+        "clock_ms": 40.868757,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1454,7 +1454,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": false,
@@ -1473,8 +1473,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 3.595033,
-        "clock_ms": 3.595003,
+        "elapsed_ms": 3.707333,
+        "clock_ms": 3.707303,
         "logs_dropped": 0,
         "logs": [
           {
@@ -1491,7 +1491,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "pretend-browser",
         "mode": "headless",
         "virtual_time": true,
@@ -1523,7 +1523,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1555,7 +1555,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1587,7 +1587,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1606,7 +1606,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.710453,
+        "elapsed_ms": 0.532755,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1624,7 +1624,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1643,7 +1643,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.514197,
+        "elapsed_ms": 0.478463,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1661,7 +1661,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -1680,7 +1680,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.642381,
+        "elapsed_ms": 4.83684,
         "clock_ms": 0,
         "logs_dropped": 8,
         "logs": [
@@ -3742,7 +3742,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3761,7 +3761,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.493936,
+        "elapsed_ms": 0.667649,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3773,13 +3773,13 @@
       }
     },
     {
-      "name": "async_await_checkpoint",
+      "name": "wasm_sync",
       "passed": true,
       "errors": [],
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3798,7 +3798,44 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.472093,
+        "elapsed_ms": 0.821331,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "async_await_checkpoint",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.467246,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3820,7 +3857,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3839,7 +3876,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.451342,
+        "elapsed_ms": 0.494988,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3857,7 +3894,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3871,12 +3908,12 @@
         "line": 0,
         "column": 0,
         "callbacks": 0,
-        "microtask_checkpoints": 1,
-        "engine_tasks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 8.438649,
+        "elapsed_ms": 8.520132,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3894,7 +3931,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3913,7 +3950,7 @@
         "pending_promises": 65536,
         "promise_observation_overflow": true,
         "pending_tasks": 0,
-        "elapsed_ms": 18.985559,
+        "elapsed_ms": 15.195901,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -3926,7 +3963,7 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
@@ -3945,7 +3982,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.568068,
+        "elapsed_ms": 0.669482,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -3963,14 +4000,14 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
-        "status": "async_work_pending",
+        "status": "async_work_timeout",
         "exit_code": 3,
         "phase": "",
-        "message": "unresolved promises; this adapter cannot pump V8 platform tasks",
+        "message": "wall-clock execution budget exhausted",
         "stack": "",
         "missing_global": "",
         "source": "",
@@ -3982,7 +4019,7 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.656113,
+        "elapsed_ms": 40.392883,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -3995,14 +4032,14 @@
       "report": {
         "schema": 1,
         "engine": "V8",
-        "engine_version": "12.4.254.21-node.26",
+        "engine_version": "13.6.233.17",
         "profile": "core",
         "mode": "headless",
         "virtual_time": true,
-        "status": "async_work_pending",
+        "status": "async_work_timeout",
         "exit_code": 3,
         "phase": "",
-        "message": "unresolved promises; this adapter cannot pump V8 platform tasks",
+        "message": "wall-clock execution budget exhausted",
         "stack": "",
         "missing_global": "",
         "source": "",
@@ -4014,15 +4051,196 @@
         "pending_promises": 3,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.650603,
+        "elapsed_ms": 40.315812,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
       }
+    },
+    {
+      "name": "wasm_async_instantiate",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 3.172805,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_compile",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 3.105313,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_rejection_handled",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.792519,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "CompileError"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_rejection_unhandled",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "unhandled_rejection",
+        "exit_code": 2,
+        "phase": "microtask",
+        "message": "CompileError: WebAssembly.compile(): expected 4 bytes, fell off end @+0",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.894854,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "wasm_and_timer_both_drained",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 2.32258,
+        "clock_ms": 1,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "timer"
+          },
+          {
+            "level": "log",
+            "text": "wasm"
+          }
+        ]
+      }
     }
   ],
-  "not_exercised": [
-    "WebAssembly sync and async execution: requires standalone host; borrowed Node context disallows Wasm code generation"
-  ],
-  "node": "v22.16.0"
+  "executable_sha256": "6186218827314882ce74fc9f574b308a679ce7df71c15884d29396b34c95459e"
 }

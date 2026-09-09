@@ -21,7 +21,7 @@ this project has not established whether the game requires either.
 | `setInterval/clearInterval` | Function callbacks, at least 1 ms cadence, cancellation including from inside callback | Catch-up storms or a full HTML event loop |
 | `requestAnimationFrame/cancelAnimationFrame` | One-shot headless callbacks; same-batch timestamp; nested request deferred; same-batch cancellation works | GPU presentation, display synchronization, page-visibility behavior |
 | `window`, `self` | Aliases to this guest global object | The Window interface and any of its unimplemented members |
-| Promise jobs | V8 microtask checkpoint after each script and host callback | Browser event dispatch for error/unhandledrejection events |
+| Promise jobs | V8 checkpoint after scripts, callbacks and pumped engine tasks | Browser event dispatch for error/unhandledrejection events |
 
 Timers and animation callbacks are serviced by one native scheduler. Its simple
 queue is intentionally unoptimized. Virtual-time execution is deterministic for
@@ -38,8 +38,26 @@ Default wall-clock budget: 2000 ms, including idle waiting. Source cap: 16 MiB p
 input. Logs: 512 entries, each truncated at 4096 UTF-8 bytes with safe boundaries.
 These are bring-up limits, not tested Krunker workload sizing.
 
-A quiescent JavaScript Promise that is never resolved does not itself keep this
-headless host alive. There is no module graph/ES module host implementation. Dynamic
+The standalone probe pumps V8 foreground tasks nonblockingly on the isolate
+thread. Weak Promise observations retain no guest Promise by themselves. Actual
+Promise state is inspected after checkpoints: a resolve hook can adopt another
+pending Promise, so a resolve event alone is not treated as settlement.
+
+A still-reachable unresolved Promise keeps the diagnostic run alive only until its
+wall-clock budget. With no host callbacks left, expiry is `async_work_timeout`;
+an adapter with no engine task pump reports `async_work_pending` immediately.
+This conservative policy can wait on intentionally idle Promises and is not a
+browser event-loop liveness model. Asynchronous work hidden by guest exception
+handling or unsupported API pathways still requires separate investigation.
+
+The observation table is bounded at 65,536 live handles; settled/collected handles
+are pruned at checkpoints and on capacity pressure. Overflow is an explicit
+`promise_observation_limit` incomplete result. V8 engine task execution has its
+own `max_tasks` budget, separate from the callback budget. These are diagnostic
+limits, not benchmarked game settings. Promise hooks add instrumentation overhead.
+
+The locked standalone build supports tested synchronous and asynchronous Wasm,
+but omits Intl. No compatibility with untested engines is implied. There is no module graph/ES module host implementation. Dynamic
 loading/imports and worker creation are not claimed to work.
 
 ## Evidence rules

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "engine_version": "13.6.233.17",
+  "platform": "linux-x86_64",
+  "prefix": "V8-13.6.233.17-ubuntu-latest-Release",
+  "publisher": "kitten3d/v8-builds",
+  "builder_commit": "5cebfbe21f8bca6204a248a47c7eca4411a8cbde",
+  "workflow_run_id": 33958660304,
+  "artifact_id": 9968116540,
+  "artifact_zip_sha256": "6f363250f77fa3c267c5cae29b0eb8b89a9a2793dfdfbf7a06b1d624d0931013",
+  "archive_name": "V8-13.6.233.17-ubuntu-latest-Release.tar.gz",
+  "archive_sha256": "bb15d8b05bd8f58800b8976ab69c5ff590c039ec8b1117323bcee425ba540ae7",
+  "archive_url": "https://github.com/kitten3d/v8-builds/releases/download/v13.6.233.17/V8-13.6.233.17-ubuntu-latest-Release.tar.gz",
+  "source": "V8 subtree from nodejs/node tag v24.20.0, not the Node runtime",
+  "source_archive_sha256": "d64f066a3e828f1fcc4d8cc063efd35465604923c16fc64f1e66145bef26ce50",
+  "build_features": {
+    "monolithic_static_v8": true,
+    "node_runtime": false,
+    "pointer_compression": true,
+    "v8_sandbox": false,
+    "intl_icu": false,
+    "external_startup_data": false,
+    "custom_libcxx": false,
+    "abseil_namespace": "v8_13_6"
+  },
+  "use": "Development-only engine bootstrap. Not a hardened client distribution. No security audit or independent source rebuild has been performed."
+}

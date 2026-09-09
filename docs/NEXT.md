@@ -1,12 +1,16 @@
 # Next acceptance gates
 
-## 1. Standalone executable
+## 1. Standalone bring-up — passed, production hardening still open
 
-Provide a maintained, pinned V8 build with matching headers/ABI/data files. Link
-`zero`, run the synthetic probes without a Node process, verify initialization and
-teardown under an OS memory cap, and run the same contract suite against that CLI.
-Keep actual standalone test results separate from the development-adapter results.
-This gate is not complete merely because `native/main.cc` compiles.
+The pinned standalone SDK is acquired, linked, executed and exercised by the native
+contract suite. Header ABI selection, startup, shutdown, missing APIs, Promise
+settlement and asynchronous WebAssembly are validated. Fresh offline bootstrap
+and bundle-clone rebuild results are recorded in reports/VALIDATION.md.
+
+The acquired SDK omits V8 sandbox and Intl. A production engine configuration,
+OS-level isolation, source-build verification, complete redistribution notices,
+memory-limit behavior and other operating systems remain unvalidated. Do not
+promote this bring-up engine to a secure shipping client.
 
 ## 2. First original-game dependency
 

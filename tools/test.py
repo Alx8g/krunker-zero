@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Build/test the native scheduler and V8 bindings without downloading packages.
-Node supplies V8 ONLY to the development adapter; it is not the shipped host.
+"""Test the native host with --host, or build/test the separate Node development adapter.
+Standalone mode uses no Node executable or Node headers.
 Each guest runs once in its own child process and fresh V8 Context.
 """
 from __future__ import annotations
@@ -13,6 +13,8 @@ import shutil
 import subprocess
 import sys
 import time
+import tempfile
+import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / 'build'
@@ -46,19 +48,46 @@ def build(node: str, include: Path) -> Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--host', type=Path, help='Test a built standalone executable; Node is not used')
+    parser.add_argument('--report', type=Path)
     parser.add_argument('--node', default=shutil.which('node'))
     parser.add_argument('--node-include', type=Path)
     parser.add_argument('--no-build', action='store_true')
     args = parser.parse_args()
-    if not args.node:
-        parser.error('Node is required for the development-only V8 smoke adapter')
-    if platform.system() != 'Linux':
-        parser.error('The development adapter is currently tested only on Linux')
-    node = str(Path(args.node).resolve())
-    include = args.node_include or Path(node).parent.parent / 'include' / 'node'
-    if not (include / 'node.h').is_file():
-        parser.error('Node headers missing; supply --node-include')
-    addon = BUILD / 'zero_smoke.node' if args.no_build else build(node, include)
+    host = args.host.resolve(strict=True) if args.host else None
+    node = None
+    addon = None
+    if host:
+        command([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'])
+    else:
+        if not args.node:
+            parser.error('Supply --host for standalone tests, or Node for the development adapter')
+        if platform.system() != 'Linux':
+            parser.error('The development adapter is currently tested only on Linux')
+        node = str(Path(args.node).resolve())
+        include = args.node_include or Path(node).parent.parent / 'include' / 'node'
+        if not (include / 'node.h').is_file():
+            parser.error('Node headers missing; supply --node-include')
+        addon = BUILD / 'zero_smoke.node' if args.no_build else build(node, include)
+
+    def execute(cfg):
+        if not host:
+            return subprocess.run([node, 'tools/smoke_driver.cjs', str(addon)], cwd=ROOT,
+                                  input=json.dumps(cfg), text=True, capture_output=True, timeout=10)
+        # One fresh native process per case, including V8 startup and teardown.
+        with tempfile.TemporaryDirectory(prefix='zero-test-') as tmp:
+            argv = [str(host), '--profile', cfg['profile']]
+            if cfg['virtual_time']:
+                argv.append('--virtual-time')
+            for key in ('timeout_ms', 'max_tasks', 'max_pending', 'frame_hz'):
+                if key in cfg:
+                    argv.extend(['--' + key.replace('_', '-'), str(cfg[key])])
+            argv.append('--')
+            for index, script in enumerate(cfg['scripts']):
+                path = Path(tmp) / f'{index:03d}-{Path(script["name"]).name}'
+                path.write_bytes(script['source'].encode('utf-8'))
+                argv.append(str(path))
+            return subprocess.run(argv, text=True, capture_output=True, timeout=10)
     results = []
     started = time.monotonic()
 
@@ -66,8 +95,12 @@ def main() -> int:
              profile='core', virtual_time=True, check=None, scripts=None, **options):
         cfg = dict(profile=profile, virtual_time=virtual_time,
                    scripts=scripts or [{'name': name + '.js', 'source': source}], **options)
-        run = subprocess.run([node, 'tools/smoke_driver.cjs', str(addon)], cwd=ROOT,
-                             input=json.dumps(cfg), text=True, capture_output=True, timeout=10)
+        try:
+            run = execute(cfg)
+        except subprocess.TimeoutExpired:
+            results.append(dict(name=name, passed=False, errors=['external process deadline exceeded']))
+            print('FAIL: ' + name + ' (process hung)', flush=True)
+            return
         try:
             report = json.loads(run.stdout)
         except (ValueError, TypeError) as error:
@@ -162,14 +195,47 @@ def main() -> int:
     case('unicode_report', 'console.log("héllo 日本語 🎮");',logs=['héllo 日本語 🎮'])
     case('bounded_logs', 'for(let i=0;i<520;i++)console.log(i)',check=lambda r:len(r['logs'])==512 and r['logs_dropped']==8)
 
-    report = dict(schema=1, test_environment='development-only Node/V8 native adapter; NOT standalone runtime',
-                  platform=platform.platform(), node=command([node,'--version'],capture_output=True).stdout.strip(),
-                  native_scheduler='12 checks; separate native executable',
-                  native_cli='compiled to object; standalone link not exercised by this suite',
-                  game_bundle_executed=False, elapsed_seconds=round(time.monotonic()-started,3),
-                  passed=sum(r['passed'] for r in results), total=len(results), tests=results)
-    (ROOT/'reports').mkdir(exist_ok=True)
-    (ROOT/'reports/test-results.json').write_text(json.dumps(report,indent=2)+'\n')
+    # These supplement the original host-contract cases with engine features.
+    case('typed_arrays_and_dataview', "const b=new ArrayBuffer(16);new DataView(b).setUint32(0,0x12345678,true);console.log(new Uint8Array(b)[0]);", logs=['120'])
+    if host:
+        case('wasm_sync', "const b=new Uint8Array('0061736d010000000105016000017f03020100070a0106616e7377657200000a06010400412a0b'.match(/../g).map(x=>parseInt(x,16)));const m=new WebAssembly.Module(b);console.log(new WebAssembly.Instance(m).exports.answer()===42);", logs=['true'])
+    case('async_await_checkpoint', "(async()=>{await 0; console.log('awaited')})();console.log('sync');", logs=['sync','awaited'])
+    case('rejection_then_recovery', "Promise.reject('handled').catch(()=>42).then(console.log);", logs=['42'])
+
+    case('resolved_promise_batch', 'for(let i=0;i<70000;i++)Promise.resolve(i);console.log("done");', logs=['done'])
+    case('pending_promises_observation_cap', 'const retained=[];for(let i=0;i<65537;i++)retained.push(new Promise(()=>{}));',
+         expected='promise_observation_limit', check=lambda r:r['promise_observation_overflow'])
+    case('timer_resolves_promise', 'new Promise(r=>setTimeout(()=>r(42),1)).then(console.log);', logs=['42'])
+    pending_status = 'async_work_timeout' if host else 'async_work_pending'
+    case('unresolved_promise_not_completed', 'globalThis.pending=new Promise(()=>{});', timeout_ms=40,
+         expected=pending_status, check=lambda r:r['pending_promises']>=1)
+    case('promise_adoption_not_prematurely_settled', 'const p=new Promise(()=>{});globalThis.pending=new Promise(r=>r(p));',
+         timeout_ms=40, expected=pending_status, check=lambda r:r['pending_promises']>=2)
+    if host:
+        wasm_bytes = "new Uint8Array('0061736d010000000105016000017f03020100070a0106616e7377657200000a06010400412a0b'.match(/../g).map(x=>parseInt(x,16)))"
+        case('wasm_async_instantiate', f'WebAssembly.instantiate({wasm_bytes}).then(r=>console.log(r.instance.exports.answer()));',
+             logs=['42'], check=lambda r:r['pending_promises']==0 and r['engine_tasks']>0)
+        case('wasm_async_compile', f'WebAssembly.compile({wasm_bytes}).then(m=>console.log(new WebAssembly.Instance(m).exports.answer()));', logs=['42'])
+        case('wasm_async_rejection_handled', 'WebAssembly.compile(new Uint8Array([0])).catch(e=>console.log(e.name));', logs=['CompileError'])
+        case('wasm_async_rejection_unhandled', 'WebAssembly.compile(new Uint8Array([0]));', expected='unhandled_rejection')
+        case('wasm_and_timer_both_drained', f'WebAssembly.instantiate({wasm_bytes}).then(r=>console.log("wasm"));setTimeout(()=>console.log("timer"),1);',
+             check=lambda r:sorted(x['text'] for x in r['logs'])==['timer','wasm'])
+
+    report = dict(schema=2,
+        test_environment='standalone V8 executable' if host else 'development-only Node/V8 native adapter; NOT standalone runtime',
+        platform=platform.platform(),
+        engine_version=next((r['report']['engine_version'] for r in results if 'report' in r), None),
+        native_cli='linked and executed, fresh process per case' if host else 'compiled to object; standalone link not exercised',
+        game_bundle_executed=False, elapsed_seconds=round(time.monotonic()-started,3),
+        passed=sum(r['passed'] for r in results), total=len(results), tests=results)
+    if host:
+        report['executable_sha256'] = hashlib.sha256(host.read_bytes()).hexdigest()
+    else:
+        report['not_exercised'] = ['WebAssembly sync and async execution: requires standalone host; borrowed Node context disallows Wasm code generation']
+        report['node'] = command([node,'--version'],capture_output=True).stdout.strip()
+    path = args.report or ROOT/'reports'/('standalone-tests.json' if host else 'test-results.json')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(report,indent=2)+'\n')
     print(f"\n{report['passed']}/{report['total']} V8 integration cases passed.")
     return 0 if report['passed']==report['total'] else 1
 

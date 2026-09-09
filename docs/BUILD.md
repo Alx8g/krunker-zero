@@ -1,81 +1,69 @@
-# Build and execution
+# Building the standalone host
 
-## What was available here
+## Verified offline route
 
-Linux x86-64, GCC 14.2, CMake 3.31.6, Node 22.16.0 with headers. The available V8
-reports `12.4.254.21-node.26`. This is the **observed test environment**, not a
-recommendation to ship that older engine. Use a maintained engine revision for
-actual deployment, and record its exact revision, build arguments and toolchain.
-
-No standalone `libv8_monolith.a` is installed. Outbound dependency downloads failed.
-The repo does not contain a V8 source checkout or engine binary. The command below
-was not executable end-to-end in this environment.
-
-## Standalone target
-
-Build V8 using its official embedding/build instructions. Its current embedding
-example uses a Linux x64 sample configuration and demonstrates the relevant ABI
-flags and data files. Start with a maintained source revision and pin it. Compile
-the matching upstream hello-world sample successfully before integrating this host.
-Do not substitute a Node archive or mismatched headers to force a link.
-
-Primary reference: `https://v8.dev/docs/embed`.
-
-Once that engine build exists:
+Tested on Linux x86-64 with GCC 14.2, CMake, Python 3.13, and the locked V8 SDK.
+Python 3.10+ is required by the acquisition utilities. No Node or browser is needed.
 
 ```sh
-cmake -S . -B build/standalone -DCMAKE_BUILD_TYPE=Release \
-  -DZERO_BUILD_V8_HOST=ON \
-  -DZERO_V8_INCLUDE_DIR=/absolute/path/to/v8/include \
-  -DZERO_V8_LIBRARY=/absolute/path/to/v8/out.gn/your-build/obj/libv8_monolith.a \
-  -DZERO_V8_EXTRA_LIBRARIES='/absolute/path/to/libv8_libbase.a;/absolute/path/to/libv8_libplatform.a' \
-  -DZERO_V8_DEFINITIONS='V8_COMPRESS_POINTERS;V8_ENABLE_SANDBOX' \
-  -DZERO_V8_ICU_DATA=/absolute/path/to/that/build/icudtl.dat
-cmake --build build/standalone
-build/standalone/zero --profile bare fixtures/bare.js
-build/standalone/zero --profile core --virtual-time fixtures/clock.js
+python3 tools/bootstrap_v8.py --archive ../v8-13.6.233.17-linux-x64.zip --build
+python3 tools/test.py --host build/standalone/zero
 ```
 
-The extra libraries, ABI defines and ICU data are **conditional on the chosen V8
-build**, not universally correct flags. The example matches the shape of the
-upstream x64 sample; omit items only when that engine was built without them.
-Keep sandbox, pointer-compression and 31-bit-Smi defines in agreement with the
-engine. Use its matching C++ toolchain requirements and snapshot/ICU files.
-The CMake target is provided but its final linkage still needs validation.
+The artifact ZIP and direct release tar.gz are both accepted, with distinct locked
+hashes. The ZIP contains one tar.gz; both layers are verified. The lock is
+`config/v8-linux-x64.lock.json`. No remote helper scripts run during installation.
+An existing SDK is reused only after comparing its files with a newly verified
+extraction. Binary archives are ignored by Git.
 
-`native/main.cc` owns V8 startup, allocator/isolate creation and teardown. Its
-`--memory-mb` flag sets an old-generation heap target; it is not a process RSS or
-ArrayBuffer cap. The host reports JS timeouts, but V8/native OOM can still terminate
-the process. Run trusted inputs in an OS-isolated process during bring-up.
+`--download --build` uses the pinned release URL instead. This network path could
+not reach the internet in the current container; the complete offline route was
+executed successfully. The GitHub connector's artifact-download action supplied
+the archive here. The connected GitHub tools expose reads/downloads, not remote
+repository creation, pushes or forks; no remote write was performed.
 
-## Development-only adapter
+## A different engine build
+
+Supply the include tree and static library from the **same** build:
 
 ```sh
-python3 tools/test.py
-# A distribution-installed Node may need an explicit header directory:
-python3 tools/test.py --node-include /usr/include/node
+cmake -S . -B build/custom -DCMAKE_BUILD_TYPE=Release -DZERO_BUILD_V8_HOST=ON \
+  -DZERO_V8_INCLUDE_DIR=/absolute/sdk/include \
+  -DZERO_V8_LIBRARY=/absolute/sdk/lib/libv8_monolith.a
+cmake --build build/custom -j2
+python3 tools/test.py --host build/custom/zero
 ```
 
-This dynamically loads a small C++ test adapter into the installed Node executable.
-The adapter calls the **same native host code** using a fresh guest V8 Context and
-private microtask queue. No Node guest globals are passed across. Each test uses
-one separate child process. This checks native binding and scheduler behavior;
-it does not validate standalone V8 initialization, linking, shutdown or packaging.
-The borrowed-isolate promise hook is why the adapter is one-run-per-process.
+If `include/v8-gn.h` is present, CMake defines `V8_GN_HEADER` so V8's generated
+configuration selects matching ABI macros. Do not guess pointer compression or
+sandbox defines. For other SDK layouts, `ZERO_V8_DEFINITIONS` accepts an explicit
+semicolon-separated list from that build; `ZERO_V8_EXTRA_LIBRARIES` supplies extra
+matching archives. `ZERO_V8_ICU_DATA` copies matching external `icudtl.dat` when
+needed. Other external startup files require explicit packaging/validation.
 
-A V8 Context is not an OS security sandbox. Do not treat the test adapter as a
-safe service for arbitrary uploaded code. Its observed V8 version is recorded in
-every report. The standalone CMake target never includes the adapter.
+The locked SDK embeds startup data and omits ICU; it needs no external data file.
+Its V8 sandbox is disabled. Merely defining `V8_ENABLE_SANDBOX` in our build cannot
+enable a feature absent from the library and would create an ABI mismatch.
+The source V8 subtree is taken from Node's vendor tree, but no Node application
+code, libnode, libuv, browser code or Go/Rust runtime is linked into `zero`.
 
-## Diagnostics
+No Windows/macOS standalone build was tested. The accompanying pin is Linux-only.
+System C/C++ dynamic libraries are still required: this is not a fully static ELF.
 
-Exit 0: that input's execution completed with no outstanding host tasks.
-Exit 2: uncaught script exception or an unhandled Promise rejection.
-Exit 3: wall-clock or callback budget exhausted; the run is incomplete.
-Exit 64: unsupported/invalid configuration.
-Exit 70: input/tool failure, where applicable.
+## Developer adapter
 
-Reports contain source positions, the exception, bounded logs, task counts and
-clock mode. An uncaught `ReferenceError` may identify a missing global. An error
-caught by the game is not observable in this first probe; no fake API is installed
-to force execution through a branch. Stack text alone is not a complete inventory.
+`python3 tools/test.py` uses installed Node headers and its engine in a separate
+native test adapter. The new ScriptOrigin compatibility helper compiles against
+both tested V8 header APIs. WebAssembly execution is not tested in this adapter:
+Node's borrowed isolate rejects Wasm code generation in the fresh guest context.
+Its lack of a V8 default-platform pump is explicitly reported as
+`async_work_pending` when a Promise remains unresolved.
+
+## Primary interface/build references
+
+- V8 embedding: https://v8.dev/docs/embed
+- Acquired builder: https://github.com/kitten3d/v8-builds/tree/5cebfbe21f8bca6204a248a47c7eca4411a8cbde
+- Exact run: https://github.com/kitten3d/v8-builds/actions/runs/33958660304
+- Release: https://github.com/kitten3d/v8-builds/releases/tag/v13.6.233.17
+
+Archive integrity was checked; independent reproducible-build verification was not.

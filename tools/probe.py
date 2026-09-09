@@ -26,7 +26,7 @@ def read_input(path: Path) -> tuple[bytes, dict]:
     raw = resolved.read_bytes()
     if len(raw) > MAX_SOURCE: raise ValueError('source grew beyond size limit')
     raw.decode('utf-8')  # Do not silently replace malformed input or run HTML.
-    if raw.lstrip().lower().startswith((b'<!doctype html', b'<html')):
+    if raw.decode('utf-8-sig').lstrip().lower().startswith(('<!doctype html', '<html')):
         raise ValueError('HTML is not a JS bundle; inspect the bootstrap separately')
     return raw, dict(name=path.name, bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
 

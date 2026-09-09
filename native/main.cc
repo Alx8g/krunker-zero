@@ -12,6 +12,7 @@ void Usage() {
   std::cout << "krunker-zero: browserless, headless JavaScript dependency probe\n"
     "Usage: zero [options] script.js [more scripts, in execution order]\n"
     "  --profile bare|core  Default: bare (ECMAScript only)\n"
+    "  --engine-info       Report compile-time engine features as JSON\n"
     "  --virtual-time      Advance a synthetic clock; NOT a performance benchmark\n"
     "  --timeout-ms N      Wall-clock budget, 1..60000 (default 2000)\n"
     "  --max-tasks N       Callback budget (default 10000)\n"
@@ -48,6 +49,29 @@ int main(int argc, char** argv) {
       std::string arg = argv[i];
       if (!positional && arg == "--") { positional = true; continue; }
       if (!positional && (arg == "--help" || arg == "-h")) { Usage(); return 0; }
+      if (!positional && arg == "--engine-info") {
+        std::cout << "{\"engine\":\"V8\",\"version\":" << zero::JsonString(v8::V8::GetVersion())
+                  << ",\"host\":\"standalone\",\"sandbox\":"
+#ifdef V8_ENABLE_SANDBOX
+                  << "true"
+#else
+                  << "false"
+#endif
+                  << ",\"intl\":"
+#ifdef V8_INTL_SUPPORT
+                  << "true"
+#else
+                  << "false"
+#endif
+                  << ",\"pointer_compression\":"
+#ifdef V8_COMPRESS_POINTERS
+                  << "true"
+#else
+                  << "false"
+#endif
+                  << "}\n";
+        return 0;
+      }
       if (!positional && arg == "--virtual-time") { options.virtual_time = true; continue; }
       if (!positional && arg.rfind("--", 0) == 0) {
         if (i + 1 >= argc) throw std::invalid_argument("missing value: " + arg);
@@ -83,7 +107,9 @@ int main(int argc, char** argv) {
   int status;
   {
     v8::Isolate::Scope entered(isolate);
-    auto report = zero::Run(isolate, scripts, options);
+    auto report = zero::Run(isolate, scripts, options, [&] {
+      return v8::platform::PumpMessageLoop(platform.get(), isolate);
+    });
     std::cout << report.Json(options) << '\n';
     status = report.exit_code;
   }

@@ -1,0 +1,84 @@
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/krunker-zero-work/build/native
+[ 50%] Built target zero_scheduler
+[100%] Built target zero_scheduler_tests
+Internal ctest changing into directory: /mnt/data/krunker-zero-work/build/native
+Test project /mnt/data/krunker-zero-work/build/native
+    Start 1: native_scheduler
+1/1 Test #1: native_scheduler .................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+test_comments_not_scripts (test_tools.InspectorTests.test_comments_not_scripts) ... ok
+test_first_base_only (test_tools.InspectorTests.test_first_base_only) ... ok
+test_inline_hash_without_source (test_tools.InspectorTests.test_inline_hash_without_source) ... ok
+test_relative_src (test_tools.InspectorTests.test_relative_src) ... ok
+test_script_flags (test_tools.InspectorTests.test_script_flags) ... ok
+test_unterminated_marked (test_tools.InspectorTests.test_unterminated_marked) ... ok
+test_bytes_hashed_without_rewriting (test_tools.ProbeInputTests.test_bytes_hashed_without_rewriting) ... ok
+test_html_is_not_a_bundle (test_tools.ProbeInputTests.test_html_is_not_a_bundle) ... ok
+test_invalid_utf8_rejected (test_tools.ProbeInputTests.test_invalid_utf8_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK
+PASS: bare_ecmascript
+PASS: bare_globals_absent
+PASS: missing_document
+PASS: missing_window
+PASS: feature_detection_preserved
+PASS: core_has_no_host_escape
+PASS: window_identity
+PASS: nested_property_not_invented
+PASS: caught_missing_not_claimed
+PASS: syntax_error
+PASS: synchronous_throw
+PASS: ordered_scripts
+PASS: microtask_between_scripts
+PASS: promise_before_timer
+PASS: microtask_between_timers
+PASS: timer_order
+PASS: timer_args_and_this
+PASS: clear_timeout
+PASS: cancel_unknown_harmless
+PASS: same_batch_cancellation
+PASS: interval_self_cancellation
+PASS: cross_cancel_timer_interval
+PASS: nested_timer_fifo
+PASS: raf_shared_timestamp
+PASS: raf_nested_next_frame
+PASS: raf_cancel_same_frame
+PASS: raf_one_shot
+PASS: timer_throw_visible
+PASS: raf_throw_visible
+PASS: rejected_promise_visible
+PASS: handled_promise_success
+PASS: microtask_adds_rejection_handler
+PASS: promise_throw_visible
+PASS: reject_string_timer
+PASS: reject_nonfunction_raf
+PASS: pending_cap
+PASS: recurring_work_budget
+PASS: loop_timeout
+PASS: promise_loop_timeout
+PASS: idle_wait_timeout
+PASS: real_clock
+PASS: unknown_profile
+PASS: invalid_hz
+PASS: invalid_timeout
+PASS: json_escaping
+PASS: unicode_report
+PASS: bounded_logs
+PASS: typed_arrays_and_dataview
+PASS: async_await_checkpoint
+PASS: rejection_then_recovery
+PASS: resolved_promise_batch
+PASS: pending_promises_observation_cap
+PASS: timer_resolves_promise
+PASS: unresolved_promise_not_completed
+PASS: promise_adoption_not_prematurely_settled
+
+55/55 V8 integration cases passed.

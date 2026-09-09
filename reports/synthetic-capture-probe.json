@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "engine": "V8",
+  "engine_version": "13.6.233.17",
+  "profile": "bare",
+  "mode": "headless",
+  "virtual_time": false,
+  "status": "missing_global",
+  "exit_code": 2,
+  "phase": "script",
+  "message": "Uncaught ReferenceError: document is not defined",
+  "stack": "ReferenceError: document is not defined\n    at /mnt/data/krunker-zero-work/input/probe-ogchtpnr/000-000-7f6ed4fbe941c028.js:1:1",
+  "missing_global": "document",
+  "source": "/mnt/data/krunker-zero-work/input/probe-ogchtpnr/000-000-7f6ed4fbe941c028.js",
+  "line": 1,
+  "column": 1,
+  "callbacks": 0,
+  "microtask_checkpoints": 0,
+  "engine_tasks": 0,
+  "pending_promises": 0,
+  "promise_observation_overflow": false,
+  "pending_tasks": 0,
+  "elapsed_ms": 0.578975,
+  "clock_ms": 0.578915,
+  "logs_dropped": 0,
+  "logs": [],
+  "execution_environment": "standalone V8 host",
+  "inputs": [
+    {
+      "name": "000-7f6ed4fbe941c028.js",
+      "bytes": 35,
+      "sha256": "7f6ed4fbe941c028551125125312b0a815e14fffd93b1c432c28fbfab891bf0d"
+    }
+  ],
+  "coverage_note": "This reports one executed path, not all API usage. Completed does not imply a playable or compatible game.",
+  "input_kind": "synthetic fixture imported through HAR; NOT original game"
+}

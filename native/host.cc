@@ -13,6 +13,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <thread>
+#include <type_traits>
 #include <utility>
 
 namespace zero {
@@ -27,6 +28,7 @@ struct State {
   TaskQueue queue;
   std::map<TaskId, Global<Function>> callbacks;
   std::vector<Rejection> rejections;
+  std::vector<Global<Promise>> promises;
   Clock::time_point start = Clock::now();
   double virtual_now = 0;
   State(Isolate* i, const Options& o, Report& r)
@@ -118,6 +120,33 @@ void NativeCancel(const FunctionCallbackInfo<Value>& args) {
   s.queue.Cancel(id);
   s.callbacks.erase(id);
 }
+// A resolve hook fires before settlement and can adopt a still-pending promise.
+// Observe weak handles and inspect actual state after microtask checkpoints.
+// Do not mutate Promise/WebAssembly constructors or expose new guest globals.
+std::size_t PendingPromises(State& s);
+void ObservePromise(PromiseHookType type, Local<Promise> promise, Local<Value>) {
+  if (!active_state || type != PromiseHookType::kInit) return;
+  auto& s = *active_state;
+  constexpr std::size_t kObservationLimit = 65536;
+  if (s.report.promise_observation_overflow) return;
+  if (s.promises.size() >= kObservationLimit) PendingPromises(s);
+  if (s.promises.size() >= kObservationLimit) {
+    s.report.promise_observation_overflow = true;
+    return;
+  }
+  Global<Promise> observed(s.isolate, promise);
+  observed.SetWeak();
+  s.promises.push_back(std::move(observed));
+}
+std::size_t PendingPromises(State& s) {
+  HandleScope handles(s.isolate);
+  auto& list = s.promises;
+  list.erase(std::remove_if(list.begin(), list.end(), [&](const Global<Promise>& p) {
+    return p.IsEmpty() || p.Get(s.isolate)->State() != Promise::kPending;
+  }), list.end());
+  s.report.pending_promises = list.size();
+  return list.size();
+}
 void Reject(PromiseRejectMessage event) {
   if (!active_state) return;
   auto& s = *active_state;
@@ -167,10 +196,19 @@ void Failure(State& s, Local<Context> context, TryCatch& caught, const char* pha
     }
   }
 }
+// V8 changed ScriptOrigin's constructor between the tested 12.x and 13.x
+// engines. Select from the installed header API rather than guessing a version.
+template <class Origin = ScriptOrigin>
+Origin MakeOrigin(Isolate* isolate, Local<String> name) {
+  if constexpr (std::is_constructible_v<Origin, Isolate*, Local<String>>)
+    return Origin(isolate, name);
+  else
+    return Origin(name);
+}
 bool Evaluate(State& s, Local<Context> context, const Script& input, const char* phase) {
   HandleScope handles(s.isolate);
   TryCatch caught(s.isolate);
-  ScriptOrigin origin(s.isolate, Str(s.isolate, input.name));
+  auto origin = MakeOrigin(s.isolate, Str(s.isolate, input.name));
   Local<v8::Script> script;
   Local<Value> result;
   if (!v8::Script::Compile(context, Str(s.isolate, input.source), &origin).ToLocal(&script) ||
@@ -244,6 +282,8 @@ std::string Report::Json(const Options& options) const {
       << ",\"stack\":" << JsonString(stack) << ",\"missing_global\":" << JsonString(missing_global)
       << ",\"source\":" << JsonString(source) << ",\"line\":" << line << ",\"column\":" << column
       << ",\"callbacks\":" << callbacks << ",\"microtask_checkpoints\":" << checkpoints
+      << ",\"engine_tasks\":" << engine_tasks << ",\"pending_promises\":" << pending_promises
+      << ",\"promise_observation_overflow\":" << (promise_observation_overflow ? "true" : "false")
       << ",\"pending_tasks\":" << pending_tasks << ",\"elapsed_ms\":" << elapsed_ms
       << ",\"clock_ms\":" << clock_ms << ",\"logs_dropped\":" << logs_dropped << ",\"logs\":[";
   for (std::size_t i = 0; i < logs.size(); ++i) {
@@ -253,7 +293,8 @@ std::string Report::Json(const Options& options) const {
   return out.str() + "]}";
 }
 
-Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& options) {
+Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& options,
+           const std::function<bool()>& pump_engine) {
   Report report;
   if ((options.profile != "bare" && options.profile != "core") ||
       !options.timeout_ms || options.timeout_ms > 60000 || !options.max_tasks ||
@@ -274,6 +315,7 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
   State state(isolate, options, report);
   active_state = &state;
   isolate->SetPromiseRejectCallback(Reject);
+  isolate->SetPromiseHook(ObservePromise);
   Watchdog watchdog(isolate, options.timeout_ms);
   bool ok = true;
   if (options.profile == "core") {
@@ -297,12 +339,55 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
       }
     }
   }
-  while (ok && state.queue.Size()) {
+  while (ok) {
+    const auto pending = PendingPromises(state);
+    if (report.promise_observation_overflow) {
+      report.status = "promise_observation_limit";
+      report.message = "promise observation cap exceeded; async completion is unknown";
+      report.exit_code = 3;
+      break;
+    }
     if (watchdog.Expired()) {
-      report.status = "execution_timeout";
+      report.status = pending && !state.queue.Size() ? "async_work_timeout" : "execution_timeout";
       report.message = "wall-clock execution budget exhausted";
       report.exit_code = 3;
       break;
+    }
+    // Nonblocking: an empty foreground queue does not mean background Wasm
+    // compilation finished. Pending promises keep this bounded probe alive.
+    bool pumped = false;
+    if (pump_engine && report.engine_tasks >= options.max_tasks && pending) {
+      report.status = "task_budget_exhausted";
+      report.message = "engine task budget exhausted; run is incomplete";
+      report.exit_code = 3;
+      break;
+    }
+    if (pump_engine && report.engine_tasks < options.max_tasks) {
+      TryCatch caught(isolate);
+      pumped = pump_engine();
+      if (caught.HasCaught() || isolate->IsExecutionTerminating()) {
+        Failure(state, context, caught, "engine-task");
+        break;
+      }
+      if (pumped) {
+        ++report.engine_tasks;
+        if (!Checkpoint(state, context, microtasks.get()) || Unhandled(state, context)) break;
+
+      }
+    }
+    if (!state.queue.Size()) {
+      if (!PendingPromises(state)) {
+        if (pumped) continue;
+        break;
+      }
+      if (!pump_engine) {
+        report.status = "async_work_pending";
+        report.message = "unresolved promises; this adapter cannot pump V8 platform tasks";
+        report.exit_code = 3;
+        break;
+      }
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      continue;
     }
     const double due = state.queue.NextDue();
     if (options.virtual_time) state.virtual_now = std::max(state.virtual_now, due);
@@ -352,7 +437,9 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
   // A termination requested while native code is idle can still be queued,
   // without IsExecutionTerminating() becoming true yet. Cancel it as well.
   if (watchdog.Expired() || isolate->IsExecutionTerminating()) isolate->CancelTerminateExecution();
+  report.pending_promises = PendingPromises(state);
   isolate->SetPromiseRejectCallback(nullptr);
+  isolate->SetPromiseHook(nullptr);
   active_state = nullptr;
   report.pending_tasks = state.queue.Size();
   report.clock_ms = state.Now();
