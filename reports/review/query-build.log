@@ -1,0 +1,9 @@
+[ 14%] Built target zero_platform
+[ 28%] Built target zero_platform_fixture
+[ 42%] Built target zero_scheduler
+[ 50%] Generating generated/core_prelude.h
+[ 64%] Built target zero_platform_tests
+[ 78%] Built target zero_scheduler_tests
+[ 85%] Building CXX object CMakeFiles/zero.dir/native/host.cc.o
+[ 92%] Linking CXX executable zero
+[100%] Built target zero

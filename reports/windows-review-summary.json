@@ -1,0 +1,18 @@
+{
+  "status": "windows_maintenance_acceptance_passed",
+  "patch_sha256": "00fc813af7481b8374c97d39169b26979387acb3957c376f1b73a431f38ca0cb",
+  "source_sdk_preflight": "passed with installed SDK 10.0.28000.0",
+  "sdk_rebuilt": false,
+  "python_unit_tests": 133,
+  "core_cases_per_backend": 100,
+  "graphics_cases_per_backend": 52,
+  "native_ctest_executables_per_backend": 2,
+  "d3d11_interactive_platform_cases": 13,
+  "warp_noninteractive_platform_cases": 10,
+  "query_differential_vectors": 2048,
+  "module_audits": "All four passed with nonempty complete own-child snapshots, exact executable identity and actual requested graphics backend/context evidence",
+  "private_bootstrap": "Same ordered hashed inputs rerun. Missing document remains the first observed exception. No raw capture or private probe report published.",
+  "not_verified": ["Physical keyboard and raw mouse", "Capture release and DPI acceptance", "Document/location member operations and values", "Complete game bootstrap or gameplay"],
+  "evidence": ["reports/windows-review-build/", "reports/windows-review-d3d11/", "reports/windows-review-warp/", "reports/windows-review-query.json"],
+  "baseline_reports": "Preserved without overwriting prior Windows acceptance results"
+}

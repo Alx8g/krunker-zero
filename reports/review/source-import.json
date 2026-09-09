@@ -1,0 +1,16 @@
+{
+  "upstream": "Alx8g/krunker-zero",
+  "commit": "3d7cda7bac71896e5e1d1457e254d2a0d9f132cd",
+  "method": "v0.4 bundle plus connector-read changed sources, all changed source blobs matched; not a full clone of new report files",
+  "source_blobs": {
+    "runtime/core.js": "01aa1203c21bdf031c6f1a7d29f6a42c8ced8769",
+    "tools/test.py": "1b5f154b7ecc55cfacbd358e0091170f59e5f121",
+    "tools/windows_deps.py": "b9612827578e9ccb7b1e817ce040ab8317efab0d",
+    "tests/test_windows_support.py": "45cd70e1060fd33b4568491fa394571bce0b1158",
+    "native/win32_window.cc": "a82a2e219fe18a8e46772c3429c052ec24f340d8",
+    "native/graphics.cc": "b5e2de90d7b4fc31c32da3588bde0d32bf445b23"
+  },
+  "other_verified_input_blobs": {
+    "reports/capabilities.json": "7dc018a31f20d178e85ed889ecaf4881b7f19c3a"
+  }
+}

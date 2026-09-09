@@ -1,0 +1,105 @@
+{
+  "scope": "standalone V8 reproductions vs Node URLSearchParams reference; not game testing",
+  "results": [
+    {
+      "name": "append_reentrant_delete",
+      "native_status": "completed",
+      "native_logs": [
+        ""
+      ],
+      "reference_logs": [
+        "b=2"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "foreach_ignores_entries_override",
+      "native_status": "script_exception",
+      "native_logs": [],
+      "reference_logs": [
+        "a 1"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "null_iterator_record",
+      "native_status": "script_exception",
+      "native_logs": [],
+      "reference_logs": [
+        "a=1"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "callable_record",
+      "native_status": "completed",
+      "native_logs": [
+        "function+f%28%29%7B%7D="
+      ],
+      "reference_logs": [
+        "a=1"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "symbol_record_key",
+      "native_status": "completed",
+      "native_logs": [
+        "accepted"
+      ],
+      "reference_logs": [
+        "TypeError"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "normalized_record_keys",
+      "native_status": "completed",
+      "native_logs": [
+        "%EF%BF%BD=first&%EF%BF%BD=second"
+      ],
+      "reference_logs": [
+        "%EF%BF%BD=second"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "brand_before_conversion",
+      "native_status": "completed",
+      "native_logs": [
+        "true"
+      ],
+      "reference_logs": [
+        "false"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "iterator_eager_brand",
+      "native_status": "completed",
+      "native_logs": [
+        "accepted"
+      ],
+      "reference_logs": [
+        "TypeError"
+      ],
+      "reference_exit": 0,
+      "mismatch": true
+    },
+    {
+      "name": "iterator_get_once",
+      "native_status": "script_exception",
+      "native_logs": [],
+      "reference_logs": [],
+      "reference_exit": 1,
+      "mismatch": false
+    }
+  ]
+}

@@ -27,9 +27,38 @@
 
   // Observed FRVR channel detection contract. No URL/location/DOM is invented.
   // Query parsing follows application/x-www-form-urlencoded with forgiving UTF-8.
+  const apply = Reflect.apply;
+  const ownKeys = Reflect.ownKeys;
+  const descriptor = Object.getOwnPropertyDescriptor;
+  const property = Object.defineProperty;
+  const arraySort = Array.prototype.sort;
+  const string = String;
+  const wellFormed = String.prototype.toWellFormed;
+  // Define own array elements rather than invoking guest-replaced array methods
+  // or inherited numeric setters on the private query list.
+  const put = (list, value) => property(list, list.length, {
+    value, writable: true, enumerable: true, configurable: true
+  });
+  const isObject = value => value !== null &&
+    (typeof value === 'object' || typeof value === 'function');
+  // Web IDL sequence conversion: get the iterator/next method once, and convert
+  // each element before requesting the following element. Do not spread first.
+  const sequence = (value, method, convert) => {
+    if (typeof method !== 'function') throw new TypeError('Expected an iterable');
+    const iterator = apply(method, value, []);
+    if (!isObject(iterator)) throw new TypeError('Expected an iterator object');
+    const next = iterator.next;
+    const result = [];
+    while (true) {
+      const step = apply(next, iterator, []);
+      if (!isObject(step)) throw new TypeError('Expected an iterator result object');
+      if (step.done) return result;
+      put(result, convert(step.value));
+    }
+  };
   const usv = value => {
     if (typeof value === 'symbol') throw new TypeError('Cannot convert Symbol to string');
-    return String(value).toWellFormed();
+    return apply(wellFormed, string(value), []);
   };
   const decodeQuery = text => {
     // Preserve percent-encoded bytes from the input, including malformed UTF-8.
@@ -77,69 +106,129 @@
   class URLSearchParams {
     #pairs = [];
     constructor(init = '') {
-      if (init !== null && typeof init === 'object') {
-        if (init[Symbol.iterator] !== undefined) {
-          for (const pair of init) {
-            if (pair === null || typeof pair !== 'object' || !pair[Symbol.iterator])
-              throw new TypeError('Expected an iterable pair');
-            const values = [...pair];
-            if (values.length !== 2) throw new TypeError('Expected exactly two items');
-            this.#pairs.push([usv(values[0]), usv(values[1])]);
+      if (isObject(init)) {
+        const method = init[Symbol.iterator];
+        if (method !== undefined && method !== null) {
+          const pairs = sequence(init, method, pair => {
+            if (!isObject(pair)) throw new TypeError('Expected an iterable pair');
+            return sequence(pair, pair[Symbol.iterator], usv);
+          });
+          for (let i = 0; i < pairs.length; i++) {
+            if (pairs[i].length !== 2) throw new TypeError('Expected exactly two items');
+            put(this.#pairs, pairs[i]);
           }
-        } else for (const key of Object.keys(init)) this.#pairs.push([usv(key), usv(init[key])]);
+        } else {
+          const keys = ownKeys(init);
+          for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            if (!descriptor(init, key)?.enumerable) continue;
+            // Record keys are converted before reading their value. USVString
+            // normalization may make two JS keys equal; last value wins in place.
+            const name = usv(key), value = usv(init[key]);
+            let found = false;
+            for (let j = 0; j < this.#pairs.length; j++) {
+              if (this.#pairs[j][0] === name) {
+                this.#pairs[j][1] = value; found = true; break;
+              }
+            }
+            if (!found) put(this.#pairs, [name, value]);
+          }
+        }
       } else {
         let query = init === null ? '' : usv(init);
         if (query.startsWith('?')) query = query.slice(1);
         for (const part of query.split('&')) {
           if (!part) continue;
           const split = part.indexOf('=');
-          this.#pairs.push([decodeQuery(split < 0 ? part : part.slice(0, split)),
+          put(this.#pairs, [decodeQuery(split < 0 ? part : part.slice(0, split)),
             decodeQuery(split < 0 ? '' : part.slice(split + 1))]);
         }
       }
     }
     get size() { return this.#pairs.length; }
     append(name, value) {
+      const pairs = this.#pairs; // Brand-check before guest argument conversion.
       if (arguments.length < 2) throw new TypeError('Expected name and value');
-      this.#pairs.push([usv(name), usv(value)]);
+      name = usv(name); value = usv(value);
+      put(pairs, [name, value]);
     }
     get(name) {
+      const pairs = this.#pairs;
       if (!arguments.length) throw new TypeError('Expected name');
-      name = usv(name); return this.#pairs.find(p => p[0] === name)?.[1] ?? null;
+      name = usv(name);
+      for (let i = 0; i < pairs.length; i++) if (pairs[i][0] === name) return pairs[i][1];
+      return null;
     }
     getAll(name) {
+      const pairs = this.#pairs;
       if (!arguments.length) throw new TypeError('Expected name');
-      name = usv(name); return this.#pairs.filter(p => p[0] === name).map(p => p[1]);
+      name = usv(name); const result = [];
+      for (let i = 0; i < pairs.length; i++) if (pairs[i][0] === name) put(result, pairs[i][1]);
+      return result;
     }
     has(name, value) {
+      const pairs = this.#pairs;
       if (!arguments.length) throw new TypeError('Expected name');
       name = usv(name); if (value !== undefined) value = usv(value);
-      return this.#pairs.some(p => p[0] === name && (value === undefined || p[1] === value));
+      for (let i = 0; i < pairs.length; i++)
+        if (pairs[i][0] === name && (value === undefined || pairs[i][1] === value)) return true;
+      return false;
     }
     delete(name, value) {
+      const pairs = this.#pairs;
       if (!arguments.length) throw new TypeError('Expected name');
       name = usv(name); if (value !== undefined) value = usv(value);
-      this.#pairs = this.#pairs.filter(p => p[0] !== name || (value !== undefined && p[1] !== value));
+      // Keep list identity stable: a coercion or live iterator may retain it.
+      let write = 0;
+      for (let i = 0; i < pairs.length; i++)
+        if (pairs[i][0] !== name || (value !== undefined && pairs[i][1] !== value))
+          pairs[write++] = pairs[i];
+      pairs.length = write;
     }
     set(name, value) {
+      const pairs = this.#pairs;
       if (arguments.length < 2) throw new TypeError('Expected name and value');
-      name = usv(name); value = usv(value); let found = false;
-      this.#pairs = this.#pairs.filter(p => {
-        if (p[0] !== name) return true;
-        if (found) return false;
-        p[1] = value; found = true; return true;
-      });
-      if (!found) this.#pairs.push([name, value]);
+      name = usv(name); value = usv(value); let found = false, write = 0;
+      for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i];
+        if (pair[0] === name) {
+          if (found) continue;
+          pair[1] = value; found = true;
+        }
+        pairs[write++] = pair;
+      }
+      pairs.length = write;
+      if (!found) put(pairs, [name, value]);
     }
-    sort() { this.#pairs.sort((a,b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0); }
-    *entries() { for (let i=0;i<this.#pairs.length;i++) yield [...this.#pairs[i]]; }
-    *keys() { for (const pair of this.entries()) yield pair[0]; }
-    *values() { for (const pair of this.entries()) yield pair[1]; }
+    sort() {
+      apply(arraySort, this.#pairs, [(a,b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0]);
+    }
+    entries() {
+      const pairs = this.#pairs; // Validate now, not at the generator's first next().
+      return (function* () {
+        for (let i = 0; i < pairs.length; i++) yield [pairs[i][0], pairs[i][1]];
+      })();
+    }
+    keys() {
+      const pairs = this.#pairs;
+      return (function* () { for (let i = 0; i < pairs.length; i++) yield pairs[i][0]; })();
+    }
+    values() {
+      const pairs = this.#pairs;
+      return (function* () { for (let i = 0; i < pairs.length; i++) yield pairs[i][1]; })();
+    }
     forEach(callback, thisArg) {
+      const pairs = this.#pairs;
       if (typeof callback !== 'function') throw new TypeError('Expected callback');
-      for (const [name,value] of this.entries()) Reflect.apply(callback,thisArg,[value,name,this]);
+      for (let i = 0; i < pairs.length; i++)
+        apply(callback, thisArg, [pairs[i][1], pairs[i][0], this]);
     }
-    toString() { return this.#pairs.map(p => encodeQuery(p[0])+'='+encodeQuery(p[1])).join('&'); }
+    toString() {
+      const pairs = this.#pairs; let result = '';
+      for (let i = 0; i < pairs.length; i++)
+        result += (i ? '&' : '') + encodeQuery(pairs[i][0]) + '=' + encodeQuery(pairs[i][1]);
+      return result;
+    }
   }
   Object.defineProperty(URLSearchParams.prototype, Symbol.iterator, {value: URLSearchParams.prototype.entries, writable:true, configurable:true});
   Object.defineProperty(URLSearchParams.prototype, Symbol.toStringTag, {value:'URLSearchParams', configurable:true});

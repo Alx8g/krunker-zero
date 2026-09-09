@@ -1,0 +1,6 @@
+{
+  "status": "not_run",
+  "passed": false,
+  "platform": "linux",
+  "error": "Run with 64-bit Python on native Windows"
+}

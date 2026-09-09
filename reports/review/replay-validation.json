@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "scope": "Clean local source-baseline clone plus patch; not a fresh GitHub checkout or independent V8 source rebuild",
+  "upstream_base": "3d7cda7bac71896e5e1d1457e254d2a0d9f132cd",
+  "patch_apply_check": true,
+  "build_passed": true,
+  "core": {
+    "passed": 100,
+    "total": 100
+  },
+  "graphics": {
+    "passed": 52,
+    "total": 52
+  },
+  "python_unit_tests": 133,
+  "native_test_executables": 2,
+  "graphics_failure_tests": 2,
+  "differential": {
+    "passed": true,
+    "matched": 2048,
+    "total": 2048
+  },
+  "original_executable_sha256": "6cd63d59b52b75facc22537edb0aa47ed4ad26872571a9998f5c1786e18a5be8",
+  "replay_executable_sha256": "6cd63d59b52b75facc22537edb0aa47ed4ad26872571a9998f5c1786e18a5be8",
+  "identical_executable": true,
+  "windows_rerun": false,
+  "current_game_rerun": false
+}

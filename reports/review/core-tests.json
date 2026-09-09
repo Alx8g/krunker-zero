@@ -1,0 +1,5692 @@
+{
+  "schema": 2,
+  "test_environment": "standalone V8 executable",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "engine_version": "13.6.233.17",
+  "native_cli": "linked and executed, fresh process per case",
+  "game_bundle_executed": false,
+  "elapsed_seconds": 0.821,
+  "passed": 100,
+  "total": 100,
+  "tests": [
+    {
+      "name": "bare_ecmascript",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.308534,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "bare_globals_absent",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.263937,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "missing_document",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "missing_global",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught ReferenceError: document is not defined",
+        "stack": "ReferenceError: document is not defined\n    at /tmp/zero-test-6nvmd8as/000-missing_document.js:1:1",
+        "missing_global": "document",
+        "source": "/tmp/zero-test-6nvmd8as/000-missing_document.js",
+        "line": 1,
+        "column": 1,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.381855,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "missing_window",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "missing_global",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught ReferenceError: window is not defined",
+        "stack": "ReferenceError: window is not defined\n    at /tmp/zero-test-s1w1j0kr/000-missing_window.js:1:1",
+        "missing_global": "window",
+        "source": "/tmp/zero-test-s1w1j0kr/000-missing_window.js",
+        "line": 1,
+        "column": 1,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.292901,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "feature_detection_preserved",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.81075,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "undefined false undefined"
+          }
+        ]
+      }
+    },
+    {
+      "name": "core_has_no_host_escape",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.747575,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "undefined undefined undefined undefined undefined undefined object"
+          },
+          {
+            "level": "log",
+            "text": "undefined"
+          }
+        ]
+      }
+    },
+    {
+      "name": "window_identity",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.720295,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "nested_property_not_invented",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught TypeError: Cannot read properties of undefined (reading 'createElement')",
+        "stack": "TypeError: Cannot read properties of undefined (reading 'createElement')\n    at /tmp/zero-test-d3daky1t/000-nested_property_not_invented.js:1:17",
+        "missing_global": "",
+        "source": "/tmp/zero-test-d3daky1t/000-nested_property_not_invented.js",
+        "line": 1,
+        "column": 17,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.827636,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "caught_missing_not_claimed",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.714496,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "caught"
+          }
+        ]
+      }
+    },
+    {
+      "name": "syntax_error",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught SyntaxError: Unexpected token '='",
+        "stack": "SyntaxError: Unexpected token '='",
+        "missing_global": "",
+        "source": "/tmp/zero-test-bbis8h67/000-syntax_error.js",
+        "line": 1,
+        "column": 7,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.994688,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "synchronous_throw",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught Error: sentinel",
+        "stack": "Error: sentinel\n    at /tmp/zero-test-zyhf6a8x/000-synchronous_throw.js:1:7",
+        "missing_global": "",
+        "source": "/tmp/zero-test-zyhf6a8x/000-synchronous_throw.js",
+        "line": 1,
+        "column": 1,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.764732,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "ordered_scripts",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.808808,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "12"
+          }
+        ]
+      }
+    },
+    {
+      "name": "microtask_between_scripts",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.800185,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "7"
+          }
+        ]
+      }
+    },
+    {
+      "name": "promise_before_timer",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.9227,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "sync"
+          },
+          {
+            "level": "log",
+            "text": "promise"
+          },
+          {
+            "level": "log",
+            "text": "timer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "microtask_between_timers",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 2,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.908128,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "one"
+          },
+          {
+            "level": "log",
+            "text": "micro"
+          },
+          {
+            "level": "log",
+            "text": "two"
+          }
+        ]
+      }
+    },
+    {
+      "name": "timer_order",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 3,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.842489,
+        "clock_ms": 10,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "zero"
+          },
+          {
+            "level": "log",
+            "text": "five"
+          },
+          {
+            "level": "log",
+            "text": "ten"
+          }
+        ]
+      }
+    },
+    {
+      "name": "timer_args_and_this",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.230052,
+        "clock_ms": 2,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "x 3 true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "clear_timeout",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.884252,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cancel_unknown_harmless",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.831702,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_batch_cancellation",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.036591,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "interval_self_cancellation",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 3,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.219927,
+        "clock_ms": 15,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "1 5"
+          },
+          {
+            "level": "log",
+            "text": "2 10"
+          },
+          {
+            "level": "log",
+            "text": "3 15"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cross_cancel_timer_interval",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.786915,
+        "clock_ms": 1,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "once"
+          }
+        ]
+      }
+    },
+    {
+      "name": "nested_timer_fifo",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 3,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.782328,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a"
+          },
+          {
+            "level": "log",
+            "text": "b"
+          },
+          {
+            "level": "log",
+            "text": "c"
+          }
+        ]
+      }
+    },
+    {
+      "name": "raf_shared_timestamp",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 2,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.148464,
+        "clock_ms": 16.6666666667,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "first"
+          },
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "raf_nested_next_frame",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 2,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.092075,
+        "clock_ms": 33.3333333333,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "raf_cancel_same_frame",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.810261,
+        "clock_ms": 16.6666666667,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "raf_one_shot",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.767997,
+        "clock_ms": 16.6666666667,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "once"
+          }
+        ]
+      }
+    },
+    {
+      "name": "timer_throw_visible",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "timer",
+        "message": "Uncaught Error: timer failed",
+        "stack": "Error: timer failed\n    at /tmp/zero-test-qclmmv2c/000-timer_throw_visible.js:1:23\n    at zero:core:240:40",
+        "missing_global": "",
+        "source": "/tmp/zero-test-qclmmv2c/000-timer_throw_visible.js",
+        "line": 1,
+        "column": 17,
+        "callbacks": 1,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.787966,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "raf_throw_visible",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "animation-frame",
+        "message": "Uncaught Error: frame failed",
+        "stack": "Error: frame failed\n    at /tmp/zero-test-_jzv24v5/000-raf_throw_visible.js:1:34",
+        "missing_global": "",
+        "source": "/tmp/zero-test-_jzv24v5/000-raf_throw_visible.js",
+        "line": 1,
+        "column": 28,
+        "callbacks": 1,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.737661,
+        "clock_ms": 16.6666666667,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "rejected_promise_visible",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "unhandled_rejection",
+        "exit_code": 2,
+        "phase": "microtask",
+        "message": "Error: rejected",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.763429,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "handled_promise_success",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.713475,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "caught"
+          }
+        ]
+      }
+    },
+    {
+      "name": "microtask_adds_rejection_handler",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.741707,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "caught"
+          }
+        ]
+      }
+    },
+    {
+      "name": "promise_throw_visible",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "unhandled_rejection",
+        "exit_code": 2,
+        "phase": "microtask",
+        "message": "Error: microtask failed",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.758292,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "reject_string_timer",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught TypeError: setTimeout: only function callbacks are implemented",
+        "stack": "TypeError: setTimeout: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:239:5\n    at /tmp/zero-test-fw4jg3qp/000-reject_string_timer.js:1:1",
+        "missing_global": "",
+        "source": "zero:core",
+        "line": 12,
+        "column": 7,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.881147,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "reject_nonfunction_raf",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught TypeError: requestAnimationFrame: only function callbacks are implemented",
+        "stack": "TypeError: requestAnimationFrame: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:249:5\n    at /tmp/zero-test-f8vv_sls/000-reject_nonfunction_raf.js:1:1",
+        "missing_global": "",
+        "source": "zero:core",
+        "line": 12,
+        "column": 7,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.815578,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "pending_cap",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "script_exception",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught RangeError: pending task limit",
+        "stack": "RangeError: pending task limit\n    at zero:core:240:17\n    at /tmp/zero-test-_foe9nav/000-pending_cap.js:1:22",
+        "missing_global": "",
+        "source": "zero:core",
+        "line": 240,
+        "column": 17,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 1,
+        "elapsed_ms": 1.012415,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "recurring_work_budget",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "task_budget_exhausted",
+        "exit_code": 3,
+        "phase": "",
+        "message": "callback budget exhausted; run is incomplete",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 3,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 1,
+        "elapsed_ms": 0.731671,
+        "clock_ms": 4,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "loop_timeout",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "execution_timeout",
+        "exit_code": 3,
+        "phase": "script",
+        "message": "wall-clock execution budget exhausted",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 40.238652,
+        "clock_ms": 40.238602,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "promise_loop_timeout",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "execution_timeout",
+        "exit_code": 3,
+        "phase": "microtask",
+        "message": "wall-clock execution budget exhausted",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 1,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 40.506069,
+        "clock_ms": 40.505949,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "idle_wait_timeout",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "execution_timeout",
+        "exit_code": 3,
+        "phase": "",
+        "message": "wall-clock execution budget exhausted",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 1,
+        "elapsed_ms": 41.140516,
+        "clock_ms": 41.140466,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "real_clock",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 4.236731,
+        "clock_ms": 4.23669,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unknown_profile",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "pretend-browser",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "configuration_error",
+        "exit_code": 64,
+        "phase": "",
+        "message": "invalid run options",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "invalid_hz",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "configuration_error",
+        "exit_code": 64,
+        "phase": "",
+        "message": "invalid run options",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "invalid_timeout",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "configuration_error",
+        "exit_code": 64,
+        "phase": "",
+        "message": "invalid run options",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "json_escaping",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.778953,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "line\n\t\"quote\"\\end"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unicode_report",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.788357,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "h\u00e9llo \u65e5\u672c\u8a9e \ud83c\udfae"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bounded_logs",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.273097,
+        "clock_ms": 0,
+        "logs_dropped": 8,
+        "logs": [
+          {
+            "level": "log",
+            "text": "0"
+          },
+          {
+            "level": "log",
+            "text": "1"
+          },
+          {
+            "level": "log",
+            "text": "2"
+          },
+          {
+            "level": "log",
+            "text": "3"
+          },
+          {
+            "level": "log",
+            "text": "4"
+          },
+          {
+            "level": "log",
+            "text": "5"
+          },
+          {
+            "level": "log",
+            "text": "6"
+          },
+          {
+            "level": "log",
+            "text": "7"
+          },
+          {
+            "level": "log",
+            "text": "8"
+          },
+          {
+            "level": "log",
+            "text": "9"
+          },
+          {
+            "level": "log",
+            "text": "10"
+          },
+          {
+            "level": "log",
+            "text": "11"
+          },
+          {
+            "level": "log",
+            "text": "12"
+          },
+          {
+            "level": "log",
+            "text": "13"
+          },
+          {
+            "level": "log",
+            "text": "14"
+          },
+          {
+            "level": "log",
+            "text": "15"
+          },
+          {
+            "level": "log",
+            "text": "16"
+          },
+          {
+            "level": "log",
+            "text": "17"
+          },
+          {
+            "level": "log",
+            "text": "18"
+          },
+          {
+            "level": "log",
+            "text": "19"
+          },
+          {
+            "level": "log",
+            "text": "20"
+          },
+          {
+            "level": "log",
+            "text": "21"
+          },
+          {
+            "level": "log",
+            "text": "22"
+          },
+          {
+            "level": "log",
+            "text": "23"
+          },
+          {
+            "level": "log",
+            "text": "24"
+          },
+          {
+            "level": "log",
+            "text": "25"
+          },
+          {
+            "level": "log",
+            "text": "26"
+          },
+          {
+            "level": "log",
+            "text": "27"
+          },
+          {
+            "level": "log",
+            "text": "28"
+          },
+          {
+            "level": "log",
+            "text": "29"
+          },
+          {
+            "level": "log",
+            "text": "30"
+          },
+          {
+            "level": "log",
+            "text": "31"
+          },
+          {
+            "level": "log",
+            "text": "32"
+          },
+          {
+            "level": "log",
+            "text": "33"
+          },
+          {
+            "level": "log",
+            "text": "34"
+          },
+          {
+            "level": "log",
+            "text": "35"
+          },
+          {
+            "level": "log",
+            "text": "36"
+          },
+          {
+            "level": "log",
+            "text": "37"
+          },
+          {
+            "level": "log",
+            "text": "38"
+          },
+          {
+            "level": "log",
+            "text": "39"
+          },
+          {
+            "level": "log",
+            "text": "40"
+          },
+          {
+            "level": "log",
+            "text": "41"
+          },
+          {
+            "level": "log",
+            "text": "42"
+          },
+          {
+            "level": "log",
+            "text": "43"
+          },
+          {
+            "level": "log",
+            "text": "44"
+          },
+          {
+            "level": "log",
+            "text": "45"
+          },
+          {
+            "level": "log",
+            "text": "46"
+          },
+          {
+            "level": "log",
+            "text": "47"
+          },
+          {
+            "level": "log",
+            "text": "48"
+          },
+          {
+            "level": "log",
+            "text": "49"
+          },
+          {
+            "level": "log",
+            "text": "50"
+          },
+          {
+            "level": "log",
+            "text": "51"
+          },
+          {
+            "level": "log",
+            "text": "52"
+          },
+          {
+            "level": "log",
+            "text": "53"
+          },
+          {
+            "level": "log",
+            "text": "54"
+          },
+          {
+            "level": "log",
+            "text": "55"
+          },
+          {
+            "level": "log",
+            "text": "56"
+          },
+          {
+            "level": "log",
+            "text": "57"
+          },
+          {
+            "level": "log",
+            "text": "58"
+          },
+          {
+            "level": "log",
+            "text": "59"
+          },
+          {
+            "level": "log",
+            "text": "60"
+          },
+          {
+            "level": "log",
+            "text": "61"
+          },
+          {
+            "level": "log",
+            "text": "62"
+          },
+          {
+            "level": "log",
+            "text": "63"
+          },
+          {
+            "level": "log",
+            "text": "64"
+          },
+          {
+            "level": "log",
+            "text": "65"
+          },
+          {
+            "level": "log",
+            "text": "66"
+          },
+          {
+            "level": "log",
+            "text": "67"
+          },
+          {
+            "level": "log",
+            "text": "68"
+          },
+          {
+            "level": "log",
+            "text": "69"
+          },
+          {
+            "level": "log",
+            "text": "70"
+          },
+          {
+            "level": "log",
+            "text": "71"
+          },
+          {
+            "level": "log",
+            "text": "72"
+          },
+          {
+            "level": "log",
+            "text": "73"
+          },
+          {
+            "level": "log",
+            "text": "74"
+          },
+          {
+            "level": "log",
+            "text": "75"
+          },
+          {
+            "level": "log",
+            "text": "76"
+          },
+          {
+            "level": "log",
+            "text": "77"
+          },
+          {
+            "level": "log",
+            "text": "78"
+          },
+          {
+            "level": "log",
+            "text": "79"
+          },
+          {
+            "level": "log",
+            "text": "80"
+          },
+          {
+            "level": "log",
+            "text": "81"
+          },
+          {
+            "level": "log",
+            "text": "82"
+          },
+          {
+            "level": "log",
+            "text": "83"
+          },
+          {
+            "level": "log",
+            "text": "84"
+          },
+          {
+            "level": "log",
+            "text": "85"
+          },
+          {
+            "level": "log",
+            "text": "86"
+          },
+          {
+            "level": "log",
+            "text": "87"
+          },
+          {
+            "level": "log",
+            "text": "88"
+          },
+          {
+            "level": "log",
+            "text": "89"
+          },
+          {
+            "level": "log",
+            "text": "90"
+          },
+          {
+            "level": "log",
+            "text": "91"
+          },
+          {
+            "level": "log",
+            "text": "92"
+          },
+          {
+            "level": "log",
+            "text": "93"
+          },
+          {
+            "level": "log",
+            "text": "94"
+          },
+          {
+            "level": "log",
+            "text": "95"
+          },
+          {
+            "level": "log",
+            "text": "96"
+          },
+          {
+            "level": "log",
+            "text": "97"
+          },
+          {
+            "level": "log",
+            "text": "98"
+          },
+          {
+            "level": "log",
+            "text": "99"
+          },
+          {
+            "level": "log",
+            "text": "100"
+          },
+          {
+            "level": "log",
+            "text": "101"
+          },
+          {
+            "level": "log",
+            "text": "102"
+          },
+          {
+            "level": "log",
+            "text": "103"
+          },
+          {
+            "level": "log",
+            "text": "104"
+          },
+          {
+            "level": "log",
+            "text": "105"
+          },
+          {
+            "level": "log",
+            "text": "106"
+          },
+          {
+            "level": "log",
+            "text": "107"
+          },
+          {
+            "level": "log",
+            "text": "108"
+          },
+          {
+            "level": "log",
+            "text": "109"
+          },
+          {
+            "level": "log",
+            "text": "110"
+          },
+          {
+            "level": "log",
+            "text": "111"
+          },
+          {
+            "level": "log",
+            "text": "112"
+          },
+          {
+            "level": "log",
+            "text": "113"
+          },
+          {
+            "level": "log",
+            "text": "114"
+          },
+          {
+            "level": "log",
+            "text": "115"
+          },
+          {
+            "level": "log",
+            "text": "116"
+          },
+          {
+            "level": "log",
+            "text": "117"
+          },
+          {
+            "level": "log",
+            "text": "118"
+          },
+          {
+            "level": "log",
+            "text": "119"
+          },
+          {
+            "level": "log",
+            "text": "120"
+          },
+          {
+            "level": "log",
+            "text": "121"
+          },
+          {
+            "level": "log",
+            "text": "122"
+          },
+          {
+            "level": "log",
+            "text": "123"
+          },
+          {
+            "level": "log",
+            "text": "124"
+          },
+          {
+            "level": "log",
+            "text": "125"
+          },
+          {
+            "level": "log",
+            "text": "126"
+          },
+          {
+            "level": "log",
+            "text": "127"
+          },
+          {
+            "level": "log",
+            "text": "128"
+          },
+          {
+            "level": "log",
+            "text": "129"
+          },
+          {
+            "level": "log",
+            "text": "130"
+          },
+          {
+            "level": "log",
+            "text": "131"
+          },
+          {
+            "level": "log",
+            "text": "132"
+          },
+          {
+            "level": "log",
+            "text": "133"
+          },
+          {
+            "level": "log",
+            "text": "134"
+          },
+          {
+            "level": "log",
+            "text": "135"
+          },
+          {
+            "level": "log",
+            "text": "136"
+          },
+          {
+            "level": "log",
+            "text": "137"
+          },
+          {
+            "level": "log",
+            "text": "138"
+          },
+          {
+            "level": "log",
+            "text": "139"
+          },
+          {
+            "level": "log",
+            "text": "140"
+          },
+          {
+            "level": "log",
+            "text": "141"
+          },
+          {
+            "level": "log",
+            "text": "142"
+          },
+          {
+            "level": "log",
+            "text": "143"
+          },
+          {
+            "level": "log",
+            "text": "144"
+          },
+          {
+            "level": "log",
+            "text": "145"
+          },
+          {
+            "level": "log",
+            "text": "146"
+          },
+          {
+            "level": "log",
+            "text": "147"
+          },
+          {
+            "level": "log",
+            "text": "148"
+          },
+          {
+            "level": "log",
+            "text": "149"
+          },
+          {
+            "level": "log",
+            "text": "150"
+          },
+          {
+            "level": "log",
+            "text": "151"
+          },
+          {
+            "level": "log",
+            "text": "152"
+          },
+          {
+            "level": "log",
+            "text": "153"
+          },
+          {
+            "level": "log",
+            "text": "154"
+          },
+          {
+            "level": "log",
+            "text": "155"
+          },
+          {
+            "level": "log",
+            "text": "156"
+          },
+          {
+            "level": "log",
+            "text": "157"
+          },
+          {
+            "level": "log",
+            "text": "158"
+          },
+          {
+            "level": "log",
+            "text": "159"
+          },
+          {
+            "level": "log",
+            "text": "160"
+          },
+          {
+            "level": "log",
+            "text": "161"
+          },
+          {
+            "level": "log",
+            "text": "162"
+          },
+          {
+            "level": "log",
+            "text": "163"
+          },
+          {
+            "level": "log",
+            "text": "164"
+          },
+          {
+            "level": "log",
+            "text": "165"
+          },
+          {
+            "level": "log",
+            "text": "166"
+          },
+          {
+            "level": "log",
+            "text": "167"
+          },
+          {
+            "level": "log",
+            "text": "168"
+          },
+          {
+            "level": "log",
+            "text": "169"
+          },
+          {
+            "level": "log",
+            "text": "170"
+          },
+          {
+            "level": "log",
+            "text": "171"
+          },
+          {
+            "level": "log",
+            "text": "172"
+          },
+          {
+            "level": "log",
+            "text": "173"
+          },
+          {
+            "level": "log",
+            "text": "174"
+          },
+          {
+            "level": "log",
+            "text": "175"
+          },
+          {
+            "level": "log",
+            "text": "176"
+          },
+          {
+            "level": "log",
+            "text": "177"
+          },
+          {
+            "level": "log",
+            "text": "178"
+          },
+          {
+            "level": "log",
+            "text": "179"
+          },
+          {
+            "level": "log",
+            "text": "180"
+          },
+          {
+            "level": "log",
+            "text": "181"
+          },
+          {
+            "level": "log",
+            "text": "182"
+          },
+          {
+            "level": "log",
+            "text": "183"
+          },
+          {
+            "level": "log",
+            "text": "184"
+          },
+          {
+            "level": "log",
+            "text": "185"
+          },
+          {
+            "level": "log",
+            "text": "186"
+          },
+          {
+            "level": "log",
+            "text": "187"
+          },
+          {
+            "level": "log",
+            "text": "188"
+          },
+          {
+            "level": "log",
+            "text": "189"
+          },
+          {
+            "level": "log",
+            "text": "190"
+          },
+          {
+            "level": "log",
+            "text": "191"
+          },
+          {
+            "level": "log",
+            "text": "192"
+          },
+          {
+            "level": "log",
+            "text": "193"
+          },
+          {
+            "level": "log",
+            "text": "194"
+          },
+          {
+            "level": "log",
+            "text": "195"
+          },
+          {
+            "level": "log",
+            "text": "196"
+          },
+          {
+            "level": "log",
+            "text": "197"
+          },
+          {
+            "level": "log",
+            "text": "198"
+          },
+          {
+            "level": "log",
+            "text": "199"
+          },
+          {
+            "level": "log",
+            "text": "200"
+          },
+          {
+            "level": "log",
+            "text": "201"
+          },
+          {
+            "level": "log",
+            "text": "202"
+          },
+          {
+            "level": "log",
+            "text": "203"
+          },
+          {
+            "level": "log",
+            "text": "204"
+          },
+          {
+            "level": "log",
+            "text": "205"
+          },
+          {
+            "level": "log",
+            "text": "206"
+          },
+          {
+            "level": "log",
+            "text": "207"
+          },
+          {
+            "level": "log",
+            "text": "208"
+          },
+          {
+            "level": "log",
+            "text": "209"
+          },
+          {
+            "level": "log",
+            "text": "210"
+          },
+          {
+            "level": "log",
+            "text": "211"
+          },
+          {
+            "level": "log",
+            "text": "212"
+          },
+          {
+            "level": "log",
+            "text": "213"
+          },
+          {
+            "level": "log",
+            "text": "214"
+          },
+          {
+            "level": "log",
+            "text": "215"
+          },
+          {
+            "level": "log",
+            "text": "216"
+          },
+          {
+            "level": "log",
+            "text": "217"
+          },
+          {
+            "level": "log",
+            "text": "218"
+          },
+          {
+            "level": "log",
+            "text": "219"
+          },
+          {
+            "level": "log",
+            "text": "220"
+          },
+          {
+            "level": "log",
+            "text": "221"
+          },
+          {
+            "level": "log",
+            "text": "222"
+          },
+          {
+            "level": "log",
+            "text": "223"
+          },
+          {
+            "level": "log",
+            "text": "224"
+          },
+          {
+            "level": "log",
+            "text": "225"
+          },
+          {
+            "level": "log",
+            "text": "226"
+          },
+          {
+            "level": "log",
+            "text": "227"
+          },
+          {
+            "level": "log",
+            "text": "228"
+          },
+          {
+            "level": "log",
+            "text": "229"
+          },
+          {
+            "level": "log",
+            "text": "230"
+          },
+          {
+            "level": "log",
+            "text": "231"
+          },
+          {
+            "level": "log",
+            "text": "232"
+          },
+          {
+            "level": "log",
+            "text": "233"
+          },
+          {
+            "level": "log",
+            "text": "234"
+          },
+          {
+            "level": "log",
+            "text": "235"
+          },
+          {
+            "level": "log",
+            "text": "236"
+          },
+          {
+            "level": "log",
+            "text": "237"
+          },
+          {
+            "level": "log",
+            "text": "238"
+          },
+          {
+            "level": "log",
+            "text": "239"
+          },
+          {
+            "level": "log",
+            "text": "240"
+          },
+          {
+            "level": "log",
+            "text": "241"
+          },
+          {
+            "level": "log",
+            "text": "242"
+          },
+          {
+            "level": "log",
+            "text": "243"
+          },
+          {
+            "level": "log",
+            "text": "244"
+          },
+          {
+            "level": "log",
+            "text": "245"
+          },
+          {
+            "level": "log",
+            "text": "246"
+          },
+          {
+            "level": "log",
+            "text": "247"
+          },
+          {
+            "level": "log",
+            "text": "248"
+          },
+          {
+            "level": "log",
+            "text": "249"
+          },
+          {
+            "level": "log",
+            "text": "250"
+          },
+          {
+            "level": "log",
+            "text": "251"
+          },
+          {
+            "level": "log",
+            "text": "252"
+          },
+          {
+            "level": "log",
+            "text": "253"
+          },
+          {
+            "level": "log",
+            "text": "254"
+          },
+          {
+            "level": "log",
+            "text": "255"
+          },
+          {
+            "level": "log",
+            "text": "256"
+          },
+          {
+            "level": "log",
+            "text": "257"
+          },
+          {
+            "level": "log",
+            "text": "258"
+          },
+          {
+            "level": "log",
+            "text": "259"
+          },
+          {
+            "level": "log",
+            "text": "260"
+          },
+          {
+            "level": "log",
+            "text": "261"
+          },
+          {
+            "level": "log",
+            "text": "262"
+          },
+          {
+            "level": "log",
+            "text": "263"
+          },
+          {
+            "level": "log",
+            "text": "264"
+          },
+          {
+            "level": "log",
+            "text": "265"
+          },
+          {
+            "level": "log",
+            "text": "266"
+          },
+          {
+            "level": "log",
+            "text": "267"
+          },
+          {
+            "level": "log",
+            "text": "268"
+          },
+          {
+            "level": "log",
+            "text": "269"
+          },
+          {
+            "level": "log",
+            "text": "270"
+          },
+          {
+            "level": "log",
+            "text": "271"
+          },
+          {
+            "level": "log",
+            "text": "272"
+          },
+          {
+            "level": "log",
+            "text": "273"
+          },
+          {
+            "level": "log",
+            "text": "274"
+          },
+          {
+            "level": "log",
+            "text": "275"
+          },
+          {
+            "level": "log",
+            "text": "276"
+          },
+          {
+            "level": "log",
+            "text": "277"
+          },
+          {
+            "level": "log",
+            "text": "278"
+          },
+          {
+            "level": "log",
+            "text": "279"
+          },
+          {
+            "level": "log",
+            "text": "280"
+          },
+          {
+            "level": "log",
+            "text": "281"
+          },
+          {
+            "level": "log",
+            "text": "282"
+          },
+          {
+            "level": "log",
+            "text": "283"
+          },
+          {
+            "level": "log",
+            "text": "284"
+          },
+          {
+            "level": "log",
+            "text": "285"
+          },
+          {
+            "level": "log",
+            "text": "286"
+          },
+          {
+            "level": "log",
+            "text": "287"
+          },
+          {
+            "level": "log",
+            "text": "288"
+          },
+          {
+            "level": "log",
+            "text": "289"
+          },
+          {
+            "level": "log",
+            "text": "290"
+          },
+          {
+            "level": "log",
+            "text": "291"
+          },
+          {
+            "level": "log",
+            "text": "292"
+          },
+          {
+            "level": "log",
+            "text": "293"
+          },
+          {
+            "level": "log",
+            "text": "294"
+          },
+          {
+            "level": "log",
+            "text": "295"
+          },
+          {
+            "level": "log",
+            "text": "296"
+          },
+          {
+            "level": "log",
+            "text": "297"
+          },
+          {
+            "level": "log",
+            "text": "298"
+          },
+          {
+            "level": "log",
+            "text": "299"
+          },
+          {
+            "level": "log",
+            "text": "300"
+          },
+          {
+            "level": "log",
+            "text": "301"
+          },
+          {
+            "level": "log",
+            "text": "302"
+          },
+          {
+            "level": "log",
+            "text": "303"
+          },
+          {
+            "level": "log",
+            "text": "304"
+          },
+          {
+            "level": "log",
+            "text": "305"
+          },
+          {
+            "level": "log",
+            "text": "306"
+          },
+          {
+            "level": "log",
+            "text": "307"
+          },
+          {
+            "level": "log",
+            "text": "308"
+          },
+          {
+            "level": "log",
+            "text": "309"
+          },
+          {
+            "level": "log",
+            "text": "310"
+          },
+          {
+            "level": "log",
+            "text": "311"
+          },
+          {
+            "level": "log",
+            "text": "312"
+          },
+          {
+            "level": "log",
+            "text": "313"
+          },
+          {
+            "level": "log",
+            "text": "314"
+          },
+          {
+            "level": "log",
+            "text": "315"
+          },
+          {
+            "level": "log",
+            "text": "316"
+          },
+          {
+            "level": "log",
+            "text": "317"
+          },
+          {
+            "level": "log",
+            "text": "318"
+          },
+          {
+            "level": "log",
+            "text": "319"
+          },
+          {
+            "level": "log",
+            "text": "320"
+          },
+          {
+            "level": "log",
+            "text": "321"
+          },
+          {
+            "level": "log",
+            "text": "322"
+          },
+          {
+            "level": "log",
+            "text": "323"
+          },
+          {
+            "level": "log",
+            "text": "324"
+          },
+          {
+            "level": "log",
+            "text": "325"
+          },
+          {
+            "level": "log",
+            "text": "326"
+          },
+          {
+            "level": "log",
+            "text": "327"
+          },
+          {
+            "level": "log",
+            "text": "328"
+          },
+          {
+            "level": "log",
+            "text": "329"
+          },
+          {
+            "level": "log",
+            "text": "330"
+          },
+          {
+            "level": "log",
+            "text": "331"
+          },
+          {
+            "level": "log",
+            "text": "332"
+          },
+          {
+            "level": "log",
+            "text": "333"
+          },
+          {
+            "level": "log",
+            "text": "334"
+          },
+          {
+            "level": "log",
+            "text": "335"
+          },
+          {
+            "level": "log",
+            "text": "336"
+          },
+          {
+            "level": "log",
+            "text": "337"
+          },
+          {
+            "level": "log",
+            "text": "338"
+          },
+          {
+            "level": "log",
+            "text": "339"
+          },
+          {
+            "level": "log",
+            "text": "340"
+          },
+          {
+            "level": "log",
+            "text": "341"
+          },
+          {
+            "level": "log",
+            "text": "342"
+          },
+          {
+            "level": "log",
+            "text": "343"
+          },
+          {
+            "level": "log",
+            "text": "344"
+          },
+          {
+            "level": "log",
+            "text": "345"
+          },
+          {
+            "level": "log",
+            "text": "346"
+          },
+          {
+            "level": "log",
+            "text": "347"
+          },
+          {
+            "level": "log",
+            "text": "348"
+          },
+          {
+            "level": "log",
+            "text": "349"
+          },
+          {
+            "level": "log",
+            "text": "350"
+          },
+          {
+            "level": "log",
+            "text": "351"
+          },
+          {
+            "level": "log",
+            "text": "352"
+          },
+          {
+            "level": "log",
+            "text": "353"
+          },
+          {
+            "level": "log",
+            "text": "354"
+          },
+          {
+            "level": "log",
+            "text": "355"
+          },
+          {
+            "level": "log",
+            "text": "356"
+          },
+          {
+            "level": "log",
+            "text": "357"
+          },
+          {
+            "level": "log",
+            "text": "358"
+          },
+          {
+            "level": "log",
+            "text": "359"
+          },
+          {
+            "level": "log",
+            "text": "360"
+          },
+          {
+            "level": "log",
+            "text": "361"
+          },
+          {
+            "level": "log",
+            "text": "362"
+          },
+          {
+            "level": "log",
+            "text": "363"
+          },
+          {
+            "level": "log",
+            "text": "364"
+          },
+          {
+            "level": "log",
+            "text": "365"
+          },
+          {
+            "level": "log",
+            "text": "366"
+          },
+          {
+            "level": "log",
+            "text": "367"
+          },
+          {
+            "level": "log",
+            "text": "368"
+          },
+          {
+            "level": "log",
+            "text": "369"
+          },
+          {
+            "level": "log",
+            "text": "370"
+          },
+          {
+            "level": "log",
+            "text": "371"
+          },
+          {
+            "level": "log",
+            "text": "372"
+          },
+          {
+            "level": "log",
+            "text": "373"
+          },
+          {
+            "level": "log",
+            "text": "374"
+          },
+          {
+            "level": "log",
+            "text": "375"
+          },
+          {
+            "level": "log",
+            "text": "376"
+          },
+          {
+            "level": "log",
+            "text": "377"
+          },
+          {
+            "level": "log",
+            "text": "378"
+          },
+          {
+            "level": "log",
+            "text": "379"
+          },
+          {
+            "level": "log",
+            "text": "380"
+          },
+          {
+            "level": "log",
+            "text": "381"
+          },
+          {
+            "level": "log",
+            "text": "382"
+          },
+          {
+            "level": "log",
+            "text": "383"
+          },
+          {
+            "level": "log",
+            "text": "384"
+          },
+          {
+            "level": "log",
+            "text": "385"
+          },
+          {
+            "level": "log",
+            "text": "386"
+          },
+          {
+            "level": "log",
+            "text": "387"
+          },
+          {
+            "level": "log",
+            "text": "388"
+          },
+          {
+            "level": "log",
+            "text": "389"
+          },
+          {
+            "level": "log",
+            "text": "390"
+          },
+          {
+            "level": "log",
+            "text": "391"
+          },
+          {
+            "level": "log",
+            "text": "392"
+          },
+          {
+            "level": "log",
+            "text": "393"
+          },
+          {
+            "level": "log",
+            "text": "394"
+          },
+          {
+            "level": "log",
+            "text": "395"
+          },
+          {
+            "level": "log",
+            "text": "396"
+          },
+          {
+            "level": "log",
+            "text": "397"
+          },
+          {
+            "level": "log",
+            "text": "398"
+          },
+          {
+            "level": "log",
+            "text": "399"
+          },
+          {
+            "level": "log",
+            "text": "400"
+          },
+          {
+            "level": "log",
+            "text": "401"
+          },
+          {
+            "level": "log",
+            "text": "402"
+          },
+          {
+            "level": "log",
+            "text": "403"
+          },
+          {
+            "level": "log",
+            "text": "404"
+          },
+          {
+            "level": "log",
+            "text": "405"
+          },
+          {
+            "level": "log",
+            "text": "406"
+          },
+          {
+            "level": "log",
+            "text": "407"
+          },
+          {
+            "level": "log",
+            "text": "408"
+          },
+          {
+            "level": "log",
+            "text": "409"
+          },
+          {
+            "level": "log",
+            "text": "410"
+          },
+          {
+            "level": "log",
+            "text": "411"
+          },
+          {
+            "level": "log",
+            "text": "412"
+          },
+          {
+            "level": "log",
+            "text": "413"
+          },
+          {
+            "level": "log",
+            "text": "414"
+          },
+          {
+            "level": "log",
+            "text": "415"
+          },
+          {
+            "level": "log",
+            "text": "416"
+          },
+          {
+            "level": "log",
+            "text": "417"
+          },
+          {
+            "level": "log",
+            "text": "418"
+          },
+          {
+            "level": "log",
+            "text": "419"
+          },
+          {
+            "level": "log",
+            "text": "420"
+          },
+          {
+            "level": "log",
+            "text": "421"
+          },
+          {
+            "level": "log",
+            "text": "422"
+          },
+          {
+            "level": "log",
+            "text": "423"
+          },
+          {
+            "level": "log",
+            "text": "424"
+          },
+          {
+            "level": "log",
+            "text": "425"
+          },
+          {
+            "level": "log",
+            "text": "426"
+          },
+          {
+            "level": "log",
+            "text": "427"
+          },
+          {
+            "level": "log",
+            "text": "428"
+          },
+          {
+            "level": "log",
+            "text": "429"
+          },
+          {
+            "level": "log",
+            "text": "430"
+          },
+          {
+            "level": "log",
+            "text": "431"
+          },
+          {
+            "level": "log",
+            "text": "432"
+          },
+          {
+            "level": "log",
+            "text": "433"
+          },
+          {
+            "level": "log",
+            "text": "434"
+          },
+          {
+            "level": "log",
+            "text": "435"
+          },
+          {
+            "level": "log",
+            "text": "436"
+          },
+          {
+            "level": "log",
+            "text": "437"
+          },
+          {
+            "level": "log",
+            "text": "438"
+          },
+          {
+            "level": "log",
+            "text": "439"
+          },
+          {
+            "level": "log",
+            "text": "440"
+          },
+          {
+            "level": "log",
+            "text": "441"
+          },
+          {
+            "level": "log",
+            "text": "442"
+          },
+          {
+            "level": "log",
+            "text": "443"
+          },
+          {
+            "level": "log",
+            "text": "444"
+          },
+          {
+            "level": "log",
+            "text": "445"
+          },
+          {
+            "level": "log",
+            "text": "446"
+          },
+          {
+            "level": "log",
+            "text": "447"
+          },
+          {
+            "level": "log",
+            "text": "448"
+          },
+          {
+            "level": "log",
+            "text": "449"
+          },
+          {
+            "level": "log",
+            "text": "450"
+          },
+          {
+            "level": "log",
+            "text": "451"
+          },
+          {
+            "level": "log",
+            "text": "452"
+          },
+          {
+            "level": "log",
+            "text": "453"
+          },
+          {
+            "level": "log",
+            "text": "454"
+          },
+          {
+            "level": "log",
+            "text": "455"
+          },
+          {
+            "level": "log",
+            "text": "456"
+          },
+          {
+            "level": "log",
+            "text": "457"
+          },
+          {
+            "level": "log",
+            "text": "458"
+          },
+          {
+            "level": "log",
+            "text": "459"
+          },
+          {
+            "level": "log",
+            "text": "460"
+          },
+          {
+            "level": "log",
+            "text": "461"
+          },
+          {
+            "level": "log",
+            "text": "462"
+          },
+          {
+            "level": "log",
+            "text": "463"
+          },
+          {
+            "level": "log",
+            "text": "464"
+          },
+          {
+            "level": "log",
+            "text": "465"
+          },
+          {
+            "level": "log",
+            "text": "466"
+          },
+          {
+            "level": "log",
+            "text": "467"
+          },
+          {
+            "level": "log",
+            "text": "468"
+          },
+          {
+            "level": "log",
+            "text": "469"
+          },
+          {
+            "level": "log",
+            "text": "470"
+          },
+          {
+            "level": "log",
+            "text": "471"
+          },
+          {
+            "level": "log",
+            "text": "472"
+          },
+          {
+            "level": "log",
+            "text": "473"
+          },
+          {
+            "level": "log",
+            "text": "474"
+          },
+          {
+            "level": "log",
+            "text": "475"
+          },
+          {
+            "level": "log",
+            "text": "476"
+          },
+          {
+            "level": "log",
+            "text": "477"
+          },
+          {
+            "level": "log",
+            "text": "478"
+          },
+          {
+            "level": "log",
+            "text": "479"
+          },
+          {
+            "level": "log",
+            "text": "480"
+          },
+          {
+            "level": "log",
+            "text": "481"
+          },
+          {
+            "level": "log",
+            "text": "482"
+          },
+          {
+            "level": "log",
+            "text": "483"
+          },
+          {
+            "level": "log",
+            "text": "484"
+          },
+          {
+            "level": "log",
+            "text": "485"
+          },
+          {
+            "level": "log",
+            "text": "486"
+          },
+          {
+            "level": "log",
+            "text": "487"
+          },
+          {
+            "level": "log",
+            "text": "488"
+          },
+          {
+            "level": "log",
+            "text": "489"
+          },
+          {
+            "level": "log",
+            "text": "490"
+          },
+          {
+            "level": "log",
+            "text": "491"
+          },
+          {
+            "level": "log",
+            "text": "492"
+          },
+          {
+            "level": "log",
+            "text": "493"
+          },
+          {
+            "level": "log",
+            "text": "494"
+          },
+          {
+            "level": "log",
+            "text": "495"
+          },
+          {
+            "level": "log",
+            "text": "496"
+          },
+          {
+            "level": "log",
+            "text": "497"
+          },
+          {
+            "level": "log",
+            "text": "498"
+          },
+          {
+            "level": "log",
+            "text": "499"
+          },
+          {
+            "level": "log",
+            "text": "500"
+          },
+          {
+            "level": "log",
+            "text": "501"
+          },
+          {
+            "level": "log",
+            "text": "502"
+          },
+          {
+            "level": "log",
+            "text": "503"
+          },
+          {
+            "level": "log",
+            "text": "504"
+          },
+          {
+            "level": "log",
+            "text": "505"
+          },
+          {
+            "level": "log",
+            "text": "506"
+          },
+          {
+            "level": "log",
+            "text": "507"
+          },
+          {
+            "level": "log",
+            "text": "508"
+          },
+          {
+            "level": "log",
+            "text": "509"
+          },
+          {
+            "level": "log",
+            "text": "510"
+          },
+          {
+            "level": "log",
+            "text": "511"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_parse_duplicates",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.18245,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "1,2 a b  a=b 5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_forgiving_utf8",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.288791,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "x=%EF%BF%BD&y=%EF%BF%BD&z=%EF%BF%BD%28%EF%BF%BD"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_mutation_iteration",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.511567,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=5&b=4 {\"a\":\"5\",\"b\":\"4\"}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_live_iteration",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.260378,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "b=2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_constructor_errors",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.98323,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_bare_absent",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "missing_global",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught ReferenceError: URLSearchParams is not defined",
+        "stack": "ReferenceError: URLSearchParams is not defined\n    at /tmp/zero-test-9hv0t0u4/000-query_bare_absent.js:1:1",
+        "missing_global": "URLSearchParams",
+        "source": "/tmp/zero-test-9hv0t0u4/000-query_bare_absent.js",
+        "line": 1,
+        "column": 1,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.325119,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "query_regression_mixed_literal_unicode_and_invalid_percent",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.226487,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "x=%EF%BF%BD%F0%9F%8E%AE%3F%25%EF%BB%BF"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_append_reentrant_delete",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.139166,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "b=2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_append_reentrant_set",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.145304,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=3&b=2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_append_conversion_throw",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.110151,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_callable_record",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.011604,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_callable_pair",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.213338,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_null_iterator_record",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.200578,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_symbol_record_key",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.910211,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "TypeError false"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_normalized_record_keys",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.22211,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "%EF%BF%BD=second"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_record_live_descriptor",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.947027,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_method_once",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.983932,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1 1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_pair_conversion_interleaved",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.086636,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=new"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_next_once",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.050181,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1 1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_bad_result",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.909519,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "TypeError"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_noncallable",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.887677,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "TypeError"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_foreach_no_public_entries",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.160417,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a 1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_keys_no_public_entries",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.250012,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_values_no_public_entries",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.322381,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_eager_brand",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.966015,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_brand_before_conversion",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.869169,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_done_stays_done",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.940296,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true"
+          },
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_entry_copy_not_borrowed",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.37449,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_live_delete",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.556509,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "c=3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_iterator_live_set",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.476673,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "b=5&c=4"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_foreach_live_mutation",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.885779,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a 1"
+          },
+          {
+            "level": "log",
+            "text": "b 2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_foreach_receiver_and_order",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.177824,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true 1 a true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_sort_utf16_stable",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.061278,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "x=1&x=2&%F0%90%80%80=b&%EE%80%80=a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_getall_copy_not_borrowed",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.173907,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=1&a=2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_symbol_values_rejected",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.007427,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "3 0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_required_arguments",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.272436,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "7"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_null_undefined_empty",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.977392,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "0 0 0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_utf8_bom_and_invalid_bytes",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.301179,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=%EF%BB%BF&b=%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD&c=%EF%BF%BD%EF%BF%BD&d=%25zz"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_regression_query_list_not_guest_array_methods",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.265686,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "b=3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "typed_arrays_and_dataview",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.737371,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "120"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_sync",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.062039,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "true"
+          }
+        ]
+      }
+    },
+    {
+      "name": "async_await_checkpoint",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.74388,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "sync"
+          },
+          {
+            "level": "log",
+            "text": "awaited"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rejection_then_recovery",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.823971,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "resolved_promise_batch",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 6.564345,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "done"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pending_promises_observation_cap",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "promise_observation_limit",
+        "exit_code": 3,
+        "phase": "",
+        "message": "promise observation cap exceeded; async completion is unknown",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 65536,
+        "promise_observation_overflow": true,
+        "pending_tasks": 0,
+        "elapsed_ms": 13.905861,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "timer_resolves_promise",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 0.901397,
+        "clock_ms": 1,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unresolved_promise_not_completed",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "async_work_timeout",
+        "exit_code": 3,
+        "phase": "",
+        "message": "wall-clock execution budget exhausted",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 1,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 40.324416,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "promise_adoption_not_prematurely_settled",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "async_work_timeout",
+        "exit_code": 3,
+        "phase": "",
+        "message": "wall-clock execution budget exhausted",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 3,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 40.631178,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "wasm_async_instantiate",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 3.567422,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_compile",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 3,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 3.23352,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_rejection_handled",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.947002,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "CompileError"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wasm_async_rejection_unhandled",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "unhandled_rejection",
+        "exit_code": 2,
+        "phase": "microtask",
+        "message": "CompileError: WebAssembly.compile(): expected 4 bytes, fell off end @+0",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 2,
+        "engine_tasks": 1,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.994583,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
+      "name": "wasm_and_timer_both_drained",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 1,
+        "microtask_checkpoints": 4,
+        "engine_tasks": 2,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.058264,
+        "clock_ms": 1,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "timer"
+          },
+          {
+            "level": "log",
+            "text": "wasm"
+          }
+        ]
+      }
+    }
+  ],
+  "executable_sha256": "c7e621f12b078ce52818da42a005a0cea6577de6c6891f083073fdd005283488"
+}

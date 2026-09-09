@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "tested",
+  "passed": true,
+  "total": 20000,
+  "scope": "Standalone V8 candidate vs independent Python byte-level reference; query strings/mutations, not game/conformance/performance validation",
+  "matched": 20000,
+  "seed": 741,
+  "executable_sha256": "6cd63d59b52b75facc22537edb0aa47ed4ad26872571a9998f5c1786e18a5be8",
+  "inputs_sha256": "77f614240d962f72d9a916fb5595e6eb750b7ae9d51df34fe081d504fd25361e",
+  "source_sha256": "1859824b5d29eebd97a4b81f01bb3a5d368b0ca38cd65c2f3298c3054e80ed45",
+  "reference_version": "Python 3.13.5",
+  "native_report": {
+    "schema": 1,
+    "engine": "V8",
+    "engine_version": "13.6.233.17",
+    "profile": "core",
+    "mode": "headless",
+    "virtual_time": false,
+    "status": "completed",
+    "exit_code": 0,
+    "phase": "",
+    "message": "",
+    "stack": "",
+    "missing_global": "",
+    "source": "",
+    "line": 0,
+    "column": 0,
+    "callbacks": 0,
+    "microtask_checkpoints": 143,
+    "engine_tasks": 142,
+    "pending_promises": 0,
+    "promise_observation_overflow": false,
+    "pending_tasks": 0,
+    "elapsed_ms": 637.549354,
+    "clock_ms": 637.549324,
+    "logs_dropped": 0,
+    "logs": [
+      {
+        "level": "log",
+        "text": "QUERY_DIFFERENTIAL_OK 20000"
+      }
+    ]
+  },
+  "elapsed_seconds": 1.825
+}

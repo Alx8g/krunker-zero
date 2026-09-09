@@ -1,3 +1,8 @@
+> Historical v0.4 starting assignment. Native Windows results were added later in
+> `AGENT_HANDOFF.txt`. For the current maintenance patch, read `CURRENT_STATUS.md`
+> and `docs/REVIEW_TESTING.md` first. The unexecuted statements below describe the
+> original handoff environment, not the later Windows baseline.
+
 # Local-agent handoff — Krunker Zero 0.4 Windows source port
 
 ## Your assignment
