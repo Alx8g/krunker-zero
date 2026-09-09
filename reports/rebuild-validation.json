@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "passed": true,
+  "tested_source_commit": "50ff2cba25a69538fce7e64a50165ecbc2e1f17a",
+  "source_transport": "local Git bundle into a fresh directory; checked out main",
+  "sdk_transport": "original verified GitHub artifact ZIP, fully offline",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "cmake": "cmake version 3.31.6",
+  "node_directory_removed_from_path": true,
+  "integration_passed": 61,
+  "integration_total": 61,
+  "python_tests_passed": 40,
+  "native_scheduler_checks_passed": 12,
+  "binary_sha256": "6186218827314882ce74fc9f574b308a679ce7df71c15884d29396b34c95459e",
+  "primary_binary_sha256": "6186218827314882ce74fc9f574b308a679ce7df71c15884d29396b34c95459e",
+  "same_environment_binary_hash_matches": true,
+  "wasm_fixture_status": "completed",
+  "wasm_fixture_logs": [
+    {
+      "level": "log",
+      "text": "wasm 42"
+    }
+  ],
+  "commands": [
+    "git clone /mnt/data/krunker-zero-stage.bundle /mnt/data/krunker-zero-rebuild",
+    "git checkout -b main origin/main",
+    "PATH=/usr/bin:/bin:/usr/local/bin /opt/pyvenv/bin/python3 tools/bootstrap_v8.py --archive /mnt/data/v8-13.6.233.17-linux-x64.zip --build",
+    "PATH=/usr/bin:/bin:/usr/local/bin /opt/pyvenv/bin/python3 tools/test.py --host build/standalone/zero --report reports/rebuilt-standalone-tests.json",
+    "PATH=/usr/bin:/bin:/usr/local/bin /opt/pyvenv/bin/python3 -m unittest discover -s tests -p test_*.py -v"
+  ],
+  "limits": [
+    "Compiler, Python, CMake and system libraries were already installed.",
+    "This rebuild compiles the first-party host, not the upstream V8 SDK from source.",
+    "Matching hashes establish a repeat in this environment only, not cross-environment reproducible-build certification.",
+    "Game code was not executed."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "binary": "build/standalone/zero",
+  "platform": "linux-x86_64",
+  "bytes": 41020592,
+  "sha256": "6186218827314882ce74fc9f574b308a679ce7df71c15884d29396b34c95459e",
+  "engine_info": {
+    "engine": "V8",
+    "version": "13.6.233.17",
+    "host": "standalone",
+    "sandbox": false,
+    "intl": false,
+    "pointer_compression": true
+  },
+  "dynamic_dependencies": [
+    "libstdc++.so.6",
+    "libm.so.6",
+    "libgcc_s.so.1",
+    "libc.so.6",
+    "ld-linux-x86-64.so.2"
+  ],
+  "link_command": "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/zero.dir/link.d CMakeFiles/zero.dir/native/main.cc.o CMakeFiles/zero.dir/native/host.cc.o -o zero  libzero_scheduler.a /mnt/data/krunker-zero-work/deps/V8-13.6.233.17-ubuntu-latest-Release/lib/libv8_monolith.a -ldl -lm",
+  "passed": true,
+  "notes": [
+    "The ELF loader is a standard system dependency.",
+    "V8 is statically linked. No Node runtime or browser is linked by the recorded command.",
+    "This is a linkage audit, not a security audit, performance measurement, or cross-platform compatibility result."
+  ]
+}

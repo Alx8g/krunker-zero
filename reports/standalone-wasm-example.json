@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "engine": "V8",
+  "engine_version": "13.6.233.17",
+  "profile": "core",
+  "mode": "headless",
+  "virtual_time": false,
+  "status": "completed",
+  "exit_code": 0,
+  "phase": "",
+  "message": "",
+  "stack": "",
+  "missing_global": "",
+  "source": "",
+  "line": 0,
+  "column": 0,
+  "callbacks": 0,
+  "microtask_checkpoints": 3,
+  "engine_tasks": 2,
+  "pending_promises": 0,
+  "promise_observation_overflow": false,
+  "pending_tasks": 0,
+  "elapsed_ms": 3.161197,
+  "clock_ms": 3.161157,
+  "logs_dropped": 0,
+  "logs": [
+    {
+      "level": "log",
+      "text": "wasm 42"
+    }
+  ]
+}

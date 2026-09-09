@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "engine": {
+    "acquired": true,
+    "transport": "connected GitHub workflow artifact download",
+    "repository": "kitten3d/v8-builds",
+    "builder_commit": "5cebfbe21f8bca6204a248a47c7eca4411a8cbde",
+    "workflow_run_id": 33958660304,
+    "artifact_id": 9968116540,
+    "zip_bytes": 21103916,
+    "zip_sha256": "6f363250f77fa3c267c5cae29b0eb8b89a9a2793dfdfbf7a06b1d624d0931013",
+    "tar_bytes": 21386774,
+    "tar_sha256": "bb15d8b05bd8f58800b8976ab69c5ff590c039ec8b1117323bcee425ba540ae7",
+    "published_hashes_match": true,
+    "independent_source_rebuild": false
+  },
+  "game": {
+    "schema": 1,
+    "page": "https://krunker.io/",
+    "records": [],
+    "issues": [
+      {
+        "kind": "bootstrap_not_acquired",
+        "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+      }
+    ],
+    "bootstrap_inventory": null,
+    "game_executed": false,
+    "bytes_saved": 0,
+    "warning": "This is an input inventory, NOT runtime execution order or a compatibility result. URLs and bodies can still be sensitive; keep input/ private and out of Git. HAR text is re-encoded UTF-8, not guaranteed original response bytes."
+  },
+  "remote_repository_created": false,
+  "remote_fork_created": false,
+  "wok_accessed": false
+}
