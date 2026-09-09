@@ -64,7 +64,9 @@ The graphics tests cover actual pixel values, indexed drawing, typed-array offse
 upload ownership, bounds checks, deleted and forged resources, cross-context
 rejection, shader/link failures, stale uniform locations, resize clearing, memory
 release, and hidden-state protection against guest prototype replacement. These
-are custom regression cases, not WebGL conformance certification.
+are custom regression cases, not WebGL conformance certification. A fresh offline
+bundle clone reproduced the executable and framebuffer hashes and repeated the
+standalone, graphics, failure-injection and tool tests.
 
 ## The outstanding game-input gate
 

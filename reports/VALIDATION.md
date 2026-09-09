@@ -14,6 +14,7 @@
 | Minimal build excludes graphics | **passed** | `optional-graphics-boundary.json`, `minimal-binary-audit.json` |
 | Enabled build's core profile loads no EGL | **passed** | `graphics-build-core-audit.json` |
 | Actual graphics runtime library observation | **passed** | `binary-audit.json` |
+| Fresh offline clone + rebuild | **passed; repeated 61 core, 50 graphics, 2 fault cases and 63 tool tests** | `rebuild-validation.json`, `rebuilt-*-tests.json` |
 | Real browser capture -> native round trip | **BLOCKED — NOT PASSED** | `capture-integration.json` |
 
 These are independent contract fixtures, not game compatibility percentages or
@@ -98,5 +99,10 @@ No remote repository, fork or deployment was created. First-party work remains
 in the independent local Git history. `V0.2-VALIDATION.md` and
 `INITIAL-VALIDATION.md` preserve earlier milestone descriptions.
 
-The final offline reconstruction result is recorded in `rebuild-validation.json`;
-its tested source commit identifies exactly which implementation was rebuilt.
+The fresh offline reconstruction tested source commit
+`179c47873a4979db1c2cb4f3ef7b2ba420182793`. It repeated the core, graphics,
+failure-injection and tool tests. The rebuilt executable SHA-256 matched the
+original, and the native framebuffer RGB hash matched as well. This used the same
+installed compiler and system driver; it is not an independent V8 rebuild or
+cross-platform reproducibility proof. `rebuild-validation.json` contains the hashes.
+Later Git commits for this milestone add evidence only, not implementation changes.

@@ -1,0 +1,2970 @@
+{
+  "schema": 1,
+  "executable_sha256": "c9991bcd042800adac098664a0bf87cdbb4dfcfe6211b6527f77b0f16373d4f7",
+  "environment": "standalone V8 + native EGL, no browser or Node",
+  "scope": "independent graphics fixtures; NOT Krunker and NOT WebGL conformance certification",
+  "passed": 50,
+  "total": 50,
+  "results": [
+    {
+      "name": "zero_initialized_framebuffer",
+      "passed": true,
+      "fixture_sha256": "974550272bec732b54fe029aedf9a351cd52417e478dbdb4128fa1b55a521656",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 229.839271,
+        "clock_ms": 229.839204,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "clear_pixels",
+      "passed": true,
+      "fixture_sha256": "e1d3fbbe22de1f9f967928688ee802e9a37010a2df9e447800a45609590d7098",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 210.700376,
+        "clock_ms": 210.70031,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "native_triangle_pixels",
+      "passed": true,
+      "fixture_sha256": "b07758416999dd3b863bf219296b6e4e89266af6429ab392917b88f620516ece",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 310.680877,
+        "clock_ms": 310.680809,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 2,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "indexed_triangle_pixels",
+      "passed": true,
+      "fixture_sha256": "2ed14d3e42fb9904af77585804c7765b3c526052730c1e6a2b8804a2f89ca8c2",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 299.796582,
+        "clock_ms": 299.796497,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 30,
+          "cpu_shadow_bytes": 30,
+          "cpu_shadow_capacity_bytes": 30,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "view_offset_upload",
+      "passed": true,
+      "fixture_sha256": "5fcc1d0b482315f8b86484320fbb499ac99fe50d97337509048606217e8a0dd5",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 354.185363,
+        "clock_ms": 354.18528,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 48,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "view_offset_readback",
+      "passed": true,
+      "fixture_sha256": "fbb6f81be094026726b144b916521747473b5f57de7941109d3fec477e9067a3",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 245.693994,
+        "clock_ms": 245.693905,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "upload_copy_not_borrowed",
+      "passed": true,
+      "fixture_sha256": "8fc5e8dbfe94fe9509cd1d66586c6f77db3acad7691fdb6a34d4600519ca3b9c",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 311.601779,
+        "clock_ms": 311.601712,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 48,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "subdata_changes_real_vertices",
+      "passed": true,
+      "fixture_sha256": "5464c01358a061fb7c35b59165417d79aed3c1a90a48ee9347721e4de00b6fed",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 301.041972,
+        "clock_ms": 301.041907,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 48,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "size_only_buffer_zeroed",
+      "passed": true,
+      "fixture_sha256": "f2893c9cef77e7d4a06bbb5c5aa923aa76992fdab063a09b66c9536bb7e1e16b",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 300.566822,
+        "clock_ms": 300.566755,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 48,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "drawarrays_bounds_rejected",
+      "passed": true,
+      "fixture_sha256": "4b6ba3be277379f5009ffb96ac53299f9445b2314eca64a7c5afed94774a8c22",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 259.435257,
+        "clock_ms": 259.435124,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "index_buffer_bounds_rejected",
+      "passed": true,
+      "fixture_sha256": "20240d6b8473f91d222695c0cec13fc78fc931de676856b4f6a00fd9bb649b81",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 297.801384,
+        "clock_ms": 297.801321,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 26,
+          "cpu_shadow_bytes": 26,
+          "cpu_shadow_capacity_bytes": 26,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "index_value_bounds_rejected",
+      "passed": true,
+      "fixture_sha256": "0e0eb13d587e9db6681ee58c3fe960aecd80fc34dbf922d72e5c2321831e90a8",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 257.267473,
+        "clock_ms": 257.267391,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 27,
+          "cpu_shadow_bytes": 27,
+          "cpu_shadow_capacity_bytes": 27,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "index_subdata_revalidated",
+      "passed": true,
+      "fixture_sha256": "79c8f99ae422e2caf9a41e51713caa1ddfbc26a8d08b7cfd0ee921e37bd8def8",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 257.312745,
+        "clock_ms": 257.312675,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 28,
+          "cpu_shadow_bytes": 27,
+          "cpu_shadow_capacity_bytes": 27,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "index_alignment_rejected",
+      "passed": true,
+      "fixture_sha256": "d12da61930953a71bfa957fb65f40a631088dbc431621f78030116709812f396",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 253.251918,
+        "clock_ms": 253.251811,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 32,
+          "cpu_shadow_bytes": 32,
+          "cpu_shadow_capacity_bytes": 32,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "vertex_alignment_rejected",
+      "passed": true,
+      "fixture_sha256": "a2847aab3669af838229f6c7d750c17e98356dc41249179993e73221fa09088e",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 267.871192,
+        "clock_ms": 267.871093,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "vertex_stride_rejected",
+      "passed": true,
+      "fixture_sha256": "07c4b7f749386229e0310775cceada565e3751f84825973c23d932d0ab269747",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 246.41924,
+        "clock_ms": 246.419162,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "vertex_stride_bounds_rejected",
+      "passed": true,
+      "fixture_sha256": "7bd59aada03992345522ab6c29b6d930afec20e760e25bc6038846626e26f3e3",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 249.783635,
+        "clock_ms": 249.783482,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "deleted_buffer_no_dangling_read",
+      "passed": true,
+      "fixture_sha256": "cc6a54b09bc641f47faa8351ee9b76e09f3cce20caec29f2934d951a88170030",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 257.102024,
+        "clock_ms": 257.101959,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "delete_idempotent",
+      "passed": true,
+      "fixture_sha256": "c20bddcb518f1a7dc7791d744babd68b7b62523933bd2705f9a813c59c856cb4",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 222.797986,
+        "clock_ms": 222.797913,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "deleted_handle_not_recycled",
+      "passed": true,
+      "fixture_sha256": "32f58c260cca0d9a2727167e5802b321df782cdadaa58502887d0fcd674640a6",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 208.484892,
+        "clock_ms": 208.484701,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "cross_context_handle_rejected",
+      "passed": true,
+      "fixture_sha256": "07ae95161b2c421da8001a94e25c1bde7f2ae06306c539f2bfd05bc385a12984",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 299.587852,
+        "clock_ms": 299.587756,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 2,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "forged_handle_rejected",
+      "passed": true,
+      "fixture_sha256": "2e58970b324cd38627d84a15204aed24c9b529cf93eb11d7f69e2ab41b9620b0",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 230.01366,
+        "clock_ms": 230.013608,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "wrong_kind_handle_rejected",
+      "passed": true,
+      "fixture_sha256": "27205681140f292d2169153c8ebe5a20480c321c2471516c70780595c7811b5b",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 205.279373,
+        "clock_ms": 205.279309,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "buffer_target_change_rejected",
+      "passed": true,
+      "fixture_sha256": "217534eaa2a6affe3e9de29ad7d9e4c4e3a7c1e5036236e254422e6e0bb17f1e",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 209.289215,
+        "clock_ms": 209.289114,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "subdata_overrun_rejected",
+      "passed": true,
+      "fixture_sha256": "9b63c197c866e7137ae569838a13484053bc70b74661b6d4222ccec8189431cf",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 303.259798,
+        "clock_ms": 303.259715,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "allocation_cap_checked",
+      "passed": true,
+      "fixture_sha256": "3a4a8761f05c4913cd6f52bffa9b5cdf5ea8cc8e6b784d2d6ad75c5c817aa8c0",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 254.35951,
+        "clock_ms": 254.359445,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "negative_buffer_size_rejected",
+      "passed": true,
+      "fixture_sha256": "44945b0af39c23c426074cb4d57a3b69822d55ee4e79a83cefe6c2ad04f928b1",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 249.134882,
+        "clock_ms": 249.134816,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "failed_shader_not_success",
+      "passed": true,
+      "fixture_sha256": "67781ebbf063c553271c757d6933fd221034c483d14c648ab15f85453c387623",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 271.261427,
+        "clock_ms": 271.261364,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 1,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "failed_link_not_success",
+      "passed": true,
+      "fixture_sha256": "a9a47e55f58804ea2eb9b1cc6095904b5512f83adfbf635fec0037288857ccba",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 256.028439,
+        "clock_ms": 256.028377,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "uniform_relink_invalidates_location",
+      "passed": true,
+      "fixture_sha256": "f688f3f17bb3d06690525739b588347a65918c304c1a9e6f12f9e36692a78330",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 271.195852,
+        "clock_ms": 271.19574,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "uniform_wrong_program_rejected",
+      "passed": true,
+      "fixture_sha256": "0211fb60549a978e76aa1071605ae36f34d5a24e4c6a2256fcb84abd9fbee991",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 258.701198,
+        "clock_ms": 258.701132,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 4,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "uniform_updates_pixels",
+      "passed": true,
+      "fixture_sha256": "5918d10be4c603dab7266fc209ed1975b6956d5cb686a0a6108d922bd73b22bc",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 301.667792,
+        "clock_ms": 301.667711,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 1,
+          "shader_compiles": 2,
+          "pixel_reads": 1,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "short_read_destination_unchanged",
+      "passed": true,
+      "fixture_sha256": "d64d609ca8cf5683130e78a1835128ed44bbeea28f310ed74f4f8f42b14b07ad",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 214.257881,
+        "clock_ms": 214.257728,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "read_destination_type_checked",
+      "passed": true,
+      "fixture_sha256": "826ad6cc95be762c7806bc281ba9ec71c48a9f362a84799a4f6052e3ddfc812d",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 236.535353,
+        "clock_ms": 236.535068,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "read_outside_zero_filled",
+      "passed": true,
+      "fixture_sha256": "33014306e7f1d5c7aca010c454cb94257916f965718e6c266e3e08d1ab949840",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 258.692263,
+        "clock_ms": 258.692197,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "huge_read_no_overflow",
+      "passed": true,
+      "fixture_sha256": "c99ac3138e514e25be5389545a627d115a8e1854f7d3004b75a1f0b74299bfe8",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 231.757689,
+        "clock_ms": 231.75764,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "resize_zero_initializes",
+      "passed": true,
+      "fixture_sha256": "c428c6b19a9f358c420fa3a9903c50a632926cc96608bef995ef2907a35cca38",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 220.031923,
+        "clock_ms": 220.031852,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 2,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 17,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "resize_with_write_masks_still_zeroes",
+      "passed": true,
+      "fixture_sha256": "fe063c651b29cf4c7da24ad26adf8ccc6931a189c28ef018aa8e5d0ed96255d0",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 219.794041,
+        "clock_ms": 219.793947,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 2,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 17
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "switching_contexts_preserves_pixels",
+      "passed": true,
+      "fixture_sha256": "8fbadae203c7f1424e396108553bf03acb144b54808d78bc5b313fb126775331",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 294.611866,
+        "clock_ms": 294.611707,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 2,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "extension_and_context_detection",
+      "passed": true,
+      "fixture_sha256": "2f8943312093db0e8c8d880a6d455ca513a529c84cc800da9d0a58988b08e487",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 213.141237,
+        "clock_ms": 213.141161,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "absent_browser_and_private_bridge",
+      "passed": true,
+      "fixture_sha256": "1525a646c6247c6c7c468d267afc0f6d85d9d55246aa86d3162e7cd5b4892f28",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 212.412052,
+        "clock_ms": 212.411926,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "integer_overflow_draw_rejected",
+      "passed": true,
+      "fixture_sha256": "3429ea669047d703b09e67da59939aa8f5abdba802c8736fcf4de3684d897fb9",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 268.573847,
+        "clock_ms": 268.573781,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "detached_upload_rejected",
+      "passed": true,
+      "fixture_sha256": "966affcbe9b26c743a663f85606c5bcfd1fc9eb39e9a3ba40d55fb71ef4d4aed",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 276.927649,
+        "clock_ms": 276.927584,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "detached ArrayBuffer",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "deleted_program_query_rejected",
+      "passed": true,
+      "fixture_sha256": "d0eb66affd1fdae5f243ee5e5e9d847d090893561a82fbe4abfb5d516fbd8c14",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 259.081166,
+        "clock_ms": 259.080992,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "nul_uniform_name_rejected",
+      "passed": true,
+      "fixture_sha256": "ff4bd0c21331da0b09dda7c623e322c8cb293dff6caa90853f80d087e75d0189",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 256.132443,
+        "clock_ms": 256.132341,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "nul_attribute_name_rejected",
+      "passed": true,
+      "fixture_sha256": "71813f5d6769f3285a3e7cd213e27db24ec3cf31e1e999c9cda135246eaa1dc3",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 254.992108,
+        "clock_ms": 254.992041,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 2,
+          "pixel_reads": 0,
+          "bytes_uploaded": 24,
+          "cpu_shadow_bytes": 24,
+          "cpu_shadow_capacity_bytes": 24,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "delete_releases_allocation_budget",
+      "passed": true,
+      "fixture_sha256": "01d55d22a5724d6d0194bb1c382cc9581629ad3157d5f6d431b2a587633abbd0",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1328.199113,
+        "clock_ms": 1328.199025,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 134217728,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "intrinsic_tampering_cannot_forge_native_state",
+      "passed": true,
+      "fixture_sha256": "f41e5865f92838d6b1d902ba5ab7a81cdc8e0a3e82da4938819722919baf0bd9",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 267.171859,
+        "clock_ms": 267.17177,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 2,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 1,
+          "bytes_uploaded": 16,
+          "cpu_shadow_bytes": 16,
+          "cpu_shadow_capacity_bytes": 16,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "object_cap_bounded",
+      "passed": true,
+      "fixture_sha256": "290a726d08b487f7e93326702d477d6b813813e862b17e1e7cf88c481f8d076a",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 226.274012,
+        "clock_ms": 226.273924,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 1,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "context_cap_bounded",
+      "passed": true,
+      "fixture_sha256": "9e9f843e00227efca556d8f5fedaf95cfd315a93c119418aeb49036089da1efb",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 601.405281,
+        "clock_ms": 601.405225,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "PASS"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 8,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "native context cap (8) reached",
+          "devices": [
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 32,
+              "height": 32
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+              "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+              "width": 1,
+              "height": 1
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
