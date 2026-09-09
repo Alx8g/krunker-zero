@@ -1,8 +1,8 @@
 {
-  "schema": 3,
+  "schema": 4,
   "game_bundle": null,
   "game_trace_collected": true,
-  "note": "Windows fixtures passed. A private current-page ordered bootstrap probe reached missing document/location after URLSearchParams implementation. No complete game bootstrap or gameplay.",
+  "note": "Windows fixture evidence belongs to baseline 3d7cda7. This maintenance patch has Linux regression evidence and needs a new Windows run. Only initial FRVR bootstrap operations have been exercised; no complete game or gameplay.",
   "capabilities": [
     {
       "name": "ECMAScript execution",
@@ -50,7 +50,7 @@
       "name": "requestAnimationFrame",
       "profile": "core",
       "status": "headless-simulation-only",
-      "evidence": "raf fixtures; no GPU presentation",
+      "evidence": "Headless timer fixtures; explicit zeroWindow presentation is separately recorded under native window",
       "game_required": "unknown"
     },
     {
@@ -63,7 +63,7 @@
     {
       "name": "DOM/layout/HTMLCanvasElement",
       "status": "absent",
-      "game_required": "unknown"
+      "game_required": "document reference observed in initial channel context; actual member operations remain untraced"
     },
     {
       "name": "OffscreenCanvas plus experimental EGL/GLES subset",
@@ -75,12 +75,23 @@
         "reports/render-probe.json"
       ],
       "full_webgl": false,
-      "hardware_acceleration_verified": false
+      "hardware_acceleration_verified": true,
+      "hardware_evidence": {
+        "epoch": "windows_baseline",
+        "renderer": "Intel Iris Xe / ANGLE D3D11",
+        "path": "reports/windows/window-demo.log",
+        "presented_fixture_frames": 300,
+        "is_game_performance": false
+      },
+      "current_review_renderer": "Linux llvmpipe software; not a hardware retest"
     },
     {
-      "name": "native keyboard/mouse/pointer lock",
-      "status": "absent",
-      "game_required": "unknown"
+      "name": "native Win32 input plumbing (not DOM pointer lock)",
+      "status": "implemented; physical acceptance unverified",
+      "game_required": "unknown",
+      "evidence": "AGENT_HANDOFF.txt",
+      "physical_input_verified": false,
+      "dom_pointer_lock": false
     },
     {
       "name": "HTTP/WebSocket/TLS/assets",
@@ -99,22 +110,77 @@
     },
     {
       "name": "native window and frame presentation",
-      "status": "absent",
-      "game_required": "unknown"
+      "status": "windows-fixture-tested",
+      "game_required": "unknown",
+      "evidence": "reports/windows/window-demo.log",
+      "evidence_epoch": "windows_baseline",
+      "current_patch_windows_tested": false
     },
     {
       "name": "URLSearchParams",
       "profile": "core",
-      "status": "native-regression-and-original-bootstrap-operation-tested",
-      "evidence": "reports/windows/standalone-tests.json",
-      "game_required": "observed FRVR channel detection query parsing, not full-game compatibility"
+      "status": "observed-bootstrap-contract-with-maintenance-regressions",
+      "evidence": [
+        "reports/windows/standalone-tests.json",
+        "reports/review/core-tests.json",
+        "reports/review/query-differential.json"
+      ],
+      "game_required": "observed FRVR channel detection query parsing, not full-game compatibility",
+      "full_webidl_conformance": false
+    },
+    {
+      "name": "location page context",
+      "status": "absent",
+      "game_required": "reference observed in initial channel context; properties and navigation not yet traced"
     }
   ],
+  "evidence_epochs": {
+    "windows_baseline": {
+      "source_commit": "3d7cda7bac71896e5e1d1457e254d2a0d9f132cd",
+      "core_cases": 67,
+      "graphics_cases_per_backend": 52,
+      "interactive_platform_cases": 13,
+      "backends": [
+        "d3d11",
+        "warp"
+      ],
+      "evidence": "AGENT_HANDOFF.txt",
+      "reports": [
+        "reports/windows-interactive/",
+        "reports/windows-warp/"
+      ],
+      "scope": "Committed local Windows results; not rerun during this review"
+    },
+    "maintenance_review": {
+      "core_cases": 100,
+      "graphics_cases": 52,
+      "query_differential_vectors": 2048,
+      "windows_status": "requires-local-rerun",
+      "evidence": "reports/review/VALIDATION.md",
+      "current_game_inputs_available": false
+    }
+  },
   "input_acquisition": {
-    "devtools_helper": "implemented-unit-tested",
-    "real_browser_round_trip": "blocked_by_administrator_navigation_policy",
-    "current_game_bodies": 0,
-    "current_game_sources": 0,
-    "evidence": "reports/capture-integration.json"
+    "earlier_remote_environment": {
+      "devtools_helper": "implemented-unit-tested",
+      "real_browser_round_trip": "blocked_by_administrator_navigation_policy",
+      "current_game_bodies": 0,
+      "current_game_sources": 0,
+      "evidence": "reports/capture-integration.json"
+    },
+    "local_windows_capture": {
+      "status": "recorded-in-baseline-handoff",
+      "network_response_bodies": 33,
+      "compiled_source_snapshots": 123,
+      "collector_issues": 0,
+      "evidence": "AGENT_HANDOFF.txt",
+      "raw_capture_in_git": false,
+      "full_asset_coverage_established": false
+    },
+    "maintenance_review": {
+      "raw_capture_available": false,
+      "bootstrap_replayed": false,
+      "gameplay_tested": false
+    }
   }
 }

@@ -65,7 +65,7 @@ def package(build: Path, sdk: Path, dest: Path) -> None:
         for p in (sdk/name).rglob('*'):
             if p.is_file() and ('licenses' in p.relative_to(sdk/name).parts or p.name in ('zero-sdk-receipt.json','REDISTRIBUTION-NOTICE.txt')):
                 files['sdk-notices/'+name+'/'+p.relative_to(sdk/name).as_posix()]=p
-    for doc in ('docs/WINDOWS.md','LOCAL_AGENT_HANDOFF.md','fixtures/windows-window.js'):
+    for doc in ('docs/WINDOWS.md','docs/REVIEW_TESTING.md','CURRENT_STATUS.md','LOCAL_AGENT_HANDOFF.md','fixtures/windows-window.js'):
         files[doc]=ROOT/doc
     manifest=dict(schema=1,created_at=datetime.now(timezone.utc).isoformat(),
                   target='windows-x64',scope='PRIVATE DEVELOPMENT PACKAGE, NOT A PLAYABLE KRUNKER CLIENT',
@@ -87,12 +87,15 @@ def main() -> int:
     p.add_argument('--reports',type=Path,default=ROOT/'reports/windows')
     p.add_argument('--angle-backend',choices=['d3d11','warp'],default='d3d11')
     p.add_argument('--interactive',action='store_true')
+    p.add_argument('--source-build',action='store_true',help='Doctor: also require the pinned source-build SDK prerequisites')
     p.add_argument('--core-only',action='store_true',help='Build no graphics; use a separate build directory')
     p.add_argument('--out',type=Path,default=ROOT/'dist/krunker-zero-windows-dev.zip')
     args=p.parse_args()
     try:
         if args.action=='doctor':
-            result=doctor();print(json.dumps(result,indent=2));return 0 if result['ready'] else 1
+            result=doctor();print(json.dumps(result,indent=2))
+            return 0 if result['source_build_ready' if args.source_build else 'ready'] else 1
+        if args.source_build:raise ValueError('--source-build applies only to doctor')
         require_windows()
         sdk=args.sdk.resolve();build=args.build_dir.resolve();reports=args.reports.resolve();host=build/'zero.exe'
         py=sys.executable

@@ -19,6 +19,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
+from windows_sdk import probe_source_sdks, require_source_sdks
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = ROOT / 'config/windows-deps.lock.json'
@@ -79,6 +80,8 @@ def doctor() -> dict:
                   tools=programs, visual_studio_target=arch, windows_sdk=sdk,
                   ready=native and sys.version_info >= (3, 11) and sys.maxsize > 2**32
                   and all(programs.values()) and arch.lower() == 'x64' and bool(sdk))
+    result['source_sdk_preflight'] = probe_source_sdks(sdk, load_lock())
+    result['source_build_ready'] = result['ready'] and result['source_sdk_preflight']['ready']
     result['instructions'] = ('Use the x64 Native Tools/Developer PowerShell for VS 2022 with Desktop development with C++, '
                               'a compatible Windows SDK, Git, Python 3.11+, CMake and Ninja. No registry changes are made.')
     return result
@@ -271,6 +274,7 @@ def build(component: str, work: Path, dest: Path, lock: dict, jobs: int) -> None
         verify_sdk(dest, component, lock)
         print('Verified existing ' + component + ' SDK; no replacement or downloads performed.')
         return
+    require_source_sdks(os.environ.get('WindowsSdkDir', ''), lock, (component,))
     work.mkdir(parents=True, exist_ok=True)
     marker = work/'zero-managed-build.json'
     if marker.exists():
@@ -364,7 +368,17 @@ def main() -> int:
         lock=load_lock()
         if args.plan:
             print(json.dumps(lock, indent=2)); return 0
-        for name in ('v8','angle') if args.component=='all' else (args.component,):
+        require_windows()
+        names = ('v8','angle') if args.component=='all' else (args.component,)
+        pending = []
+        for name in names:
+            if (args.out/name).exists():
+                verify_sdk(args.out/name, name, lock)
+            else:
+                pending.append(name)
+        # Fail before building V8 when the later ANGLE step lacks its SDK.
+        require_source_sdks(os.environ.get('WindowsSdkDir', ''), lock, pending)
+        for name in names:
             build(name,args.work,args.out/name,lock,args.jobs)
         return 0
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:

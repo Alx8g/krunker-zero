@@ -1,10 +1,9 @@
-# Windows x64 — source-port bring-up
+# Windows x64 — build and acceptance
 
-This is a Windows **source port and local-agent acceptance kit**, not a tested
-Windows binary release. No Windows compiler, desktop or GPU was available in the
-handoff environment. Windows source builds, ANGLE loading, presentation and input
-must pass locally before calling the port operational. Krunker itself has still
-not executed on any platform in this project.
+Native Windows fixture acceptance is recorded at baseline `3d7cda7`; see
+[CURRENT_STATUS.md](../CURRENT_STATUS.md). That baseline is not a binary release
+or playable game. The current maintenance changes need a fresh Windows run using
+[REVIEW_TESTING.md](REVIEW_TESTING.md), without overwriting baseline reports.
 
 Target: native Windows 10/11 **x64** with an MSVC-compatible C++20 toolchain.
 ARM64, 32-bit, MinGW, macOS and WSL-as-Windows are not supported by this recipe.
@@ -23,12 +22,17 @@ From the repo root:
 
 ```powershell
 py -3 tools/windows.py doctor
+# For fresh dependency source builds, also check the pinned SDK prerequisites:
+py -3 tools/windows.py doctor --source-build
 ```
 
 If the Python launcher is unavailable, use `python` from the intended 64-bit
 installation. Doctor must report `ready: true` before a host source build.
-The Windows SDK versions required by upstream V8/ANGLE are checked by their own
-pinned build trees; install missing SDK components rather than disabling checks.
+The pinned ANGLE build requires **Windows SDK 10.0.28000.0**, as discovered in
+the Windows baseline. Doctor reports exact missing headers, x64 libraries and
+tools. `deps` checks all pending source builds before beginning either download.
+V8 and the remaining upstream toolchain checks still apply. Existing verified
+SDK receipts and work-directory pins are unchanged by this maintenance patch.
 
 ## 2. Acquire/build matching standalone dependencies
 
@@ -70,7 +74,8 @@ and **V8 sandbox enabled**. Intl remains disabled. The V8 generated ABI header m
 come from the same build arguments. A separate header-generation directory avoids
 injecting header-generation flags into the library build.
 
-The source-build route is **not executed on Windows yet**. If upstream GN rejects
+The source-build route completed in the Windows baseline. The new prerequisite
+checks have portable unit coverage but still need Windows acceptance. If GN rejects
 an argument or a toolchain is incompatible, retain the complete failing command
 and log, fix the recipe explicitly and rerun. Do not suppress errors, invent a
 receipt, mix Linux/Windows headers or define sandbox macros around a library that

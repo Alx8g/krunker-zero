@@ -1,0 +1,41 @@
+"""Independent regressions for the already exposed URLSearchParams contract.
+
+Expectations follow WHATWG URL and Web IDL, not game snapshots. No network,
+Node runtime, browser, new guest API, or third-party test framework is required.
+Iterator prototype shape is not certified by this regression suite.
+"""
+CASES = [
+    ('mixed_literal_unicode_and_invalid_percent', "console.log(new URLSearchParams('x=%b0🎮?%\\uFEFF').toString());", ['x=%EF%BF%BD%F0%9F%8E%AE%3F%25%EF%BB%BF']),
+    ('append_reentrant_delete', "const p=new URLSearchParams('a=1');p.append({toString(){p.delete('a');return 'b';}},'2');console.log(p.toString());", ['b=2']),
+    ('append_reentrant_set', "const p=new URLSearchParams('a=1');p.append('b',{toString(){p.set('a','3');return '2';}});console.log(p.toString());", ['a=3&b=2']),
+    ('append_conversion_throw', "const p=new URLSearchParams('a=1');try{p.append('b',{toString(){throw Error('x')}})}catch(e){}console.log(p.toString());", ['a=1']),
+    ('callable_record', "function f(){}f.a='1';console.log(new URLSearchParams(f).toString());", ['a=1']),
+    ('callable_pair', "function f(){}f[Symbol.iterator]=function*(){yield 'a';yield '1';};console.log(new URLSearchParams([f]).toString());", ['a=1']),
+    ('null_iterator_record', "const o={a:'1'};Object.defineProperty(o,Symbol.iterator,{value:null});console.log(new URLSearchParams(o).toString());", ['a=1']),
+    ('symbol_record_key', "let read=false;const o={get [Symbol('x')](){read=true;return 1;}};try{new URLSearchParams(o)}catch(e){console.log(e.name,read)}", ['TypeError false']),
+    ('normalized_record_keys', r"console.log(new URLSearchParams({'\uD800':'first','\uD801':'second'}).toString());", ['%EF%BF%BD=second']),
+    ('record_live_descriptor', "const o={get a(){delete this.b;return '1';},b:'2'};console.log(new URLSearchParams(o).toString());", ['a=1']),
+    ('iterator_method_once', "let n=0;const o={get [Symbol.iterator](){n++;return n===1?function*(){yield ['a','1'];}:undefined;}};console.log(new URLSearchParams(o).toString(),n);", ['a=1 1']),
+    ('pair_conversion_interleaved', "let v='old';const p={*[Symbol.iterator](){yield {toString(){v='new';return 'a';}};yield v;}};console.log(new URLSearchParams([p]).toString());", ['a=new']),
+    ('iterator_next_once', "let n=0;const o={[Symbol.iterator](){let done=false;return {get next(){n++;return ()=>done?{done:true}:(done=true,{value:['a','1']});}};}};console.log(new URLSearchParams(o).toString(),n);", ['a=1 1']),
+    ('iterator_bad_result', "try{new URLSearchParams({[Symbol.iterator](){return {next(){return 1}}}})}catch(e){console.log(e.name)}", ['TypeError']),
+    ('iterator_noncallable', "try{new URLSearchParams({[Symbol.iterator]:1})}catch(e){console.log(e.name)}", ['TypeError']),
+    ('foreach_no_public_entries', "const p=new URLSearchParams('a=1');p.entries=()=>{throw Error('override');};p.forEach((v,k)=>console.log(k,v));", ['a 1']),
+    ('keys_no_public_entries', "const p=new URLSearchParams('a=1');p.entries=()=>{throw Error('override');};console.log([...p.keys()].join(','));", ['a']),
+    ('values_no_public_entries', "const p=new URLSearchParams('a=1');p.entries=()=>{throw Error('override');};console.log([...p.values()].join(','));", ['1']),
+    ('iterator_eager_brand', "let n=0;for(const name of ['entries','keys','values'])try{URLSearchParams.prototype[name].call({})}catch(e){if(e instanceof TypeError)n++}console.log(n);", ['3']),
+    ('brand_before_conversion', "let n=0;const arg={toString(){n++;return 'a'}};for(const k of ['append','get','getAll','has','delete','set'])try{URLSearchParams.prototype[k].call({},arg,arg)}catch(e){}console.log(n);", ['0']),
+    ('iterator_done_stays_done', "const p=new URLSearchParams();const it=p.entries();console.log(it.next().done);p.append('a','1');console.log(it.next().done);", ['true','true']),
+    ('entry_copy_not_borrowed', "const p=new URLSearchParams('a=1');const row=p.entries().next().value;row[0]='x';row[1]='y';console.log(p.toString());", ['a=1']),
+    ('iterator_live_delete', "const p=new URLSearchParams('a=1&b=2&c=3');const it=p.entries();it.next();p.delete('a');console.log(it.next().value.join('='));", ['c=3']),
+    ('iterator_live_set', "const p=new URLSearchParams('a=1&b=2&b=3&c=4');const it=p.entries();it.next();p.set('b','5');console.log([...it].map(x=>x.join('=')).join('&'));", ['b=5&c=4']),
+    ('foreach_live_mutation', "const p=new URLSearchParams('a=1');p.forEach((v,k)=>{console.log(k,v);if(k==='a')p.append('b','2');});", ['a 1','b 2']),
+    ('foreach_receiver_and_order', "const p=new URLSearchParams('a=1');const t={};p.forEach(function(v,k,o){console.log(this===t,v,k,o===p)},t);", ['true 1 a true']),
+    ('sort_utf16_stable', r"const p=new URLSearchParams([['\uE000','a'],['\u{10000}','b'],['x','1'],['x','2']]);p.sort();console.log(p.toString());", ['x=1&x=2&%F0%90%80%80=b&%EE%80%80=a']),
+    ('getall_copy_not_borrowed', "const p=new URLSearchParams('a=1&a=2');const a=p.getAll('a');a[0]='x';console.log(p.toString());", ['a=1&a=2']),
+    ('symbol_values_rejected', "let n=0;const p=new URLSearchParams();for(const f of [()=>p.append('a',Symbol()),()=>p.get(Symbol()),()=>p.set('a',Symbol())])try{f()}catch(e){if(e instanceof TypeError)n++}console.log(n,p.size);", ['3 0']),
+    ('required_arguments', "let n=0;const p=new URLSearchParams();for(const k of ['append','set','get','getAll','has','delete','forEach'])try{p[k]()}catch(e){if(e instanceof TypeError)n++}console.log(n);", ['7']),
+    ('null_undefined_empty', "console.log(new URLSearchParams(null).size,new URLSearchParams(undefined).size,new URLSearchParams().size);", ['0 0 0']),
+    ('utf8_bom_and_invalid_bytes', "console.log(new URLSearchParams('a=%EF%BB%BF&b=%F4%90%80%80&c=%C0%AF&d=%zz').toString());", ['a=%EF%BB%BF&b=%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD&c=%EF%BF%BD%EF%BF%BD&d=%25zz']),
+    ('query_list_not_guest_array_methods', "const p=new URLSearchParams('a=1');const old=Array.prototype.filter;Array.prototype.filter=()=>{throw Error('override')};try{p.delete('a');p.append('b','2');p.set('b','3');console.log(p.toString());}finally{Array.prototype.filter=old;}", ['b=3']),
+]

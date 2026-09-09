@@ -202,6 +202,10 @@ def main() -> int:
     case('query_constructor_errors', "let n=0;for(const f of [()=>new URLSearchParams([['a']]),()=>new URLSearchParams(Symbol()),()=>new URLSearchParams().set('x')])try{f()}catch(e){if(e instanceof TypeError)n++}console.log(n);", logs=['3'])
     case('query_bare_absent', "URLSearchParams", profile='bare', expected='missing_global')
 
+    from query_cases import CASES
+    for name, source, logs in CASES:
+        case('query_regression_' + name, source, logs=logs)
+
     # These supplement the original host-contract cases with engine features.
     case('typed_arrays_and_dataview', "const b=new ArrayBuffer(16);new DataView(b).setUint32(0,0x12345678,true);console.log(new Uint8Array(b)[0]);", logs=['120'])
     if host:

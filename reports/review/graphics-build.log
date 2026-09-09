@@ -1,0 +1,45 @@
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Found Python3: /opt/pyvenv/bin/python3 (found version "3.13.5") found components: Interpreter
+-- Configuring done (4.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/krunker-zero-review/build/review-graphics
+[  6%] Building CXX object CMakeFiles/zero_platform_fixture.dir/tests/platform_fixture.cc.o
+[ 12%] Building CXX object CMakeFiles/zero_scheduler.dir/native/task_queue.cc.o
+[ 18%] Building CXX object CMakeFiles/zero_platform.dir/native/platform.cc.o
+[ 25%] Linking CXX shared library libzero_platform_fixture.so
+[ 25%] Built target zero_platform_fixture
+/mnt/data/krunker-zero-review/native/platform.cc: In function 'std::filesystem::__cxx11::path zero::platform::PathFromUtf8(std::string_view)':
+/mnt/data/krunker-zero-review/native/platform.cc:13:33: warning: 'std::filesystem::__cxx11::path std::filesystem::__cxx11::u8path(_InputIterator, _InputIterator) [with _InputIterator = const char*; _Require = path; _CharT = char]' is deprecated: use 'path(u8string(first, last))' instead [-Wdeprecated-declarations]
+   13 |   return std::filesystem::u8path(text.begin(), text.end());
+      |          ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/14/filesystem:52,
+                 from /mnt/data/krunker-zero-review/native/platform.h:2,
+                 from /mnt/data/krunker-zero-review/native/platform.cc:1:
+/usr/include/c++/14/bits/fs_path.h:818:5: note: declared here
+  818 |     u8path(_InputIterator __first, _InputIterator __last)
+      |     ^~~~~~
+[ 31%] Linking CXX static library libzero_platform.a
+[ 31%] Built target zero_platform
+[ 37%] Linking CXX static library libzero_scheduler.a
+[ 43%] Building CXX object CMakeFiles/zero_platform_tests.dir/tests/platform_test.cc.o
+[ 43%] Built target zero_scheduler
+[ 56%] Generating generated/graphics_prelude.h
+[ 56%] Generating generated/core_prelude.h
+[ 62%] Building CXX object CMakeFiles/zero_scheduler_tests.dir/tests/task_queue_test.cc.o
+[ 68%] Linking CXX executable zero_scheduler_tests
+[ 68%] Built target zero_scheduler_tests
+[ 75%] Linking CXX executable zero_platform_tests
+[ 75%] Built target zero_platform_tests
+[ 81%] Building CXX object CMakeFiles/zero.dir/native/main.cc.o
+[ 87%] Building CXX object CMakeFiles/zero.dir/native/graphics.cc.o
+[ 93%] Building CXX object CMakeFiles/zero.dir/native/host.cc.o
+[100%] Linking CXX executable zero
+[100%] Built target zero

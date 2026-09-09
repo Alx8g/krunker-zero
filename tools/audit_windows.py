@@ -39,7 +39,10 @@ def module_paths(pid: int) -> list[str]:
     if snapshot==ctypes.c_void_p(-1).value: raise ctypes.WinError(ctypes.get_last_error())
     try:
         entry=MODULEENTRY32W();entry.dwSize=ctypes.sizeof(entry);result=[]
-        if not api.Module32FirstW(snapshot,ctypes.byref(entry)): raise ctypes.WinError(ctypes.get_last_error())
+        if not api.Module32FirstW(snapshot,ctypes.byref(entry)):
+            code=ctypes.get_last_error()
+            if code==18:return [] # An empty snapshot, not a successful observation.
+            raise ctypes.WinError(code)
         while True:
             result.append(entry.szExePath)
             if not api.Module32NextW(snapshot,ctypes.byref(entry)):
@@ -61,6 +64,53 @@ def evaluate(paths: list[str], graphics: bool) -> dict:
                 passed=bool(paths) and not forbidden and (seen==angle if graphics else not seen))
 
 
+def evaluate_run(host: str, paths: list[str], imports: list[str], graphics: bool,
+                 backend: str, engine: dict, native: dict, snapshots: int) -> dict:
+    """Gate actual runtime evidence separately from PE import declarations.
+
+    Pure decision function: its unit tests are not native Windows validation.
+    The module list is a union of complete snapshots of our own child only.
+    """
+    import ntpath
+    normalize = lambda p: ntpath.normcase(ntpath.normpath(p))
+    result = evaluate(paths, graphics)
+    forbidden = evaluate([*paths, *imports], graphics)['unexpected_browser_or_node_modules']
+    errors = []
+    if not result['passed']:
+        errors.append('Observed runtime modules do not satisfy the requested profile')
+    if forbidden:
+        errors.append('Browser/Node dependency found in runtime modules or PE imports')
+    if snapshots < 1 or not paths:
+        errors.append('No complete nonempty own-child module snapshot')
+    if normalize(host) not in {normalize(p) for p in paths}:
+        errors.append('Audited executable was not observed in its child module snapshots')
+    if engine.get('host') != 'standalone' or engine.get('platform') != 'windows-x64' or engine.get('engine') != 'V8':
+        errors.append('Engine identity is not standalone Windows-x64 V8')
+    if native.get('status') != 'completed' or native.get('exit_code') != 0:
+        errors.append('Native fixture did not complete successfully')
+    nonlocal_angle = []
+    if not graphics and evaluate(imports, False)['angle_modules']:
+        errors.append('Graphics-free run declares an ANGLE dependency in PE imports')
+    if graphics:
+        for path in paths:
+            if ntpath.basename(path).lower() in ('libegl.dll', 'libglesv2.dll'):
+                if normalize(ntpath.dirname(path)) != normalize(ntpath.dirname(host)):
+                    nonlocal_angle.append(path)
+        if nonlocal_angle:
+            errors.append('ANGLE runtime DLLs were not loaded from the executable directory')
+        g = native.get('graphics')
+        if not isinstance(g, dict): g = {}
+        if backend not in ('d3d11', 'warp') or g.get('backend') != 'angle-' + backend + '-pbuffer':
+            errors.append('Observed graphics backend does not match the explicit request')
+        if type(g.get('contexts')) is not int or g['contexts'] < 1 or not isinstance(g.get('devices'), list) or not g['devices']:
+            errors.append('No actual graphics context/device in the native report')
+    result.update(unexpected_browser_or_node_modules=forbidden,
+                  nonlocal_angle_modules=nonlocal_angle,
+                  complete_snapshots=snapshots, audit_errors=errors,
+                  runtime_modules_observed=bool(paths), passed=not errors)
+    return result
+
+
 def main() -> int:
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--host',type=Path,default=default_host());p.add_argument('--graphics',action='store_true')
@@ -74,7 +124,7 @@ def main() -> int:
         imports=subprocess.check_output([dumpbin,'/dependents',str(host)],text=True,encoding='utf-8',errors='replace',timeout=15)
         imported=re.findall(r'^\s+([A-Za-z0-9_.-]+\.dll)\s*$',imports,re.M|re.I)
         engine=json.loads(subprocess.check_output([str(host),'--engine-info'],text=True,encoding='utf-8',timeout=5))
-        images=set();errors=[]
+        images=set();errors=[];snapshots=0;empty_snapshots=0
         source=('new OffscreenCanvas(8,8).getContext("webgl");\n' if args.graphics else '')+'setTimeout(()=>{},2500);\n'
         with tempfile.TemporaryDirectory(prefix='zero-audit-') as temp:
             path=Path(temp)/'probe.js';path.write_text(source,encoding='utf-8')
@@ -83,20 +133,24 @@ def main() -> int:
             child=subprocess.Popen([*command,str(path)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,encoding='utf-8')
             deadline=time.monotonic()+15
             while child.poll() is None and time.monotonic()<deadline:
-                try:images.update(module_paths(child.pid))
+                try:
+                    captured=module_paths(child.pid)
+                    if captured:
+                        images.update(captured);snapshots+=1
+                    else:empty_snapshots+=1
                 except OSError as error:
                     if len(errors)<10:errors.append(str(error))
                 time.sleep(.03)
             out,err=child.communicate(timeout=2)
             native=json.loads(out)
             if child.returncode or native.get('status')!='completed':raise ValueError('Native audit fixture failed: '+out[:2048]+err[:1024])
-        result=dict(schema=1,status='tested',platform='windows-x64',bytes=host.stat().st_size,
+        result=dict(schema=2,status='tested',platform='windows-x64',bytes=host.stat().st_size,
                     sha256=hashlib.sha256(host.read_bytes()).hexdigest(),engine_info=engine,
                     direct_pe_imports=imported,observed_runtime_modules=sorted(images),snapshot_errors=errors,
                     native_report=native,scope='Own-child fixture observation, not a security/minimum-footprint/game proof',
-                    **evaluate([*images,*imported],args.graphics))
-        result['passed'] = result['passed'] and bool(images)
-        result['runtime_modules_observed'] = bool(images)
+                    empty_snapshots=empty_snapshots,
+                    **evaluate_run(str(host), sorted(images), imported, args.graphics,
+                                   args.angle_backend, engine, native, snapshots))
         return 0 if result['passed'] else 1
     except (OSError,ValueError,subprocess.SubprocessError) as exc:
         result['error']=str(exc);print('Windows audit not passed: '+str(exc),file=sys.stderr);return 1

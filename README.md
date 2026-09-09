@@ -1,35 +1,39 @@
-# Krunker Zero — 0.4 Windows source port
+# Krunker Zero — browserless native runtime
 
 **Delete the browser. Keep the JavaScript engine. Add only evidenced host behavior.**
 
-Start the Windows handoff with **[LOCAL_AGENT_HANDOFF.md](LOCAL_AGENT_HANDOFF.md)**
-and **[docs/WINDOWS.md](docs/WINDOWS.md)**. `AGENTS.md` contains the exclusion rules.
+Start with **[CURRENT_STATUS.md](CURRENT_STATUS.md)** and
+**[docs/REVIEW_TESTING.md](docs/REVIEW_TESTING.md)**. `AGENTS.md` contains the project
+boundaries. `LOCAL_AGENT_HANDOFF.md` is the historical v0.4 starting assignment;
+`AGENT_HANDOFF.txt` records the subsequent native Windows baseline.
 
 ## Status without the marketing
 
-A standalone V8 C++ host and real EGL/GLES graphics subset run on Linux. The new
-Windows source port targets **native x64**, with MSVC configuration, matching SDK
-build recipes, app-local ANGLE/D3D11 loading, UTF-16/UTF-8 paths and an optional
-Win32 fixture window with presentation and foreground input.
+The baseline branch `fix/windows-native-acceptance` at `3d7cda7` contains recorded
+native Windows V8/ANGLE builds, 67 core cases, 52 graphics cases per backend,
+13 interactive platform checks, and a 300-frame Intel Iris Xe / D3D11 window demo.
+These are fixture results, not playable Krunker or game performance evidence.
 
-**Windows has not been compiled or executed in this handoff environment.** The
-provided Windows commands and tests are for the local agent to execute. There is
-no prebuilt Windows `.exe` or Windows SDK in the source kit. Passing Linux tests
-and portable Python tests does not establish Windows compatibility.
+The maintenance patch corrects URLSearchParams semantics, Windows SDK preflight,
+module-audit evidence gates, and stale status records. Its 100 standalone core
+cases, 52 graphics cases and 2,048 query-string differential vectors pass on
+Linux. **This patch still requires the local Windows regression run.**
 
-**Krunker itself is not running on any platform in this project.** No current
-original game bundle has executed. The triangle fixtures are independent test
-code. Audio, guest networking, textures/image loading, game-specific host APIs,
-complete relevant WebGL behavior, menus and actual gameplay remain unfinished.
-There is no game FPS, latency, security or speedup claim.
+**Krunker is not playable.** The baseline handoff records execution of the initial
+timestamp script and FRVR SDK; the next channel script stops at missing `document`
+after query support was added. `location` is also absent. Raw captures and Windows
+executables/SDKs are deliberately outside Git. No new game capture was available
+in this maintenance review. Audio, networking, textures/assets, remaining
+measured host contracts, menus and matches remain unfinished.
 
 ## Windows local-agent workflow
 
 In **x64 Developer PowerShell / x64 Native Tools Command Prompt for VS 2022**, with
-Desktop C++, a compatible Windows SDK, Git, 64-bit Python 3.11+, CMake and Ninja:
+Desktop C++, Git, 64-bit Python 3.11+, CMake and Ninja. The pinned ANGLE source
+requires Windows SDK 10.0.28000.0 (including headers, x64 libraries and tools):
 
 ```powershell
-py -3 tools/windows.py doctor
+py -3 tools/windows.py doctor --source-build
 py -3 tools/windows.py deps --work C:\kz-deps
 py -3 tools/windows.py build
 py -3 tools/windows.py test --angle-backend d3d11
@@ -69,7 +73,7 @@ python3 tools/render_probe.py --host build/standalone/zero
 The actual Linux renderer observed here is llvmpipe: real native software
 rasterization, not hardware acceleration. The framebuffer is an actual GL readback,
 not a generated illustration or game screenshot. Consult the current
-[validation report](reports/VALIDATION.md) for exact executed tests. Old reports
+[maintenance validation report](reports/review/VALIDATION.md) for exact executed tests. Old reports
 are preserved under milestone-specific filenames; they are not current Windows
 results. Platform-only C++ tests can be built without any V8 SDK by leaving
 `ZERO_BUILD_V8_HOST=OFF` (the default).
@@ -77,8 +81,9 @@ results. Platform-only C++ tests can be built without any V8 SDK by leaving
 ## Original-game acquisition
 
 The earlier environment blocked browser navigation, including localhost, with
-`net::ERR_BLOCKED_BY_ADMINISTRATOR`. It collected no actual current game bodies.
-Do not bypass that policy. The local agent can use the separate capture utility
+`net::ERR_BLOCKED_BY_ADMINISTRATOR`. It collected no bodies in that earlier environment. The Windows baseline later
+recorded a successful private capture of 33 response bodies and 123 compiled
+snapshots; those private inputs are not in Git. Do not bypass policies. Use the separate capture utility
 on a machine permitted to access Krunker; see [CAPTURE.md](docs/CAPTURE.md).
 This browser is a development acquisition tool only, never the native client's
 runtime. Preserve body/source hashes, fidelity and execution order. Keep captures
@@ -87,10 +92,10 @@ scripts and should not be blindly replayed as globals.
 
 ## Boundaries
 
-No Wok code, documentation or history was consulted. No remote repository or fork
-was created. The local Git history continues the original independent repository.
+The implementation remains independent; the project exclusions in AGENTS.md
+remain in force. A public repository now exists at Alx8g/krunker-zero.
 V8 ABI flags and CRT must match their libraries. The Linux SDK disables V8 sandbox
-and Intl; the Windows recipe requests sandbox on, Intl off and internal startup
-data, but has not been executed here. Neither configuration is a hardened client
+and Intl. The Windows baseline reports sandbox on, Intl off and internal startup
+data; this review did not rerun Windows. Neither configuration is a hardened client
 release. OS isolation, current engine patch selection and complete redistribution
 notices remain work, not properties inferred from passing a fixture.

@@ -1,0 +1,29 @@
+{
+  "scope": "Pure decision-logic fixtures, not Windows or native module observations",
+  "cases": [
+    {
+      "case": "import_names_only",
+      "old_audit_decision": true,
+      "new_audit_decision": false,
+      "new_errors": [
+        "Observed runtime modules do not satisfy the requested profile"
+      ]
+    },
+    {
+      "case": "wrong_dll_directory",
+      "old_audit_decision": true,
+      "new_audit_decision": false,
+      "new_errors": [
+        "ANGLE runtime DLLs were not loaded from the executable directory"
+      ]
+    },
+    {
+      "case": "backend_mismatch",
+      "old_audit_decision": true,
+      "new_audit_decision": false,
+      "new_errors": [
+        "Observed graphics backend does not match the explicit request"
+      ]
+    }
+  ]
+}

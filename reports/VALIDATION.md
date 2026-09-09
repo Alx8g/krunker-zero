@@ -1,3 +1,7 @@
+> Historical v0.4 handoff report. Do not use this as current Windows status.
+> See `../CURRENT_STATUS.md` and `review/VALIDATION.md`; the original evidence
+> below is retained unchanged.
+
 # Validation — 0.4 Windows source-port handoff, 9 September 2026
 
 ## What this milestone does and does not establish
