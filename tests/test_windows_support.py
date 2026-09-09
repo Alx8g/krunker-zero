@@ -25,6 +25,34 @@ class WindowsSupportTests(unittest.TestCase):
             target.write_bytes(b'FAKE UNIT-TEST FILE, NEVER AN SDK')
         deps.record_sdk(root,component,self.lock)
 
+    def test_depot_build_wrappers_use_explicit_python(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for tool in ('gn', 'ninja'):
+                script = root/(tool+'.py')
+                script.write_text('# fixture')
+                with patch.object(deps.shutil, 'which', return_value=str(root/(tool+'.bat'))), patch.object(deps, 'checked', return_value='ok') as run:
+                    self.assertEqual(deps.checked_tool(tool, ['--version'], root, {'PATH': ''}), 'ok')
+                    run.assert_called_once_with([sys.executable, str(script), '--version'], root, {'PATH': ''}, capture=False)
+
+    def test_managed_git_launcher_reuse_and_modified_refusal(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(deps.shutil, 'which', return_value='C:/Program Files/Git/cmd/git.exe'):
+            root = Path(tmp)
+            directory = deps.prepare_git_launcher(root, {'PATH': 'installed'})
+            launcher = directory/'git.bat'
+            self.assertIn('"C:/Program Files/Git/cmd/git.exe" %*', launcher.read_text())
+            self.assertEqual(directory, deps.prepare_git_launcher(root, {'PATH': 'installed'}))
+            launcher.write_text('changed')
+            with self.assertRaisesRegex(ValueError, 'Refusing modified'):
+                deps.prepare_git_launcher(root, {'PATH': 'installed'})
+
+    def test_managed_git_launcher_rejects_missing_or_unsafe_git(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for executable in (None, 'C:/bad%PATH%/git.exe', 'C:/bad"/git.exe'):
+                with patch.object(deps.shutil, 'which', return_value=executable):
+                    with self.assertRaisesRegex(ValueError, 'safe installed'):
+                        deps.prepare_git_launcher(Path(tmp), {'PATH': 'installed'})
+
     def test_all_sources_use_fixed_official_commits(self):
         for name in ('depot_tools','v8','angle'):
             self.assertEqual(len(self.lock[name]['commit']),40)
@@ -203,12 +231,12 @@ class WindowsSupportTests(unittest.TestCase):
 
 class LauncherConstructionTests(unittest.TestCase):
     def test_batch_command_is_raw_cmd_line_not_double_crt_escaped(self):
-        with patch('windows_deps.shutil.which',return_value='C:/depot tools/gn.bat'), \
+        with patch('windows_deps.shutil.which',return_value='C:/depot tools/gclient.bat'), \
              patch('windows_deps.checked',return_value='') as execute:
-            deps.checked_tool('gn',['gen','out/zero'],Path('.'),{'PATH':'unused'})
+            deps.checked_tool('gclient',['sync'],Path('.'),{'PATH':'unused'})
             command=execute.call_args.args[0]
             self.assertIsInstance(command,str)
-            self.assertIn(' /d /v:off /s /c ""C:/depot tools/gn.bat" gen out/zero"',command)
+            self.assertIn(' /d /v:off /s /c ""C:/depot tools/gclient.bat" sync"',command)
             self.assertNotIn('\\"',command)
 
     def test_native_tool_preserves_argument_list(self):

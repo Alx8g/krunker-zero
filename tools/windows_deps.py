@@ -109,6 +109,15 @@ def checked_tool(tool: str, arguments: list[str], cwd: Path, env: dict, *, captu
     path = shutil.which(tool, path=env['PATH'])
     if not path:
         raise ValueError('Required tool not found: ' + tool)
+    # These pinned wrappers only dispatch to adjacent Python entry points.
+    # Avoid their uninitialized python-bin bootstrap with our validated Python.
+    if tool in ('gn', 'ninja') and Path(path).suffix.lower() == '.bat':
+        script = Path(path).with_suffix('.py')
+        if not script.is_file():
+            raise ValueError('Missing depot_tools Python entry point: ' + str(script))
+        if tool == 'gn' and arguments and arguments[0] == 'gen':
+            arguments = [*arguments, '--script-executable=' + sys.executable]
+        return checked([sys.executable, str(script), *arguments], cwd, env, capture=capture)
     command = [path, *arguments]
     if Path(path).suffix.lower() in ('.bat', '.cmd'):
         if any(any(c in arg for c in '\r\n%!*&|<>^\"()') for arg in command):
@@ -228,6 +237,24 @@ def copy_licenses(source: Path, stage: Path) -> None:
         'components before public distribution.\n', encoding='utf-8')
 
 
+def prepare_git_launcher(work: Path, env: dict) -> Path:
+    """Supply pinned depot_tools' git.bat without running its global bootstrap."""
+    git = shutil.which('git.exe', path=env['PATH'])
+    if not git or any(c in git for c in '\r\n%!*&|<>^"'):
+        raise ValueError('A safe installed git.exe path is required')
+    directory = work/'zero-launchers'
+    directory.mkdir(exist_ok=True)
+    launcher = directory/'git.bat'
+    content = '@echo off\nsetlocal\nset "NoDefaultCurrentDirectoryInExePath=1"\n"'+git+'" %*\n'
+    if launcher.exists():
+        if launcher.read_text(encoding='utf-8') != content:
+            raise ValueError('Refusing modified managed Git launcher')
+    else:
+        with launcher.open('x', encoding='utf-8', newline='\r\n') as output:
+            output.write(content)
+    return directory
+
+
 def build(component: str, work: Path, dest: Path, lock: dict, jobs: int) -> None:
     require_windows()
     prerequisites = doctor()
@@ -256,9 +283,14 @@ def build(component: str, work: Path, dest: Path, lock: dict, jobs: int) -> None
         marker.write_text(json.dumps({'schema':1,'lock_sha256':digest(LOCK)}), encoding='utf-8')
     env = os.environ.copy()
     env.update(DEPOT_TOOLS_WIN_TOOLCHAIN='0', DEPOT_TOOLS_UPDATE='0', PYTHONUTF8='1', GIT_TERMINAL_PROMPT='0')
+    # Upstream only probes default installation paths unless explicitly told.
+    # Reuse the active VS 2022 developer environment for custom installations.
+    if env.get('VISUALSTUDIOVERSION', env.get('VSCMD_VER', '')).startswith('17.') and env.get('VSINSTALLDIR'):
+        env.setdefault('vs2022_install', env['VSINSTALLDIR'])
     depot = work/'depot_tools'
     checkout(depot, lock['depot_tools'], env)
-    env['PATH'] = str(depot) + os.pathsep + env['PATH']
+    launchers = prepare_git_launcher(work, env)
+    env['PATH'] = str(depot) + os.pathsep + str(launchers) + os.pathsep + env['PATH']
     workspace = work/(component+'-work'); workspace.mkdir(exist_ok=True)
     source = workspace/component
     checkout(source, lock[component], env)
@@ -270,7 +302,7 @@ def build(component: str, work: Path, dest: Path, lock: dict, jobs: int) -> None
     if gclient.exists() and gclient.read_text(encoding='utf-8') != config:
         raise ValueError('Refusing modified .gclient configuration')
     gclient.write_text(config, encoding='utf-8')
-    checked_tool('gclient', ['sync','--revision', component+'@'+lock[component]['commit']], workspace, env)
+    checked_tool('gclient', ['sync','--jobs','2','--revision', component+'@'+lock[component]['commit']], workspace, env)
     if checked(['git','-C',str(source),'rev-parse','HEAD'],workspace,env,capture=True) != lock[component]['commit']:
         raise ValueError('gclient changed the requested source pin')
     # Save exact dependency revisions before staging (evidence, not a reproducibility proof).

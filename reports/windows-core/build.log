@@ -1,0 +1,15 @@
+[1/14] Building CXX object CMakeFiles\zero_platform_fixture.dir\tests\platform_fixture.cc.obj
+[2/14] Linking CXX shared library zero_platform_fixture.dll
+[3/14] Building CXX object CMakeFiles\zero_scheduler.dir\native\task_queue.cc.obj
+[4/14] Linking CXX static library zero_scheduler.lib
+[5/14] Building CXX object CMakeFiles\zero_scheduler_tests.dir\tests\task_queue_test.cc.obj
+[6/14] Linking CXX executable zero_scheduler_tests.exe
+[7/14] Building CXX object CMakeFiles\zero_platform.dir\native\platform.cc.obj
+C:\Users\verom\.treehouse\krunker-zero-1bfdef\1\krunker-zero\native\platform.cc(13): warning C4996: 'std::filesystem::u8path': warning STL4021: The std::filesystem::u8path() overloads are deprecated in C++20. The constructors of std::filesystem::path provide equivalent functionality via construction from u8string, u8string_view, or iterators with value_type char8_t. You can define _SILENCE_CXX20_U8PATH_DEPRECATION_WARNING or _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS to suppress this warning.
+[8/14] Building CXX object CMakeFiles\zero_platform_tests.dir\tests\platform_test.cc.obj
+[9/14] Linking CXX static library zero_platform.lib
+[10/14] Generating generated/core_prelude.h
+[11/14] Linking CXX executable zero_platform_tests.exe
+[12/14] Building CXX object CMakeFiles\zero.dir\native\main.cc.obj
+[13/14] Building CXX object CMakeFiles\zero.dir\native\host.cc.obj
+[14/14] Linking CXX executable zero.exe
