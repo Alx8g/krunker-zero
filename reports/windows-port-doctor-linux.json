@@ -1,0 +1,18 @@
+{
+  "platform": "linux",
+  "machine": "x86_64",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "python_64bit": true,
+  "native_windows_x64": false,
+  "tools": {
+    "git": "/usr/bin/git",
+    "cmake": "/usr/bin/cmake",
+    "ninja": "/usr/bin/ninja",
+    "cl": null,
+    "dumpbin": null
+  },
+  "visual_studio_target": "",
+  "windows_sdk": "",
+  "ready": false,
+  "instructions": "Use the x64 Native Tools/Developer PowerShell for VS 2022 with Desktop development with C++, a compatible Windows SDK, Git, Python 3.11+, CMake and Ninja. No registry changes are made."
+}

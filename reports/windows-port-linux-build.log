@@ -1,0 +1,6 @@
+[ 12%] Built target zero_scheduler
+[ 25%] Built target zero_platform
+[ 37%] Built target zero_platform_fixture
+[ 50%] Built target zero_scheduler_tests
+[ 62%] Built target zero_platform_tests
+[100%] Built target zero

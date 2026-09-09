@@ -1,0 +1,162 @@
+test_artifact_unwrap (test_acquisition.ArchiveTests.test_artifact_unwrap) ... ok
+test_bad_digest (test_acquisition.ArchiveTests.test_bad_digest) ... ok
+test_changed_sdk_not_reused (test_acquisition.ArchiveTests.test_changed_sdk_not_reused) ... ok
+test_digest (test_acquisition.ArchiveTests.test_digest) ... ok
+test_duplicate_member (test_acquisition.ArchiveTests.test_duplicate_member) ... ok
+test_extra_zip_member (test_acquisition.ArchiveTests.test_extra_zip_member) ... ok
+test_idempotent_verified_sdk (test_acquisition.ArchiveTests.test_idempotent_verified_sdk) ... ok
+test_incomplete_sdk_rejected (test_acquisition.ArchiveTests.test_incomplete_sdk_rejected) ... ok
+test_links_and_devices (test_acquisition.ArchiveTests.test_links_and_devices) ... ok
+test_nonempty_destination (test_acquisition.ArchiveTests.test_nonempty_destination) ... ok
+test_release_unwrap (test_acquisition.ArchiveTests.test_release_unwrap) ... ok
+test_safe_extract (test_acquisition.ArchiveTests.test_safe_extract) ... ok
+test_unsafe_paths (test_acquisition.ArchiveTests.test_unsafe_paths) ... ok
+test_base64_bytes (test_acquisition.CaptureTests.test_base64_bytes) ... ok
+test_conflicting_bodies_preserved_and_flagged (test_acquisition.CaptureTests.test_conflicting_bodies_preserved_and_flagged) ... ok
+test_credentials_not_imported (test_acquisition.CaptureTests.test_credentials_not_imported) ... ok
+test_disallowed_origin (test_acquisition.CaptureTests.test_disallowed_origin) ... ok
+test_duplicate_deduped (test_acquisition.CaptureTests.test_duplicate_deduped) ... ok
+test_error_status_not_imported (test_acquisition.CaptureTests.test_error_status_not_imported) ... ok
+test_existing_directory_refused (test_acquisition.CaptureTests.test_existing_directory_refused) ... ok
+test_html_challenge_rejected (test_acquisition.CaptureTests.test_html_challenge_rejected) ... ok
+test_html_mime_not_imported_as_js (test_acquisition.CaptureTests.test_html_mime_not_imported_as_js) ... ok
+test_live_capture_injected_transport (test_acquisition.CaptureTests.test_live_capture_injected_transport) ... ok
+test_malformed_har_rejected (test_acquisition.CaptureTests.test_malformed_har_rejected) ... ok
+test_missing_and_invalid_body (test_acquisition.CaptureTests.test_missing_and_invalid_body) ... ok
+test_original_body_hash (test_acquisition.CaptureTests.test_original_body_hash) ... ok
+test_origins (test_acquisition.CaptureTests.test_origins) ... ok
+test_post_not_imported (test_acquisition.CaptureTests.test_post_not_imported) ... ok
+test_redirect_blocked (test_acquisition.CaptureTests.test_redirect_blocked) ... ok
+test_response_missing_detected (test_acquisition.CaptureTests.test_response_missing_detected) ... ok
+test_text_fidelity_marked (test_acquisition.CaptureTests.test_text_fidelity_marked) ... ok
+test_body_fidelity (test_capture_browser.CaptureTests.test_body_fidelity) ... ok
+test_debugger_loopback_only (test_capture_browser.CaptureTests.test_debugger_loopback_only) ... ok
+test_deduplication_preserves_source_records (test_capture_browser.CaptureTests.test_deduplication_preserves_source_records) ... ok
+test_dynamic_source_keeps_scope_and_is_not_wire_bytes (test_capture_browser.CaptureTests.test_dynamic_source_keeps_scope_and_is_not_wire_bytes) ... ok
+test_explicit_html_script_mime_is_failure (test_capture_browser.CaptureTests.test_explicit_html_script_mime_is_failure) ... ok
+test_extension_context_ignored (test_capture_browser.CaptureTests.test_extension_context_ignored) ... ok
+test_failed_loading_is_evidence (test_capture_browser.CaptureTests.test_failed_loading_is_evidence) ... ok
+test_html_cannot_masquerade_as_javascript (test_capture_browser.CaptureTests.test_html_cannot_masquerade_as_javascript) ... ok
+test_http_failure_not_javascript (test_capture_browser.CaptureTests.test_http_failure_not_javascript) ... ok
+test_incomplete_response_reported (test_capture_browser.CaptureTests.test_incomplete_response_reported) ... ok
+test_invalid_body_rejected (test_capture_browser.CaptureTests.test_invalid_body_rejected) ... ok
+test_kind_filter_no_fonts (test_capture_browser.CaptureTests.test_kind_filter_no_fonts) ... ok
+test_network_hash_and_secret_omission (test_capture_browser.CaptureTests.test_network_hash_and_secret_omission) ... ok
+test_origin_rules (test_capture_browser.CaptureTests.test_origin_rules) ... ok
+test_pending_request_and_finish_idempotence (test_capture_browser.CaptureTests.test_pending_request_and_finish_idempotence) ... ok
+test_post_and_foreign_origin_not_captured (test_capture_browser.CaptureTests.test_post_and_foreign_origin_not_captured) ... ok
+test_failed_or_truncated_renderer_rejected (test_render_probe.PixelTests.test_failed_or_truncated_renderer_rejected) ... ok
+test_flip_matches_gl_origin (test_render_probe.PixelTests.test_flip_matches_gl_origin) ... ok
+test_missing_or_duplicate_row_rejected (test_render_probe.PixelTests.test_missing_or_duplicate_row_rejected) ... ok
+test_no_pixels_without_native_drawing_evidence (test_render_probe.PixelTests.test_no_pixels_without_native_drawing_evidence) ... ok
+test_png_chunks_crc_and_pixel_bytes (test_render_probe.PixelTests.test_png_chunks_crc_and_pixel_bytes) ... ok
+test_png_invalid_length_rejected (test_render_probe.PixelTests.test_png_invalid_length_rejected) ... ok
+test_row_and_frame_bounds (test_render_probe.PixelTests.test_row_and_frame_bounds) ... ok
+test_comments_not_scripts (test_tools.InspectorTests.test_comments_not_scripts) ... ok
+test_first_base_only (test_tools.InspectorTests.test_first_base_only) ... ok
+test_inline_hash_without_source (test_tools.InspectorTests.test_inline_hash_without_source) ... ok
+test_relative_src (test_tools.InspectorTests.test_relative_src) ... ok
+test_script_flags (test_tools.InspectorTests.test_script_flags) ... ok
+test_unterminated_marked (test_tools.InspectorTests.test_unterminated_marked) ... ok
+test_bytes_hashed_without_rewriting (test_tools.ProbeInputTests.test_bytes_hashed_without_rewriting) ... ok
+test_html_is_not_a_bundle (test_tools.ProbeInputTests.test_html_is_not_a_bundle) ... ok
+test_invalid_utf8_rejected (test_tools.ProbeInputTests.test_invalid_utf8_rejected) ... ok
+test_batch_command_is_raw_cmd_line_not_double_crt_escaped (test_windows_support.LauncherConstructionTests.test_batch_command_is_raw_cmd_line_not_double_crt_escaped) ... ok
+test_native_tool_preserves_argument_list (test_windows_support.LauncherConstructionTests.test_native_tool_preserves_argument_list) ... ok
+test_added_sdk_file_rejected (test_windows_support.WindowsSupportTests.test_added_sdk_file_rejected) ... ok
+test_all_sources_use_fixed_official_commits (test_windows_support.WindowsSupportTests.test_all_sources_use_fixed_official_commits) ... ok
+test_angle_pixel_report_accepted_only_with_counters (test_windows_support.WindowsSupportTests.test_angle_pixel_report_accepted_only_with_counters) ... ok
+test_backend_is_explicit_not_silent_fallback (test_windows_support.WindowsSupportTests.test_backend_is_explicit_not_silent_fallback) ... ok
+test_batch_launcher_shell_metacharacters_rejected (test_windows_support.WindowsSupportTests.test_batch_launcher_shell_metacharacters_rejected) ... ok
+test_build_command_preserves_spaces_as_one_argument (test_windows_support.WindowsSupportTests.test_build_command_preserves_spaces_as_one_argument) ... ok
+test_crt_release_static_required (test_windows_support.WindowsSupportTests.test_crt_release_static_required) ... ok
+test_d3d11_only_angle_recipe (test_windows_support.WindowsSupportTests.test_d3d11_only_angle_recipe) ... ok
+test_default_binary_windows_and_linux (test_windows_support.WindowsSupportTests.test_default_binary_windows_and_linux) ... ok
+test_dependency_stage_cannot_omit_outputs (test_windows_support.WindowsSupportTests.test_dependency_stage_cannot_omit_outputs) ... ok
+test_fake_backend_pixel_report_rejected (test_windows_support.WindowsSupportTests.test_fake_backend_pixel_report_rejected) ... ok
+test_gn_booleans_and_strings_are_encoded (test_windows_support.WindowsSupportTests.test_gn_booleans_and_strings_are_encoded) ... ok
+test_gn_rejects_unrecognized_value_and_key (test_windows_support.WindowsSupportTests.test_gn_rejects_unrecognized_value_and_key) ... ok
+test_lock_rejects_changed_upstream (test_windows_support.WindowsSupportTests.test_lock_rejects_changed_upstream) ... ok
+test_lock_rejects_unpinned_revision (test_windows_support.WindowsSupportTests.test_lock_rejects_unpinned_revision) ... ok
+test_minimal_build_does_not_stage_angle (test_windows_support.WindowsSupportTests.test_minimal_build_does_not_stage_angle) ... ok
+test_missing_required_sdk_file_rejected (test_windows_support.WindowsSupportTests.test_missing_required_sdk_file_rejected) ... ok
+test_modified_archive_cannot_reuse_receipt (test_windows_support.WindowsSupportTests.test_modified_archive_cannot_reuse_receipt) ... ok
+test_module_audit_detects_browser_or_node_images (test_windows_support.WindowsSupportTests.test_module_audit_detects_browser_or_node_images) ... ok
+test_module_audit_requires_both_angle_dlls (test_windows_support.WindowsSupportTests.test_module_audit_requires_both_angle_dlls) ... ok
+test_module_audit_requires_evidence (test_windows_support.WindowsSupportTests.test_module_audit_requires_evidence) ... ok
+test_nonwindows_is_not_runtime_validation (test_windows_support.WindowsSupportTests.test_nonwindows_is_not_runtime_validation) ... ok
+test_other_abi_receipt_rejected (test_windows_support.WindowsSupportTests.test_other_abi_receipt_rejected) ... ok
+test_other_component_receipt_rejected (test_windows_support.WindowsSupportTests.test_other_component_receipt_rejected) ... ok
+test_other_crt_receipt_rejected (test_windows_support.WindowsSupportTests.test_other_crt_receipt_rejected) ... ok
+test_receipt_must_include_all_required_files (test_windows_support.WindowsSupportTests.test_receipt_must_include_all_required_files) ... ok
+test_requested_v8_abi_and_sandbox (test_windows_support.WindowsSupportTests.test_requested_v8_abi_and_sandbox) ... ok
+test_sdk_receipt_verifies_files (test_windows_support.WindowsSupportTests.test_sdk_receipt_verifies_files) ... ok
+test_windows_window_fixture_no_unsupported_uniform_api (test_windows_support.WindowsSupportTests.test_windows_window_fixture_no_unsupported_uniform_api) ... ok
+
+----------------------------------------------------------------------
+Ran 94 tests in 0.040s
+
+OK
+PASS: bare_ecmascript
+PASS: bare_globals_absent
+PASS: missing_document
+PASS: missing_window
+PASS: feature_detection_preserved
+PASS: core_has_no_host_escape
+PASS: window_identity
+PASS: nested_property_not_invented
+PASS: caught_missing_not_claimed
+PASS: syntax_error
+PASS: synchronous_throw
+PASS: ordered_scripts
+PASS: microtask_between_scripts
+PASS: promise_before_timer
+PASS: microtask_between_timers
+PASS: timer_order
+PASS: timer_args_and_this
+PASS: clear_timeout
+PASS: cancel_unknown_harmless
+PASS: same_batch_cancellation
+PASS: interval_self_cancellation
+PASS: cross_cancel_timer_interval
+PASS: nested_timer_fifo
+PASS: raf_shared_timestamp
+PASS: raf_nested_next_frame
+PASS: raf_cancel_same_frame
+PASS: raf_one_shot
+PASS: timer_throw_visible
+PASS: raf_throw_visible
+PASS: rejected_promise_visible
+PASS: handled_promise_success
+PASS: microtask_adds_rejection_handler
+PASS: promise_throw_visible
+PASS: reject_string_timer
+PASS: reject_nonfunction_raf
+PASS: pending_cap
+PASS: recurring_work_budget
+PASS: loop_timeout
+PASS: promise_loop_timeout
+PASS: idle_wait_timeout
+PASS: real_clock
+PASS: unknown_profile
+PASS: invalid_hz
+PASS: invalid_timeout
+PASS: json_escaping
+PASS: unicode_report
+PASS: bounded_logs
+PASS: typed_arrays_and_dataview
+PASS: wasm_sync
+PASS: async_await_checkpoint
+PASS: rejection_then_recovery
+PASS: resolved_promise_batch
+PASS: pending_promises_observation_cap
+PASS: timer_resolves_promise
+PASS: unresolved_promise_not_completed
+PASS: promise_adoption_not_prematurely_settled
+PASS: wasm_async_instantiate
+PASS: wasm_async_compile
+PASS: wasm_async_rejection_handled
+PASS: wasm_async_rejection_unhandled
+PASS: wasm_and_timer_both_drained
+
+61/61 V8 integration cases passed.

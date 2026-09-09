@@ -1,0 +1,42 @@
+{
+  "schema": 2,
+  "binary": "build/standalone/zero",
+  "platform": "linux-x86_64",
+  "bytes": 41116344,
+  "sha256": "6a261e97e9b06be14bee8f4dbadfea281668959697c5440ce9e4f0c94eb8b463",
+  "engine_info": {
+    "engine": "V8",
+    "version": "13.6.233.17",
+    "host": "standalone",
+    "sandbox": false,
+    "intl": false,
+    "pointer_compression": true,
+    "graphics_compiled": true,
+    "platform": "linux"
+  },
+  "direct_elf_dependencies": [
+    "libstdc++.so.6",
+    "libm.so.6",
+    "libgcc_s.so.1",
+    "libc.so.6",
+    "ld-linux-x86-64.so.2"
+  ],
+  "observed_runtime_libraries": [
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+  ],
+  "unexpected_browser_or_node_images": [],
+  "graphics_requested": false,
+  "graphics_libraries_observed": false,
+  "graphics": null,
+  "link_command": "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/zero.dir/link.d CMakeFiles/zero.dir/native/main.cc.o CMakeFiles/zero.dir/native/host.cc.o CMakeFiles/zero.dir/native/graphics.cc.o -o zero  libzero_scheduler.a libzero_platform.a /mnt/data/krunker-zero-windows/deps/V8-13.6.233.17-ubuntu-latest-Release/lib/libv8_monolith.a -ldl -lm",
+  "passed": true,
+  "notes": [
+    "V8 is statically linked; graphics loads native EGL/driver libraries dynamically only when requested.",
+    "The graphics-enabled image list includes the complete observed native driver path, not just ldd output.",
+    "One fixture path only; no security, minimality, full-game compatibility or performance certification."
+  ]
+}

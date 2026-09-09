@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "source_commit": "3bf3158d60d1ae284c23a115ca158bc8a2bb4d30",
+  "environment": "Linux x86-64; NOT Windows validation",
+  "fresh_clone_offline_build": true,
+  "original_binary_sha256": "6a261e97e9b06be14bee8f4dbadfea281668959697c5440ce9e4f0c94eb8b463",
+  "rebuilt_binary_sha256": "6a261e97e9b06be14bee8f4dbadfea281668959697c5440ce9e4f0c94eb8b463",
+  "original_png_sha256": "b3272b9573fdb9674d7c2e58c711138eee4a9e1832dbc0a972fcb7a90e6b26da",
+  "rebuilt_png_sha256": "b3272b9573fdb9674d7c2e58c711138eee4a9e1832dbc0a972fcb7a90e6b26da",
+  "binary_hash_match": true,
+  "png_hash_match": true,
+  "core": {
+    "passed": 61,
+    "total": 61
+  },
+  "graphics": {
+    "passed": 52,
+    "total": 52
+  },
+  "failures": {
+    "passed": 2,
+    "total": 2
+  },
+  "python_tests": {
+    "passed": 94,
+    "total": 94,
+    "log": "windows-port-rebuilt-core.log"
+  },
+  "ctest": {
+    "passed": 2,
+    "total": 2
+  }
+}

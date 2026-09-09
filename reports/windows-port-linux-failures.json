@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "scope": "Deliberately broken EGL test libraries; NOT evidence of rendering",
+  "passed": 2,
+  "total": 2,
+  "results": [
+    {
+      "name": "missing_symbol",
+      "passed": true,
+      "fault_library_source_sha256": "87d65ad7d04259467a61443a322ad4b0ee0d48f7dfa34ac121ae133c93c79f75",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.968204,
+        "clock_ms": 1.968161,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "EXPECTED_FAILURE_TWICE"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 0,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "required graphics entry point absent: eglGetProcAddress",
+          "devices": []
+        }
+      }
+    },
+    {
+      "name": "initialization_failed",
+      "passed": true,
+      "fault_library_source_sha256": "cfee488832acda92119ba8bb33bc5d63fbfc0163454cd8986b9ba77e5f6198da",
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "graphics",
+        "mode": "headless",
+        "virtual_time": false,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 6.33829,
+        "clock_ms": 6.338227,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "EXPECTED_FAILURE_TWICE"
+          }
+        ],
+        "graphics": {
+          "backend": "egl-surfaceless-pbuffer",
+          "experimental_subset": true,
+          "presented_frames": 0,
+          "contexts": 0,
+          "draw_calls": 0,
+          "shader_compiles": 0,
+          "pixel_reads": 0,
+          "bytes_uploaded": 0,
+          "cpu_shadow_bytes": 0,
+          "cpu_shadow_capacity_bytes": 0,
+          "last_error": "EGL OpenGL ES API unavailable",
+          "devices": []
+        }
+      }
+    }
+  ]
+}

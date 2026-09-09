@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "status": "not_run",
+  "passed": 0,
+  "total": 0,
+  "results": [],
+  "error": "This source-build route requires native Windows x64; no Linux/WSL or ARM64 substitution"
+}
