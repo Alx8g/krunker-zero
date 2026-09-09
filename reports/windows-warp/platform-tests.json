@@ -43,8 +43,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.437,
-        "clock_ms": 1.437,
+        "elapsed_ms": 1.3636,
+        "clock_ms": 1.3636,
         "logs_dropped": 0,
         "logs": [
           {
@@ -80,8 +80,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9057,
-        "clock_ms": 0.9057,
+        "elapsed_ms": 0.9732,
+        "clock_ms": 0.9732,
         "logs_dropped": 0,
         "logs": [
           {
@@ -277,8 +277,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 2.5944,
-        "clock_ms": 2.5943,
+        "elapsed_ms": 2.1071,
+        "clock_ms": 2.1071,
         "logs_dropped": 0,
         "logs": [
           {
@@ -299,7 +299,7 @@
           "cpu_shadow_capacity_bytes": 0,
           "window_created": false,
           "input_events_dropped": 0,
-          "last_error": "Cannot load C:\\Users\\verom\\AppData\\Local\\Temp\\zero-win-tests-unadfuz1\\Unicode path 日本語 🚀\\libGLESv2.dll (Win32 error 126); no graphics fallback",
+          "last_error": "Cannot load C:\\Users\\verom\\AppData\\Local\\Temp\\zero-win-tests-q589ln8a\\Unicode path 日本語 🚀\\libGLESv2.dll (Win32 error 126); no graphics fallback",
           "devices": []
         },
         "process_exit": 0
@@ -330,8 +330,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 174.4786,
-        "clock_ms": 174.4785,
+        "elapsed_ms": 127.1701,
+        "clock_ms": 127.1701,
         "logs_dropped": 0,
         "logs": [
           {
@@ -376,7 +376,7 @@
     "graphics_compiled": true,
     "platform": "windows-x64"
   },
-  "executable_sha256": "b47909b41da77e07a7d2e4abb165f011f4516723baf668bd69538571c253fed0",
+  "executable_sha256": "2886edbee45c89a4286b22da937d6900e28c66b343cd9ca51cd5504f73674528",
   "interactive_requested": false,
   "manual_input": "not automated; physically test focus, Escape release, keyboard and raw mouse with the demo"
 }

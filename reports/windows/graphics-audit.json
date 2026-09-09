@@ -2,8 +2,8 @@
   "schema": 1,
   "status": "tested",
   "platform": "windows-x64",
-  "bytes": 23988224,
-  "sha256": "076102f8360a8702e37d85b1072f6ab60d3eb8d6750eceef4038f98c2651c72e",
+  "bytes": 23994880,
+  "sha256": "2886edbee45c89a4286b22da937d6900e28c66b343cd9ca51cd5504f73674528",
   "engine_info": {
     "engine": "V8",
     "version": "13.6.233.17",
@@ -95,8 +95,8 @@
     "pending_promises": 0,
     "promise_observation_overflow": false,
     "pending_tasks": 0,
-    "elapsed_ms": 2563.7971,
-    "clock_ms": 2563.797,
+    "elapsed_ms": 2543.3833,
+    "clock_ms": 2543.3833,
     "logs_dropped": 0,
     "logs": [],
     "graphics": {

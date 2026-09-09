@@ -1,8 +1,8 @@
 {
   "schema": 3,
   "game_bundle": null,
-  "game_trace_collected": false,
-  "note": "Optional implemented features are fixture-proven only, not a measured minimum for Krunker.",
+  "game_trace_collected": true,
+  "note": "Windows fixtures passed. A private current-page ordered bootstrap probe reached missing document/location after URLSearchParams implementation. No complete game bootstrap or gameplay.",
   "capabilities": [
     {
       "name": "ECMAScript execution",
@@ -101,6 +101,13 @@
       "name": "native window and frame presentation",
       "status": "absent",
       "game_required": "unknown"
+    },
+    {
+      "name": "URLSearchParams",
+      "profile": "core",
+      "status": "native-regression-and-original-bootstrap-operation-tested",
+      "evidence": "reports/windows/standalone-tests.json",
+      "game_required": "observed FRVR channel detection query parsing, not full-game compatibility"
     }
   ],
   "input_acquisition": {

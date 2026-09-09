@@ -195,6 +195,13 @@ def main() -> int:
     case('unicode_report', 'console.log("héllo 日本語 🎮");',logs=['héllo 日本語 🎮'])
     case('bounded_logs', 'for(let i=0;i<520;i++)console.log(i)',check=lambda r:len(r['logs'])==512 and r['logs_dropped']==8)
 
+    case('query_parse_duplicates', "const p=new URLSearchParams('?a=1&a=2&space=a+b&empty&x=a=b');console.log(p.getAll('a').join(','),p.get('space'),p.get('empty'),p.get('x'),p.size);", logs=['1,2 a b  a=b 5'])
+    case('query_forgiving_utf8', "console.log(new URLSearchParams('x=%E2%82&y=%FF&z=%E2%28%A1').toString());", logs=['x=%EF%BF%BD&y=%EF%BF%BD&z=%EF%BF%BD%28%EF%BF%BD'])
+    case('query_mutation_iteration', "const p=new URLSearchParams([['b','2'],['a','1'],['b','3']]);p.set('b','4');p.append('a','5');p.sort();p.delete('a','1');console.log(p.toString(),JSON.stringify(Object.fromEntries(p.entries())));", logs=['a=5&b=4 {"a":"5","b":"4"}'])
+    case('query_live_iteration', "const p=new URLSearchParams('a=1');const it=p.entries();it.next();p.append('b','2');console.log(it.next().value.join('='));", logs=['b=2'])
+    case('query_constructor_errors', "let n=0;for(const f of [()=>new URLSearchParams([['a']]),()=>new URLSearchParams(Symbol()),()=>new URLSearchParams().set('x')])try{f()}catch(e){if(e instanceof TypeError)n++}console.log(n);", logs=['3'])
+    case('query_bare_absent', "URLSearchParams", profile='bare', expected='missing_global')
+
     # These supplement the original host-contract cases with engine features.
     case('typed_arrays_and_dataview', "const b=new ArrayBuffer(16);new DataView(b).setUint32(0,0x12345678,true);console.log(new Uint8Array(b)[0]);", logs=['120'])
     if host:

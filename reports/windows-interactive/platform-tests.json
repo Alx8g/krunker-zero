@@ -43,8 +43,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.2774,
-        "clock_ms": 1.2774,
+        "elapsed_ms": 1.4541,
+        "clock_ms": 1.4541,
         "logs_dropped": 0,
         "logs": [
           {
@@ -80,8 +80,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.3191,
-        "clock_ms": 1.319,
+        "elapsed_ms": 1.1147,
+        "clock_ms": 1.1147,
         "logs_dropped": 0,
         "logs": [
           {
@@ -277,8 +277,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 2.5833,
-        "clock_ms": 2.5832,
+        "elapsed_ms": 2.7125,
+        "clock_ms": 2.7124,
         "logs_dropped": 0,
         "logs": [
           {
@@ -299,7 +299,7 @@
           "cpu_shadow_capacity_bytes": 0,
           "window_created": false,
           "input_events_dropped": 0,
-          "last_error": "Cannot load C:\\Users\\verom\\AppData\\Local\\Temp\\zero-win-tests-8m0mt71p\\Unicode path 日本語 🚀\\libGLESv2.dll (Win32 error 126); no graphics fallback",
+          "last_error": "Cannot load C:\\Users\\verom\\AppData\\Local\\Temp\\zero-win-tests-dxzhv9s4\\Unicode path 日本語 🚀\\libGLESv2.dll (Win32 error 126); no graphics fallback",
           "devices": []
         },
         "process_exit": 0
@@ -330,8 +330,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 189.1016,
-        "clock_ms": 189.1015,
+        "elapsed_ms": 155.1338,
+        "clock_ms": 155.1337,
         "logs_dropped": 0,
         "logs": [
           {
@@ -390,8 +390,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 75.3555,
-        "clock_ms": 75.3555,
+        "elapsed_ms": 59.4982,
+        "clock_ms": 59.4981,
         "logs_dropped": 0,
         "logs": [
           {
@@ -450,8 +450,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 67.0007,
-        "clock_ms": 67.0006,
+        "elapsed_ms": 59.314,
+        "clock_ms": 59.3139,
         "logs_dropped": 0,
         "logs": [
           {
@@ -510,8 +510,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 71.4521,
-        "clock_ms": 71.4521,
+        "elapsed_ms": 50.9734,
+        "clock_ms": 50.9734,
         "logs_dropped": 0,
         "logs": [],
         "graphics": {
@@ -551,7 +551,7 @@
     "graphics_compiled": true,
     "platform": "windows-x64"
   },
-  "executable_sha256": "b47909b41da77e07a7d2e4abb165f011f4516723baf668bd69538571c253fed0",
+  "executable_sha256": "2886edbee45c89a4286b22da937d6900e28c66b343cd9ca51cd5504f73674528",
   "interactive_requested": true,
   "manual_input": "not automated; physically test focus, Escape release, keyboard and raw mouse with the demo"
 }

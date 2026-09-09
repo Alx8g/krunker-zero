@@ -5,9 +5,9 @@
   "engine_version": "13.6.233.17",
   "native_cli": "linked and executed, fresh process per case",
   "game_bundle_executed": false,
-  "elapsed_seconds": 2.037,
-  "passed": 61,
-  "total": 61,
+  "elapsed_seconds": 1.867,
+  "passed": 67,
+  "total": 67,
   "tests": [
     {
       "name": "bare_ecmascript",
@@ -35,7 +35,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.5008,
+        "elapsed_ms": 0.3875,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -67,7 +67,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.5627,
+        "elapsed_ms": 0.4496,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -88,9 +88,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught ReferenceError: document is not defined",
-        "stack": "ReferenceError: document is not defined\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-h31d9hl2\\000-missing_document.js:1:1",
+        "stack": "ReferenceError: document is not defined\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-1uhik_4s\\000-missing_document.js:1:1",
         "missing_global": "document",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-h31d9hl2\\000-missing_document.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-1uhik_4s\\000-missing_document.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -99,7 +99,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.5605,
+        "elapsed_ms": 0.4749,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -120,9 +120,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught ReferenceError: window is not defined",
-        "stack": "ReferenceError: window is not defined\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-00_0xfsx\\000-missing_window.js:1:1",
+        "stack": "ReferenceError: window is not defined\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-dzu3ruou\\000-missing_window.js:1:1",
         "missing_global": "window",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-00_0xfsx\\000-missing_window.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-dzu3ruou\\000-missing_window.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -131,7 +131,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.607,
+        "elapsed_ms": 0.3924,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -163,7 +163,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.8797,
+        "elapsed_ms": 1.0273,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -200,7 +200,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9494,
+        "elapsed_ms": 0.9732,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -241,7 +241,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.8559,
+        "elapsed_ms": 0.9986,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -267,9 +267,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: Cannot read properties of undefined (reading 'createElement')",
-        "stack": "TypeError: Cannot read properties of undefined (reading 'createElement')\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-wxaklgrk\\000-nested_property_not_invented.js:1:17",
+        "stack": "TypeError: Cannot read properties of undefined (reading 'createElement')\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-aapnmx8p\\000-nested_property_not_invented.js:1:17",
         "missing_global": "",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-wxaklgrk\\000-nested_property_not_invented.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-aapnmx8p\\000-nested_property_not_invented.js",
         "line": 1,
         "column": 17,
         "callbacks": 0,
@@ -278,7 +278,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0131,
+        "elapsed_ms": 1.1231,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -310,7 +310,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9538,
+        "elapsed_ms": 1.0493,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -338,7 +338,7 @@
         "message": "Uncaught SyntaxError: Unexpected token '='",
         "stack": "SyntaxError: Unexpected token '='",
         "missing_global": "",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-skelr3lo\\000-syntax_error.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-cjnk6q_k\\000-syntax_error.js",
         "line": 1,
         "column": 7,
         "callbacks": 0,
@@ -347,7 +347,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0841,
+        "elapsed_ms": 0.9702,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -368,9 +368,9 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught Error: sentinel",
-        "stack": "Error: sentinel\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-i0ddwoj6\\000-synchronous_throw.js:1:7",
+        "stack": "Error: sentinel\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-2me57pcv\\000-synchronous_throw.js:1:7",
         "missing_global": "",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-i0ddwoj6\\000-synchronous_throw.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-2me57pcv\\000-synchronous_throw.js",
         "line": 1,
         "column": 1,
         "callbacks": 0,
@@ -379,7 +379,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.2047,
+        "elapsed_ms": 1.0959,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -411,7 +411,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0547,
+        "elapsed_ms": 1.0078,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -448,7 +448,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0618,
+        "elapsed_ms": 0.9549,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -485,7 +485,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.23,
+        "elapsed_ms": 1.1508,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -530,7 +530,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.1056,
+        "elapsed_ms": 1.0401,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -575,7 +575,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9831,
+        "elapsed_ms": 1.0248,
         "clock_ms": 10,
         "logs_dropped": 0,
         "logs": [
@@ -620,7 +620,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0884,
+        "elapsed_ms": 1.1682,
         "clock_ms": 2,
         "logs_dropped": 0,
         "logs": [
@@ -657,7 +657,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0471,
+        "elapsed_ms": 1.1537,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -694,7 +694,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.8976,
+        "elapsed_ms": 0.9331,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -731,7 +731,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0657,
+        "elapsed_ms": 1.1206,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -768,7 +768,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0747,
+        "elapsed_ms": 1.0928,
         "clock_ms": 15,
         "logs_dropped": 0,
         "logs": [
@@ -813,7 +813,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0426,
+        "elapsed_ms": 1.0698,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -850,7 +850,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 2.0277,
+        "elapsed_ms": 0.989,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -895,7 +895,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.989,
+        "elapsed_ms": 0.9693,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -936,7 +936,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0538,
+        "elapsed_ms": 0.9734,
         "clock_ms": 33.3333333333,
         "logs_dropped": 0,
         "logs": [
@@ -973,7 +973,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.1731,
+        "elapsed_ms": 1.0218,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -1010,7 +1010,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.925,
+        "elapsed_ms": 0.9619,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -1036,9 +1036,9 @@
         "exit_code": 2,
         "phase": "timer",
         "message": "Uncaught Error: timer failed",
-        "stack": "Error: timer failed\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-67v1bwzb\\000-timer_throw_visible.js:1:23\n    at zero:core:30:40",
+        "stack": "Error: timer failed\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-vqzglbey\\000-timer_throw_visible.js:1:23\n    at zero:core:151:40",
         "missing_global": "",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-67v1bwzb\\000-timer_throw_visible.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-vqzglbey\\000-timer_throw_visible.js",
         "line": 1,
         "column": 17,
         "callbacks": 1,
@@ -1047,7 +1047,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0958,
+        "elapsed_ms": 1.3243,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1068,9 +1068,9 @@
         "exit_code": 2,
         "phase": "animation-frame",
         "message": "Uncaught Error: frame failed",
-        "stack": "Error: frame failed\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-63vrq934\\000-raf_throw_visible.js:1:34",
+        "stack": "Error: frame failed\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-7_jbq6t9\\000-raf_throw_visible.js:1:34",
         "missing_global": "",
-        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-63vrq934\\000-raf_throw_visible.js",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-7_jbq6t9\\000-raf_throw_visible.js",
         "line": 1,
         "column": 28,
         "callbacks": 1,
@@ -1079,7 +1079,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0529,
+        "elapsed_ms": 0.9744,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": []
@@ -1111,7 +1111,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9428,
+        "elapsed_ms": 0.9724,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1143,7 +1143,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9927,
+        "elapsed_ms": 1.0361,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1180,7 +1180,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9835,
+        "elapsed_ms": 0.9674,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1217,7 +1217,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0405,
+        "elapsed_ms": 1.0179,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1238,7 +1238,7 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: setTimeout: only function callbacks are implemented",
-        "stack": "TypeError: setTimeout: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:29:5\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-06301hs9\\000-reject_string_timer.js:1:1",
+        "stack": "TypeError: setTimeout: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:150:5\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-49u58zt6\\000-reject_string_timer.js:1:1",
         "missing_global": "",
         "source": "zero:core",
         "line": 12,
@@ -1249,7 +1249,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0558,
+        "elapsed_ms": 1.1132,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1270,7 +1270,7 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught TypeError: requestAnimationFrame: only function callbacks are implemented",
-        "stack": "TypeError: requestAnimationFrame: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:39:5\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-20npl3pc\\000-reject_nonfunction_raf.js:1:1",
+        "stack": "TypeError: requestAnimationFrame: only function callbacks are implemented\n    at functionOnly (zero:core:12:13)\n    at zero:core:160:5\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-ky3uwi8e\\000-reject_nonfunction_raf.js:1:1",
         "missing_global": "",
         "source": "zero:core",
         "line": 12,
@@ -1281,7 +1281,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0812,
+        "elapsed_ms": 1.0193,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1302,10 +1302,10 @@
         "exit_code": 2,
         "phase": "script",
         "message": "Uncaught RangeError: pending task limit",
-        "stack": "RangeError: pending task limit\n    at zero:core:30:17\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-fg626sn6\\000-pending_cap.js:1:22",
+        "stack": "RangeError: pending task limit\n    at zero:core:151:17\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-fo7nc1ck\\000-pending_cap.js:1:22",
         "missing_global": "",
         "source": "zero:core",
-        "line": 30,
+        "line": 151,
         "column": 17,
         "callbacks": 0,
         "microtask_checkpoints": 0,
@@ -1313,7 +1313,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 1.1464,
+        "elapsed_ms": 1.0925,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1345,7 +1345,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 1.0077,
+        "elapsed_ms": 1.1082,
         "clock_ms": 4,
         "logs_dropped": 0,
         "logs": []
@@ -1377,8 +1377,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 54.6221,
-        "clock_ms": 54.6221,
+        "elapsed_ms": 55.7265,
+        "clock_ms": 55.7265,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1409,8 +1409,8 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 52.7745,
-        "clock_ms": 52.7744,
+        "elapsed_ms": 42.6035,
+        "clock_ms": 42.6035,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1441,8 +1441,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 65.8957,
-        "clock_ms": 65.8957,
+        "elapsed_ms": 46.4132,
+        "clock_ms": 46.4131,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1473,8 +1473,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 6.6806,
-        "clock_ms": 6.6806,
+        "elapsed_ms": 11.0613,
+        "clock_ms": 11.0613,
         "logs_dropped": 0,
         "logs": [
           {
@@ -1606,7 +1606,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9195,
+        "elapsed_ms": 0.9634,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1643,7 +1643,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9011,
+        "elapsed_ms": 1.0079,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1680,7 +1680,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.5282,
+        "elapsed_ms": 1.2336,
         "clock_ms": 0,
         "logs_dropped": 8,
         "logs": [
@@ -3736,6 +3736,223 @@
       }
     },
     {
+      "name": "query_parse_duplicates",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.5895,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "1,2 a b  a=b 5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_forgiving_utf8",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.6445,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "x=%EF%BF%BD&y=%EF%BF%BD&z=%EF%BF%BD%28%EF%BF%BD"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_mutation_iteration",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.4081,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "a=5&b=4 {\"a\":\"5\",\"b\":\"4\"}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_live_iteration",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.3648,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "b=2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_constructor_errors",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "core",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "completed",
+        "exit_code": 0,
+        "phase": "",
+        "message": "",
+        "stack": "",
+        "missing_global": "",
+        "source": "",
+        "line": 0,
+        "column": 0,
+        "callbacks": 0,
+        "microtask_checkpoints": 1,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.7456,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": [
+          {
+            "level": "log",
+            "text": "3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_bare_absent",
+      "passed": true,
+      "errors": [],
+      "report": {
+        "schema": 1,
+        "engine": "V8",
+        "engine_version": "13.6.233.17",
+        "profile": "bare",
+        "mode": "headless",
+        "virtual_time": true,
+        "status": "missing_global",
+        "exit_code": 2,
+        "phase": "script",
+        "message": "Uncaught ReferenceError: URLSearchParams is not defined",
+        "stack": "ReferenceError: URLSearchParams is not defined\n    at C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-kpgjybdd\\000-query_bare_absent.js:1:1",
+        "missing_global": "URLSearchParams",
+        "source": "C:\\Users\\verom\\AppData\\Local\\Temp\\zero-test-kpgjybdd\\000-query_bare_absent.js",
+        "line": 1,
+        "column": 1,
+        "callbacks": 0,
+        "microtask_checkpoints": 0,
+        "engine_tasks": 0,
+        "pending_promises": 0,
+        "promise_observation_overflow": false,
+        "pending_tasks": 0,
+        "elapsed_ms": 1.4026,
+        "clock_ms": 0,
+        "logs_dropped": 0,
+        "logs": []
+      }
+    },
+    {
       "name": "typed_arrays_and_dataview",
       "passed": true,
       "errors": [],
@@ -3761,7 +3978,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.9849,
+        "elapsed_ms": 1.0068,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3798,7 +4015,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.603,
+        "elapsed_ms": 1.4469,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3835,7 +4052,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.8917,
+        "elapsed_ms": 1.2124,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3876,7 +4093,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.0039,
+        "elapsed_ms": 1.086,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3913,7 +4130,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 7.6231,
+        "elapsed_ms": 6.4178,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3950,7 +4167,7 @@
         "pending_promises": 65536,
         "promise_observation_overflow": true,
         "pending_tasks": 0,
-        "elapsed_ms": 13.9794,
+        "elapsed_ms": 12.477,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -3982,7 +4199,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.1367,
+        "elapsed_ms": 1.1406,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -4019,7 +4236,7 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 51.6732,
+        "elapsed_ms": 59.9391,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -4051,7 +4268,7 @@
         "pending_promises": 3,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 70.3206,
+        "elapsed_ms": 55.06,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -4083,7 +4300,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 19.1886,
+        "elapsed_ms": 26.5435,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -4120,7 +4337,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 22.2288,
+        "elapsed_ms": 32.765,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -4157,7 +4374,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 7.3697,
+        "elapsed_ms": 2.9495,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -4194,7 +4411,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 7.0973,
+        "elapsed_ms": 13.6703,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -4226,7 +4443,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 10.556,
+        "elapsed_ms": 5.1694,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -4242,5 +4459,5 @@
       }
     }
   ],
-  "executable_sha256": "b47909b41da77e07a7d2e4abb165f011f4516723baf668bd69538571c253fed0"
+  "executable_sha256": "2886edbee45c89a4286b22da937d6900e28c66b343cd9ca51cd5504f73674528"
 }

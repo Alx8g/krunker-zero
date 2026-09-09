@@ -97,7 +97,7 @@ test_sdk_receipt_verifies_files (test_windows_support.WindowsSupportTests.test_s
 test_windows_window_fixture_no_unsupported_uniform_api (test_windows_support.WindowsSupportTests.test_windows_window_fixture_no_unsupported_uniform_api) ... ok
 
 ----------------------------------------------------------------------
-Ran 97 tests in 0.384s
+Ran 97 tests in 0.286s
 
 OK
 PASS: bare_ecmascript
@@ -147,6 +147,12 @@ PASS: invalid_timeout
 PASS: json_escaping
 PASS: unicode_report
 PASS: bounded_logs
+PASS: query_parse_duplicates
+PASS: query_forgiving_utf8
+PASS: query_mutation_iteration
+PASS: query_live_iteration
+PASS: query_constructor_errors
+PASS: query_bare_absent
 PASS: typed_arrays_and_dataview
 PASS: wasm_sync
 PASS: async_await_checkpoint
@@ -162,4 +168,4 @@ PASS: wasm_async_rejection_handled
 PASS: wasm_async_rejection_unhandled
 PASS: wasm_and_timer_both_drained
 
-61/61 V8 integration cases passed.
+67/67 V8 integration cases passed.

@@ -4,7 +4,7 @@
   "width": 128,
   "height": 128,
   "fixture_sha256": "449da993c2d2619b3ca2b0c08256b299b50ae9d1386608db26b5042c28a13c9a",
-  "executable_sha256": "b47909b41da77e07a7d2e4abb165f011f4516723baf668bd69538571c253fed0",
+  "executable_sha256": "2886edbee45c89a4286b22da937d6900e28c66b343cd9ca51cd5504f73674528",
   "rgb_topdown_sha256": "e1b9f5c2821e87dca94b1b22d1fe2406ef9c52bc3381e03c9c494b58e26a4370",
   "png_sha256": "b3272b9573fdb9674d7c2e58c711138eee4a9e1832dbc0a972fcb7a90e6b26da",
   "native_report": {
@@ -29,8 +29,8 @@
     "pending_promises": 0,
     "promise_observation_overflow": false,
     "pending_tasks": 0,
-    "elapsed_ms": 55.8197,
-    "clock_ms": 55.8197,
+    "elapsed_ms": 56.4853,
+    "clock_ms": 56.4852,
     "logs_dropped": 0,
     "logs": [
       {
