@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "engine": "V8",
+  "engine_version": "12.4.254.21-node.26",
+  "profile": "bare",
+  "mode": "headless",
+  "virtual_time": false,
+  "status": "missing_global",
+  "exit_code": 2,
+  "phase": "script",
+  "message": "Uncaught ReferenceError: document is not defined",
+  "stack": "ReferenceError: document is not defined",
+  "missing_global": "document",
+  "source": "needs-dom.js",
+  "line": 2,
+  "column": 1,
+  "callbacks": 0,
+  "microtask_checkpoints": 0,
+  "pending_tasks": 0,
+  "elapsed_ms": 0.356777,
+  "clock_ms": 0.356747,
+  "logs_dropped": 0,
+  "logs": [],
+  "execution_environment": "development-only Node/V8 adapter, NOT standalone",
+  "inputs": [
+    {
+      "name": "needs-dom.js",
+      "bytes": 79,
+      "sha256": "2480db5b7a7d0439636feb71582cd4f5c1d9390c22a01df93fba0872bf994f25"
+    }
+  ],
+  "coverage_note": "This reports one executed path, not all API usage. Completed does not imply a playable or compatible game."
+}

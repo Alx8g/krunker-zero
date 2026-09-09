@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "engine": "V8",
+  "engine_version": "12.4.254.21-node.26",
+  "profile": "core",
+  "mode": "headless",
+  "virtual_time": true,
+  "status": "completed",
+  "exit_code": 0,
+  "phase": "",
+  "message": "",
+  "stack": "",
+  "missing_global": "",
+  "source": "",
+  "line": 0,
+  "column": 0,
+  "callbacks": 2,
+  "microtask_checkpoints": 3,
+  "pending_tasks": 0,
+  "elapsed_ms": 0.583933,
+  "clock_ms": 16.6666666667,
+  "logs_dropped": 0,
+  "logs": [
+    {
+      "level": "log",
+      "text": "boot"
+    },
+    {
+      "level": "log",
+      "text": "microtask"
+    },
+    {
+      "level": "log",
+      "text": "timer 5"
+    },
+    {
+      "level": "log",
+      "text": "frame 16.666666666666668"
+    }
+  ],
+  "execution_environment": "development-only Node/V8 adapter, NOT standalone",
+  "inputs": [
+    {
+      "name": "clock.js",
+      "bytes": 260,
+      "sha256": "42336f665bd6b9bc72ef04adf91e455c64c89f9b16115060f58bb48febb846b8"
+    }
+  ],
+  "coverage_note": "This reports one executed path, not all API usage. Completed does not imply a playable or compatible game."
+}

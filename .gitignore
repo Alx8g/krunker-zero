@@ -1,0 +1,9 @@
+/build*/
+/.cache/
+/input/
+/vendor/
+*.node
+*.o
+__pycache__/
+*.pyc
+/reports/probe-*.json

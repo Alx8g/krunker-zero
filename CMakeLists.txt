@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.20)
+project(krunker_zero VERSION 0.1.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+include(CTest)
+find_package(Threads REQUIRED)
+add_library(zero_scheduler native/task_queue.cc)
+target_include_directories(zero_scheduler PUBLIC native)
+if(BUILD_TESTING)
+  add_executable(zero_scheduler_tests tests/task_queue_test.cc)
+  target_link_libraries(zero_scheduler_tests PRIVATE zero_scheduler)
+  add_test(NAME native_scheduler COMMAND zero_scheduler_tests)
+endif()
+
+# Production target: link a separately built V8 engine, NOT libnode/Chromium.
+option(ZERO_BUILD_V8_HOST "Build standalone browserless V8 executable" OFF)
+set(ZERO_V8_INCLUDE_DIR "" CACHE PATH "V8 public include directory")
+set(ZERO_V8_LIBRARY "" CACHE FILEPATH "Matching static libv8_monolith.a")
+set(ZERO_V8_EXTRA_LIBRARIES "" CACHE STRING "Additional matching V8 archives if required by that build")
+set(ZERO_V8_ICU_DATA "" CACHE FILEPATH "Matching icudtl.dat, when ICU uses external data")
+set(ZERO_V8_DEFINITIONS "" CACHE STRING "ABI defines matching the V8 build, semicolon-separated")
+if(ZERO_BUILD_V8_HOST)
+  if(NOT EXISTS "${ZERO_V8_INCLUDE_DIR}/v8.h" OR NOT EXISTS "${ZERO_V8_LIBRARY}")
+    message(FATAL_ERROR "Supply ZERO_V8_INCLUDE_DIR and ZERO_V8_LIBRARY from the SAME standalone V8 build. See docs/BUILD.md.")
+  endif()
+  find_package(Python3 COMPONENTS Interpreter REQUIRED)
+  add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generated/core_prelude.h"
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/embed.py"
+      "${CMAKE_CURRENT_SOURCE_DIR}/runtime/core.js"
+      "${CMAKE_CURRENT_BINARY_DIR}/generated/core_prelude.h"
+    DEPENDS runtime/core.js tools/embed.py VERBATIM)
+  add_executable(zero native/main.cc native/host.cc
+    "${CMAKE_CURRENT_BINARY_DIR}/generated/core_prelude.h")
+  target_include_directories(zero PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+  target_include_directories(zero SYSTEM PRIVATE "${ZERO_V8_INCLUDE_DIR}")
+  target_compile_definitions(zero PRIVATE ${ZERO_V8_DEFINITIONS})
+  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(zero PRIVATE -fno-rtti)
+  endif()
+  target_link_libraries(zero PRIVATE zero_scheduler "${ZERO_V8_LIBRARY}"
+    ${ZERO_V8_EXTRA_LIBRARIES} Threads::Threads ${CMAKE_DL_LIBS})
+  if(UNIX)
+    target_link_libraries(zero PRIVATE m)
+  endif()
+  if(ZERO_V8_ICU_DATA)
+    add_custom_command(TARGET zero POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      "${ZERO_V8_ICU_DATA}" "$<TARGET_FILE_DIR:zero>/icudtl.dat")
+  endif()
+  install(TARGETS zero RUNTIME DESTINATION bin)
+endif()

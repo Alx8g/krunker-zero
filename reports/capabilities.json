@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "game_bundle": null,
+  "game_trace_collected": false,
+  "note": "Optional implemented features are fixture-proven only, not a measured minimum for Krunker.",
+  "capabilities": [
+    {"name":"ECMAScript execution","profile":"bare","status":"native-V8-adapter-tested","evidence":"tests in reports/test-results.json","game_required":"unknown"},
+    {"name":"console.log/info/warn/error","profile":"core","status":"bounded-capture-subset","evidence":"console and escaping fixtures","game_required":"unknown"},
+    {"name":"performance.now","profile":"core","status":"monotonic-or-explicit-virtual-clock","evidence":"real_clock and timer fixtures","game_required":"unknown"},
+    {"name":"function timers and cancellation","profile":"core","status":"documented-subset","evidence":"timer fixtures","game_required":"unknown"},
+    {"name":"requestAnimationFrame","profile":"core","status":"headless-simulation-only","evidence":"raf fixtures; no GPU presentation","game_required":"unknown"},
+    {"name":"window/self","profile":"core","status":"aliases-only","evidence":"window_identity","game_required":"unknown"},
+    {"name":"DOM/layout/canvas","status":"absent","game_required":"unknown"},
+    {"name":"WebGL/GPU","status":"absent","game_required":"unknown"},
+    {"name":"native keyboard/mouse/pointer lock","status":"absent","game_required":"unknown"},
+    {"name":"HTTP/WebSocket/TLS/assets","status":"absent","game_required":"unknown"},
+    {"name":"audio and image decoding","status":"absent","game_required":"unknown"},
+    {"name":"storage/navigation/worker/module loading","status":"absent","game_required":"unknown"}
+  ]
+}

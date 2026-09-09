@@ -1,0 +1,29 @@
+# Project rules
+
+This is a new, independent implementation. Work only in this repository.
+
+Do not open, search, inspect, clone, read, copy, compare against, or import Wok,
+including its source, docs, history, generated files, or prior implementation
+notes. The user's exclusion applies even when it would make a task easier.
+Do not use personal-context or library searches to retrieve that implementation.
+Use original authorized game inputs, public platform specifications, engine
+interfaces, and new regression fixtures instead.
+
+No Chromium, Electron, CEF, WebView, DOM emulation library, or browser fallback in
+the shipping target. Standalone V8 is allowed; it is the JS engine, not a browser.
+Node is allowed only in explicitly marked development tests. Never turn that test
+adapter into the shipping client or call its process metrics native-host metrics.
+
+Default to absent capabilities. Add APIs only against an observed operation or a
+clearly labeled optional test fixture. Record evidence in the capability ledger.
+Preserve feature-detection behavior. Never advance by returning fake success,
+fake graphics handles, stub audio completion, or unconditional WebGL success.
+
+Keep original game bytes unchanged and out of Git. Do not bypass authentication,
+anti-cheat, integrity checks, or service restrictions. A blocker there is reported,
+not worked around. Do not expose arbitrary host filesystem or process access.
+
+Always distinguish compile-only checks, development-adapter execution, standalone
+execution, actual game execution, and measured performance. Test counts are not
+compatibility percentages. Future graphics must preserve WebGL's relevant
+validation and object/typed-array lifetime rules.
