@@ -9,3 +9,6 @@ __pycache__/
 /reports/probe-*.json
 
 /deps/
+
+/.local/
+/.venv/

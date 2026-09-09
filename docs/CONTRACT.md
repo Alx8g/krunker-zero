@@ -60,6 +60,19 @@ The locked standalone build supports tested synchronous and asynchronous Wasm,
 but omits Intl. No compatibility with untested engines is implied. There is no module graph/ES module host implementation. Dynamic
 loading/imports and worker creation are not claimed to work.
 
+## Graphics profile (compile-time and runtime opt-in)
+
+`ZERO_BUILD_GRAPHICS=ON` plus `--profile graphics` enables the experimental native
+EGL pbuffer surface and a real, small GL-shaped API. See [GRAPHICS.md](GRAPHICS.md)
+for exact supported calls, caps, error behavior and deliberate omissions. This
+profile still has no document, window presentation, input, audio or networking.
+`bare` and `core` do not acquire these APIs merely because graphics is compiled.
+
+Rendering is independent-fixture-tested, not current-game-tested. The native
+renderer may itself be software (the observed device is llvmpipe). Presentation
+counts remain zero. No complete WebGL, secure-shader-sandbox or hardware-latency
+claim is made. Native driver calls cannot be preempted by the JS watchdog.
+
 ## Evidence rules
 
 A fixture test verifies only that fixture's contract. An observed real-game trace

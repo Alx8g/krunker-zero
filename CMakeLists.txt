@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(krunker_zero VERSION 0.2.0 LANGUAGES CXX)
+project(krunker_zero VERSION 0.3.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -20,6 +20,7 @@ set(ZERO_V8_LIBRARY "" CACHE FILEPATH "Matching static libv8_monolith.a")
 set(ZERO_V8_EXTRA_LIBRARIES "" CACHE STRING "Additional matching V8 archives if required by that build")
 set(ZERO_V8_ICU_DATA "" CACHE FILEPATH "Matching icudtl.dat, when ICU uses external data")
 set(ZERO_V8_DEFINITIONS "" CACHE STRING "ABI defines matching the V8 build, semicolon-separated")
+option(ZERO_BUILD_GRAPHICS "Build experimental EGL graphics (Linux only, opt-in)" OFF)
 if(ZERO_BUILD_V8_HOST)
   if(NOT EXISTS "${ZERO_V8_INCLUDE_DIR}/v8.h" OR NOT EXISTS "${ZERO_V8_LIBRARY}")
     message(FATAL_ERROR "Supply ZERO_V8_INCLUDE_DIR and ZERO_V8_LIBRARY from the SAME standalone V8 build. See docs/BUILD.md.")
@@ -32,6 +33,18 @@ if(ZERO_BUILD_V8_HOST)
     DEPENDS runtime/core.js tools/embed.py VERBATIM)
   add_executable(zero native/main.cc native/host.cc
     "${CMAKE_CURRENT_BINARY_DIR}/generated/core_prelude.h")
+  if(ZERO_BUILD_GRAPHICS)
+    if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+      message(FATAL_ERROR "The experimental EGL backend is currently Linux only")
+    endif()
+    add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generated/graphics_prelude.h"
+      COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/embed.py"
+        "${CMAKE_CURRENT_SOURCE_DIR}/runtime/graphics.js"
+        "${CMAKE_CURRENT_BINARY_DIR}/generated/graphics_prelude.h" kGraphicsPrelude
+      DEPENDS runtime/graphics.js tools/embed.py VERBATIM)
+    target_sources(zero PRIVATE native/graphics.cc "${CMAKE_CURRENT_BINARY_DIR}/generated/graphics_prelude.h")
+    target_compile_definitions(zero PRIVATE ZERO_ENABLE_GRAPHICS)
+  endif()
   target_include_directories(zero PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
   target_include_directories(zero SYSTEM PRIVATE "${ZERO_V8_INCLUDE_DIR}")
   target_compile_definitions(zero PRIVATE ${ZERO_V8_DEFINITIONS})

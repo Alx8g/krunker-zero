@@ -67,3 +67,28 @@ Its lack of a V8 default-platform pump is explicitly reported as
 - Release: https://github.com/kitten3d/v8-builds/releases/tag/v13.6.233.17
 
 Archive integrity was checked; independent reproducible-build verification was not.
+
+## Optional experimental graphics build
+
+The V8 bootstrap does not enable graphics. After it has configured the standalone
+build, use:
+
+```sh
+cmake -S . -B build/standalone -DZERO_BUILD_GRAPHICS=ON
+cmake --build build/standalone -j2
+python3 tools/test_graphics.py
+python3 tools/test_graphics_failures.py
+python3 tools/render_probe.py
+python3 tools/audit_binary.py --graphics
+```
+
+This adds `native/graphics.cc` and the small graphics prelude. It dynamically uses
+a system `libEGL.so.1` plus that driver's libraries; no development EGL headers,
+browser, Node executable, or extra static graphics SDK was needed here. A driver
+supporting the surfaceless pbuffer/GLES path is required at runtime. EGL failures
+are explicit. Switch the option OFF to rebuild without graphics.
+
+The final new source was compiled with `-Wall -Wextra -Wpedantic` enabled. The
+minimal target is separately built and audited in `build/minimal`; graphics is
+absent there. The optional local-browser acquisition helper's Python dependency
+is isolated in `requirements-capture.txt` and never enters the native build.

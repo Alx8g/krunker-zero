@@ -3,8 +3,9 @@
 This work continues only the new local `krunker-zero` Git repository, starting
 from its exported bundle. The excluded Wok implementation, docs, history and
 notes were never opened, searched, cloned, copied or used. No user repository
-outside this project was read or changed. The GitHub connector was used only for
-public dependency metadata/source configuration and artifact downloads.
+outside this project was read or changed. The GitHub connector was used for public dependency metadata/source configuration,
+artifact downloads, and metadata of a public historical game-source archive. No
+code from another client implementation was imported.
 
 ## Acquired engine
 
@@ -49,10 +50,28 @@ bodies because the container could not resolve/reach the site. The web reader's
 parsed public landing-page text was not substituted for original response bytes.
 No actual game bundle, assets, gameplay or server session were executed.
 
-The new input capture tools use normal HTTPS requests or imported authorized HAR
-response contents. They do not execute page scripts, bypass access checks, or
-copy another client's implementation. Their end-to-end validation used an
-explicitly synthetic HAR and an original synthetic missing-document fixture.
+The original HTTPS/HAR tools do not execute page scripts. The new, separate
+DevTools helper uses a fresh local browser to execute pages normally while saving
+permitted response bodies and compiled-source strings. It is not linked or used by
+the standalone runtime. Header/POST data and font files are excluded from captures.
+
+The browser helper connected to DevTools, but a real localhost fixture navigation
+was explicitly blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`. No policy was changed to
+work around it. Zero response or compiled-source bodies were captured. That test
+is recorded as blocked and returns nonzero, not passed.
+
+A public historical archive (`crvmblr/krunker-src`) was checked as an acquisition
+candidate. Its README identifies it as outdated and describes changing the game's
+wrapper. Its large game files were not acquired. It was not represented as a
+current pristine game bundle and no archive game code was executed or shipped.
+
+The new native graphics source and fixtures were written within this independent
+repository against public Khronos interfaces. System EGL/Mesa/LLVM supplies actual
+shader compilation and rasterization. Runtime-loaded native libraries are audited
+as well as static/ELF linkage. The triangle is independent fixture code, not game
+code or evidence of hardware acceleration. No native window or frame presentation
+was performed. Deliberately broken EGL libraries exist only in isolated fault
+injection tests, never as production rendering or success placeholders.
 
 The connected GitHub tools available in this session support reads/downloads,
 not repository creation, fork creation or pushes. No remote repository or fork

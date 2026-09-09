@@ -1,0 +1,2 @@
+# Optional development acquisition only. Not linked or loaded by the native client.
+websocket-client==1.9.0

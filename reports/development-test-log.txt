@@ -1,30 +1,3 @@
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /mnt/data/krunker-zero-work/build/native
-[ 50%] Built target zero_scheduler
-[100%] Built target zero_scheduler_tests
-Internal ctest changing into directory: /mnt/data/krunker-zero-work/build/native
-Test project /mnt/data/krunker-zero-work/build/native
-    Start 1: native_scheduler
-1/1 Test #1: native_scheduler .................   Passed    0.00 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   0.00 sec
-test_comments_not_scripts (test_tools.InspectorTests.test_comments_not_scripts) ... ok
-test_first_base_only (test_tools.InspectorTests.test_first_base_only) ... ok
-test_inline_hash_without_source (test_tools.InspectorTests.test_inline_hash_without_source) ... ok
-test_relative_src (test_tools.InspectorTests.test_relative_src) ... ok
-test_script_flags (test_tools.InspectorTests.test_script_flags) ... ok
-test_unterminated_marked (test_tools.InspectorTests.test_unterminated_marked) ... ok
-test_bytes_hashed_without_rewriting (test_tools.ProbeInputTests.test_bytes_hashed_without_rewriting) ... ok
-test_html_is_not_a_bundle (test_tools.ProbeInputTests.test_html_is_not_a_bundle) ... ok
-test_invalid_utf8_rejected (test_tools.ProbeInputTests.test_invalid_utf8_rejected) ... ok
-
-----------------------------------------------------------------------
-Ran 9 tests in 0.002s
-
-OK
 PASS: bare_ecmascript
 PASS: bare_globals_absent
 PASS: missing_document

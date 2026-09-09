@@ -1,75 +1,102 @@
-# Validation — standalone bring-up, 9 September 2026
+# Validation — native graphics bring-up, 9 September 2026
 
-## Current verified results
+## Verified results
 
 | Check | Result | Evidence |
 |---|---|---|
-| Standalone V8 CLI integration | **61/61 passed** | `standalone-tests.json`, `standalone-test-log.txt` |
-| Python acquisition/input tools | **40/40 passed** | `python-test-log.txt` |
-| Native scheduler | **12 checks passed**, CTest 1/1 | `scheduler-test-log.txt` |
-| Separate Node development adapter | **55/55 applicable cases passed** | `test-results.json`, `development-test-log.txt` |
-| Real V8 archive acquisition | ZIP + tarball SHA-256 verified | `acquisition.json`, dependency lock |
-| Fresh offline Git clone/rebuild | Passed; repeated standalone + tool tests | `rebuild-validation.json` |
-| Synthetic HAR -> immutable native probe | Passed; captured/executed body hashes equal | `synthetic-capture-probe.json` |
-| Dynamic dependency audit | Standard system libraries only | `binary-audit.json` |
+| Standalone V8 engine/timing/Wasm | **61/61 passed** | `standalone-tests.json`, `standalone-test-log.txt` |
+| Actual native EGL graphics | **50/50 passed** | `graphics-tests.json`, `graphics-test-log.txt` |
+| Broken-EGL fault injection | **2/2 passed** | `graphics-failure-tests.json` |
+| Python acquisition/input/pixel tools | **63/63 passed** | `python-test-log.txt` |
+| Native scheduler | **12 checks, CTest 1/1** | `scheduler-test-log.txt` |
+| Separate Node development adapter | **55/55 applicable cases** | `test-results.json`, `development-test-log.txt` |
+| Independent triangle's real framebuffer | **128x128 pixels verified** | `native-triangle.png`, `render-probe.json` |
+| Minimal build excludes graphics | **passed** | `optional-graphics-boundary.json`, `minimal-binary-audit.json` |
+| Enabled build's core profile loads no EGL | **passed** | `graphics-build-core-audit.json` |
+| Actual graphics runtime library observation | **passed** | `binary-audit.json` |
+| Real browser capture -> native round trip | **BLOCKED — NOT PASSED** | `capture-integration.json` |
 
-The standalone suite was run with Node's installation directory removed from
-PATH. It starts a fresh native process for every case, including V8 initialization
-and shutdown. It does not run the Node development adapter.
+These are independent contract fixtures, not game compatibility percentages or
+WebGL/browser conformance certification. The optional graphics subset is not a
+measured set of APIs required by Krunker. No actual game code has been executed.
 
-## Material change from the initial handoff
+## What changed
 
-The standalone executable is now genuinely linked and running V8 13.6.233.17.
-V8's matching generated ABI header is used, and a constructor compatibility
-helper supports both tested V8 header APIs. The initial 47-case adapter-only
-validation is preserved in `INITIAL-VALIDATION.md`; it is not current status.
+The host now optionally uses real EGL pbuffers and OpenGL ES shaders, programs,
+buffers, uniforms, array/indexed drawing and RGBA8 readback. Native handles are
+owned per context; JavaScript wrapper brands and cached intrinsics protect the
+implemented native boundary from forged objects and simple prototype tampering.
 
-The fixture suite covers absent globals, feature checks, script ordering,
-microtasks, timers/cancellation, headless frames, error/rejection reports,
-execution budgets, typed arrays, Unicode, diagnostic caps, and sync/async Wasm.
-These are custom regression cases, not browser/ECMAScript conformance certification.
+Tests exercise actual pixel values, nonzero typed-array view offsets, upload
+copying, native resource deletion, vertex/index bounds, stale uniforms, shader
+and link failures, context switching, resize clearing and explicit caps. A buffer
+cleanup defect was corrected: deletion now frees retained CPU shadow capacity,
+not just its logical size. A regression checks the native reported capacity is
+zero after repeated allocate/delete cycles. NUL-name and stale deleted-program
+queries were also fixed and tested.
 
-A new test exposed premature success for asynchronous WebAssembly: the old loop
-returned `completed` without executing the callback. The fixed standalone loop
-pumps V8 foreground tasks and observes actual Promise state via weak handles.
-The synthetic Wasm function now returns **42**. Compile errors, unresolved
-Promises, adopted pending Promises and observer capacity are tested. Incomplete
-work is explicitly reported rather than silently counted as complete.
+Missing library symbols and initialization failure are tested separately with
+deliberately broken test libraries. They fail consistently on repeated attempts
+instead of returning fabricated contexts or taking a partially initialized path.
+These tests are not used as evidence of real rendering.
 
-The Node adapter is not credited with Wasm support: its borrowed context rejects
-Wasm code generation, and it has no standalone V8 default-platform pump.
-Six engine-specific cases run only on standalone; the adapter report records
-that boundary. No embedder restriction was disabled to manufacture a pass.
+The PNG comes from the standalone fixture's readPixels output. The helper checks
+native draw/compile/read counters, validates every row and stores hashes of the
+fixture, executable, RGB bytes and PNG. No browser screenshot, image generator,
+pre-rendered reference image or replacement game was used.
 
-## Dependency acquisition and replay
+## Native driver and dependency boundary
 
-The GitHub artifact-download connection supplied a standalone SDK when direct
-container networking failed. Both archive digests match their published values.
-`tools/bootstrap_v8.py` accepts the accompanying ZIP or the pinned release tar.gz,
-checks both layers, rejects traversal/links/special files/duplicate entries, and
-verifies an existing SDK before reuse. The complete offline acquisition/build
-path was executed. The live release-download code path was not network-validated.
+Observed renderer: **llvmpipe (LLVM 19.1.7, 256 bits)**, reporting
+**OpenGL ES 3.2 Mesa 25.0.7-2**. This is real native software rasterization, not
+hardware GPU acceleration. The graphics report explicitly records **zero
+presented frames**. There is no native window in this implementation.
 
-Original-game acquisition still produced **zero response bodies**. No parsed web
-page or synthetic fixture was relabeled original Krunker code. Live script
-capture and HAR import are tooling only. HAR tests include omitted bodies,
-HTML challenge responses, disallowed origins, duplicate/conflicting data,
-credential-header omission, byte hashes and honest text-vs-base64 fidelity labels.
+The minimal/core observations have five system shared libraries and no graphics
+library. The graphics observation has 41 runtime-loaded shared libraries, including
+EGL, Mesa and LLVM. Neither path has an observed Node/browser library. Runtime
+mapping is recorded because a direct-link-only audit would omit dlopen-loaded
+graphics dependencies. This is one-fixture-path evidence, not a security or
+minimum-footprint proof. Driver/system libraries are not bundled by this project.
 
-## Not established
+## Actual acquisition status
 
-No original Krunker bundle or assets executed; no original-game dependency trace;
-no native graphics/window/input/audio/network backend; no server session or
-playability; no Windows/macOS validation; no performance improvement claim.
-Headless animation callbacks do not render pixels. Promise observations introduce
-diagnostic overhead and are not a finalized low-latency game-loop design.
+The separate acquisition helper connects to a fresh local Chromium DevTools
+endpoint. Its real localhost navigation fails with
+`net::ERR_BLOCKED_BY_ADMINISTRATOR`. The integration result is `blocked`, exits
+nonzero, and records **zero network bodies and zero compiled sources**. Browser
+administration policy was not changed or bypassed. A helper unit test is not a
+successful real-browser or real-game acquisition result.
 
-The acquired SDK disables **V8 sandbox and ICU/Intl**. This is a development
-bring-up dependency, not a hardened shipping configuration. A V8 context and
-watchdog are not an OS security boundary. Independent SDK source rebuild,
-production isolation/memory-limit validation, and a complete redistribution
-notice audit remain open.
+The optional collector inventories permitted GET bodies and compiled inline/eval
+source strings without patching game functions, hiding DevTools or capturing
+cookies/auth headers/POST data. Network/body/source fidelity is explicitly
+labelled; compiled snapshots are not blindly replayed as globals. It does not
+capture workers, out-of-process iframes, fonts or every resource a full game needs.
 
-No Wok source, documentation or history was inspected. No remote GitHub repository
-or fork was created or modified; the deliverables are the local source and Git
-bundle, plus the acquired offline SDK.
+The current original game bootstrap remains unavailable here. Parsed web-reader
+homepage text and an outdated wrapper-modified archive were not substituted for
+pristine executable game input. No current-game dependency trace exists.
+
+## Still missing / not validated
+
+Actual Krunker execution; native window and presentation; mouse/keyboard/pointer
+lock; textures and image decoding; full relevant WebGL/GLSL validation; HUD/DOM or
+its minimal measured replacement; audio; guest HTTP/WebSocket/TLS; asset-loading
+lifecycle; real supported server sessions/reconnect; menus/settings/gameplay.
+There is no complete-client, FPS, latency, size-reduction or speedup claim.
+
+The SDK is unchanged: V8 **13.6.233.17**, with **V8 sandbox and ICU/Intl disabled**.
+This is a bring-up configuration, not a secure shipping build. V8 contexts and
+buffer checks are not OS isolation, diagnostic caps are not total memory limits,
+and a JS watchdog cannot preempt a stalled driver call. Independent V8 rebuilding,
+production hardening, complete redistribution notices, and Windows/macOS and
+hardware-driver validation remain open.
+
+No Wok code, documentation, history or implementation notes were inspected.
+No remote repository, fork or deployment was created. First-party work remains
+in the independent local Git history. `V0.2-VALIDATION.md` and
+`INITIAL-VALIDATION.md` preserve earlier milestone descriptions.
+
+The final offline reconstruction result is recorded in `rebuild-validation.json`;
+its tested source commit identifies exactly which implementation was rebuilt.

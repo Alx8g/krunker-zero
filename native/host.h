@@ -27,6 +27,7 @@ struct Report {
   std::size_t pending_tasks = 0, logs_dropped = 0;
   double elapsed_ms = 0, clock_ms = 0;
   std::vector<Log> logs;
+  std::string graphics_json;
   std::string Json(const Options& options) const;
 };
 // The caller owns platform/allocator/isolate lifecycle. Guest code runs in a

@@ -1,6 +1,10 @@
 #include "host.h"
 #include "task_queue.h"
 #include "core_prelude.h"
+#ifdef ZERO_ENABLE_GRAPHICS
+#include "graphics.h"
+#include "graphics_prelude.h"
+#endif
 #include <algorithm>
 #include <atomic>
 #include <chrono>
@@ -290,13 +294,17 @@ std::string Report::Json(const Options& options) const {
     if (i) out << ',';
     out << "{\"level\":" << JsonString(logs[i].level) << ",\"text\":" << JsonString(logs[i].text) << '}';
   }
-  return out.str() + "]}";
+  return out.str() + "]" + (graphics_json.empty() ? "" : ",\"graphics\":" + graphics_json) + "}";
 }
 
 Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& options,
            const std::function<bool()>& pump_engine) {
   Report report;
-  if ((options.profile != "bare" && options.profile != "core") ||
+  if ((options.profile != "bare" && options.profile != "core"
+#ifdef ZERO_ENABLE_GRAPHICS
+      && options.profile != "graphics"
+#endif
+     ) ||
       !options.timeout_ms || options.timeout_ms > 60000 || !options.max_tasks ||
       !options.max_pending || options.max_pending > 100000 ||
       !std::isfinite(options.frame_hz) || options.frame_hz < 1 || options.frame_hz > 1000) {
@@ -318,11 +326,22 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
   isolate->SetPromiseHook(ObservePromise);
   Watchdog watchdog(isolate, options.timeout_ms);
   bool ok = true;
-  if (options.profile == "core") {
+#ifdef ZERO_ENABLE_GRAPHICS
+  std::unique_ptr<Graphics> graphics;
+#endif
+  if (options.profile == "core" || options.profile == "graphics") {
     Bind(state, context);
     ok = Evaluate(state, context,
         {"zero:core", reinterpret_cast<const char*>(kCorePrelude)}, "bootstrap");
   }
+#ifdef ZERO_ENABLE_GRAPHICS
+  if (ok && options.profile == "graphics") {
+    graphics = std::make_unique<Graphics>(isolate);
+    graphics->Bind(context);
+    ok = Evaluate(state, context,
+        {"zero:graphics", reinterpret_cast<const char*>(kGraphicsPrelude)}, "graphics-bootstrap");
+  }
+#endif
   if (ok) {
     for (const auto& script : scripts) {
       if (script.source.size() > 16 * 1024 * 1024) {
@@ -441,6 +460,9 @@ Report Run(Isolate* isolate, const std::vector<Script>& scripts, const Options& 
   isolate->SetPromiseRejectCallback(nullptr);
   isolate->SetPromiseHook(nullptr);
   active_state = nullptr;
+#ifdef ZERO_ENABLE_GRAPHICS
+  if (graphics) report.graphics_json = graphics->ReportJson();
+#endif
   report.pending_tasks = state.queue.Size();
   report.clock_ms = state.Now();
   report.elapsed_ms = std::chrono::duration<double, std::milli>(Clock::now() - state.start).count();

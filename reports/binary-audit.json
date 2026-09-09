@@ -1,29 +1,97 @@
 {
-  "schema": 1,
+  "schema": 2,
   "binary": "build/standalone/zero",
   "platform": "linux-x86_64",
-  "bytes": 41020592,
-  "sha256": "6186218827314882ce74fc9f574b308a679ce7df71c15884d29396b34c95459e",
+  "bytes": 41101584,
+  "sha256": "c9991bcd042800adac098664a0bf87cdbb4dfcfe6211b6527f77b0f16373d4f7",
   "engine_info": {
     "engine": "V8",
     "version": "13.6.233.17",
     "host": "standalone",
     "sandbox": false,
     "intl": false,
-    "pointer_compression": true
+    "pointer_compression": true,
+    "graphics_compiled": true
   },
-  "dynamic_dependencies": [
+  "direct_elf_dependencies": [
     "libstdc++.so.6",
     "libm.so.6",
     "libgcc_s.so.1",
     "libc.so.6",
     "ld-linux-x86-64.so.2"
   ],
-  "link_command": "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/zero.dir/link.d CMakeFiles/zero.dir/native/main.cc.o CMakeFiles/zero.dir/native/host.cc.o -o zero  libzero_scheduler.a /mnt/data/krunker-zero-work/deps/V8-13.6.233.17-ubuntu-latest-Release/lib/libv8_monolith.a -ldl -lm",
+  "observed_runtime_libraries": [
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+    "/usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1",
+    "/usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0",
+    "/usr/lib/x86_64-linux-gnu/libXau.so.6.0.0",
+    "/usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0",
+    "/usr/lib/x86_64-linux-gnu/libbsd.so.0.12.2",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6",
+    "/usr/lib/x86_64-linux-gnu/libdrm.so.2.124.0",
+    "/usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1.124.0",
+    "/usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.124.0",
+    "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.75",
+    "/usr/lib/x86_64-linux-gnu/libelf-0.192.so",
+    "/usr/lib/x86_64-linux-gnu/libexpat.so.1.10.2",
+    "/usr/lib/x86_64-linux-gnu/libffi.so.8.1.4",
+    "/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2.so",
+    "/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/usr/lib/x86_64-linux-gnu/liblzma.so.5.8.1",
+    "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0",
+    "/usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1",
+    "/usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+    "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.5",
+    "/usr/lib/x86_64-linux-gnu/libwayland-client.so.0.23.1",
+    "/usr/lib/x86_64-linux-gnu/libwayland-server.so.0.23.1",
+    "/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.1.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-present.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-randr.so.0.1.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-shm.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-sync.so.1.0.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0.0.0",
+    "/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0",
+    "/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.14",
+    "/usr/lib/x86_64-linux-gnu/libxshmfence.so.1.0.0",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1.3.1",
+    "/usr/lib/x86_64-linux-gnu/libz3.so.4",
+    "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7"
+  ],
+  "unexpected_browser_or_node_images": [],
+  "graphics_requested": true,
+  "graphics_libraries_observed": true,
+  "graphics": {
+    "backend": "egl-surfaceless-pbuffer",
+    "experimental_subset": true,
+    "presented_frames": 0,
+    "contexts": 1,
+    "draw_calls": 0,
+    "shader_compiles": 0,
+    "pixel_reads": 0,
+    "bytes_uploaded": 0,
+    "cpu_shadow_bytes": 0,
+    "cpu_shadow_capacity_bytes": 0,
+    "last_error": "",
+    "devices": [
+      {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "version": "OpenGL ES 3.2 Mesa 25.0.7-2",
+        "width": 8,
+        "height": 8
+      }
+    ]
+  },
+  "link_command": "/usr/bin/c++ -Wall -Wextra -Wpedantic -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/zero.dir/link.d CMakeFiles/zero.dir/native/main.cc.o CMakeFiles/zero.dir/native/host.cc.o CMakeFiles/zero.dir/native/graphics.cc.o -o zero  libzero_scheduler.a /mnt/data/krunker-zero-dev/deps/V8-13.6.233.17-ubuntu-latest-Release/lib/libv8_monolith.a -ldl -lm",
   "passed": true,
   "notes": [
-    "The ELF loader is a standard system dependency.",
-    "V8 is statically linked. No Node runtime or browser is linked by the recorded command.",
-    "This is a linkage audit, not a security audit, performance measurement, or cross-platform compatibility result."
+    "V8 is statically linked; graphics loads native EGL/driver libraries dynamically only when requested.",
+    "The graphics-enabled image list includes the complete observed native driver path, not just ldd output.",
+    "One fixture path only; no security, minimality, full-game compatibility or performance certification."
   ]
 }

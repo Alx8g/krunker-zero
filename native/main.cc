@@ -11,7 +11,7 @@ namespace {
 void Usage() {
   std::cout << "krunker-zero: browserless, headless JavaScript dependency probe\n"
     "Usage: zero [options] script.js [more scripts, in execution order]\n"
-    "  --profile bare|core  Default: bare (ECMAScript only)\n"
+    "  --profile bare|core|graphics  Default: bare; graphics requires opt-in build\n"
     "  --engine-info       Report compile-time engine features as JSON\n"
     "  --virtual-time      Advance a synthetic clock; NOT a performance benchmark\n"
     "  --timeout-ms N      Wall-clock budget, 1..60000 (default 2000)\n"
@@ -65,6 +65,12 @@ int main(int argc, char** argv) {
 #endif
                   << ",\"pointer_compression\":"
 #ifdef V8_COMPRESS_POINTERS
+                  << "true"
+#else
+                  << "false"
+#endif
+                  << ",\"graphics_compiled\":"
+#ifdef ZERO_ENABLE_GRAPHICS
                   << "true"
 #else
                   << "false"

@@ -1,0 +1,7 @@
+[ 20%] Built target zero_scheduler
+[ 30%] Generating generated/graphics_prelude.h
+[ 50%] Built target zero_scheduler_tests
+[ 70%] Building CXX object CMakeFiles/zero.dir/native/graphics.cc.o
+[ 70%] Building CXX object CMakeFiles/zero.dir/native/host.cc.o
+[ 80%] Linking CXX executable zero
+[100%] Built target zero

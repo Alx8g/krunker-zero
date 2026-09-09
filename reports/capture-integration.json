@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "scope": "Independent localhost HTTP fixture, NOT Krunker",
+  "devtools_connected": true,
+  "capture_to_native_passed": false,
+  "status": "blocked",
+  "capture_report": {
+    "schema": 1,
+    "page": "http://127.0.0.1:36927/",
+    "capture_transport": "local_browser_devtools",
+    "primary_document_received": false,
+    "network_bodies": [],
+    "compiled_sources": [],
+    "issues": [
+      {
+        "kind": "navigation_failed",
+        "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR"
+      }
+    ],
+    "ignored_response_count": 3,
+    "load_events": 1,
+    "bytes_saved": 0,
+    "runtime_execution_order_established": false,
+    "game_executed_by_zero": false,
+    "live_game_bootstrap_verified": false,
+    "limitations": [
+      "A capture is not a compatible runtime or proof of gameplay.",
+      "Compiled scripts include inline/eval/module sources: do not blindly execute all snapshots.",
+      "Workers and out-of-process iframe targets are not captured by this page-only collector.",
+      "Only explicit origins and selected GET entity types are saved; no font files are captured.",
+      "DevTools can affect game execution. No anti-debugging or integrity bypass is performed.",
+      "URLs and response bodies can contain sensitive content; keep input/ private and out of Git."
+    ]
+  },
+  "error": "Browser navigation blocked by administrator policy; policy was not changed."
+}

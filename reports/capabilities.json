@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "game_bundle": null,
   "game_trace_collected": false,
   "note": "Optional implemented features are fixture-proven only, not a measured minimum for Krunker.",
@@ -61,14 +61,21 @@
       "game_required": "unknown"
     },
     {
-      "name": "DOM/layout/canvas",
+      "name": "DOM/layout/HTMLCanvasElement",
       "status": "absent",
       "game_required": "unknown"
     },
     {
-      "name": "WebGL/GPU",
-      "status": "absent",
-      "game_required": "unknown"
+      "name": "OffscreenCanvas plus experimental EGL/GLES subset",
+      "status": "native-pixel-fixture-tested",
+      "game_required": "unknown",
+      "profile": "graphics (compile-time opt-in)",
+      "evidence": [
+        "reports/graphics-tests.json",
+        "reports/render-probe.json"
+      ],
+      "full_webgl": false,
+      "hardware_acceleration_verified": false
     },
     {
       "name": "native keyboard/mouse/pointer lock",
@@ -89,6 +96,18 @@
       "name": "storage/navigation/worker/module loading",
       "status": "absent",
       "game_required": "unknown"
+    },
+    {
+      "name": "native window and frame presentation",
+      "status": "absent",
+      "game_required": "unknown"
     }
-  ]
+  ],
+  "input_acquisition": {
+    "devtools_helper": "implemented-unit-tested",
+    "real_browser_round_trip": "blocked_by_administrator_navigation_policy",
+    "current_game_bodies": 0,
+    "current_game_sources": 0,
+    "evidence": "reports/capture-integration.json"
+  }
 }

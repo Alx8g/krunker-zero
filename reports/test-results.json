@@ -5,7 +5,7 @@
   "engine_version": "12.4.254.21-node.26",
   "native_cli": "compiled to object; standalone link not exercised",
   "game_bundle_executed": false,
-  "elapsed_seconds": 1.536,
+  "elapsed_seconds": 8.742,
   "passed": 55,
   "total": 55,
   "tests": [
@@ -35,7 +35,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.236648,
+        "elapsed_ms": 1.678356,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -67,7 +67,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.232081,
+        "elapsed_ms": 2.376235,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -99,7 +99,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.262927,
+        "elapsed_ms": 2.953602,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -131,7 +131,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.272091,
+        "elapsed_ms": 2.844417,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -163,7 +163,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.550502,
+        "elapsed_ms": 2.651356,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -200,7 +200,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.441447,
+        "elapsed_ms": 2.824412,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -241,7 +241,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.490261,
+        "elapsed_ms": 2.389746,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -278,7 +278,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.508408,
+        "elapsed_ms": 3.236494,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -310,7 +310,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.443711,
+        "elapsed_ms": 3.633327,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -347,7 +347,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.48338,
+        "elapsed_ms": 3.733533,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -379,7 +379,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.470671,
+        "elapsed_ms": 4.910167,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -411,7 +411,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.402409,
+        "elapsed_ms": 3.176586,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -448,7 +448,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.446675,
+        "elapsed_ms": 2.916624,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -485,7 +485,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.481057,
+        "elapsed_ms": 2.934381,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -530,7 +530,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.519264,
+        "elapsed_ms": 4.763694,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -575,7 +575,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.493906,
+        "elapsed_ms": 3.812661,
         "clock_ms": 10,
         "logs_dropped": 0,
         "logs": [
@@ -620,7 +620,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.497291,
+        "elapsed_ms": 3.02566,
         "clock_ms": 2,
         "logs_dropped": 0,
         "logs": [
@@ -657,7 +657,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.507517,
+        "elapsed_ms": 3.436544,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -694,7 +694,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.446245,
+        "elapsed_ms": 3.13303,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -731,7 +731,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.575029,
+        "elapsed_ms": 3.261218,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -768,7 +768,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.603582,
+        "elapsed_ms": 3.706832,
         "clock_ms": 15,
         "logs_dropped": 0,
         "logs": [
@@ -813,7 +813,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.578264,
+        "elapsed_ms": 3.510471,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -850,7 +850,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.558524,
+        "elapsed_ms": 4.723111,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -895,7 +895,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.516701,
+        "elapsed_ms": 5.661915,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -936,7 +936,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.506626,
+        "elapsed_ms": 2.641344,
         "clock_ms": 33.3333333333,
         "logs_dropped": 0,
         "logs": [
@@ -973,7 +973,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.609832,
+        "elapsed_ms": 3.230948,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -1010,7 +1010,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.488519,
+        "elapsed_ms": 2.874631,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": [
@@ -1047,7 +1047,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.691355,
+        "elapsed_ms": 7.725011,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1079,7 +1079,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.657264,
+        "elapsed_ms": 3.758051,
         "clock_ms": 16.6666666667,
         "logs_dropped": 0,
         "logs": []
@@ -1111,7 +1111,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.561849,
+        "elapsed_ms": 3.782088,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1143,7 +1143,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.484913,
+        "elapsed_ms": 3.923393,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1180,7 +1180,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.877776,
+        "elapsed_ms": 2.577738,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1217,7 +1217,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.570512,
+        "elapsed_ms": 4.115825,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1249,7 +1249,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.676322,
+        "elapsed_ms": 4.245991,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1281,7 +1281,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.558474,
+        "elapsed_ms": 3.318202,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1313,7 +1313,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 0.920321,
+        "elapsed_ms": 4.125234,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -1345,7 +1345,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 0.614899,
+        "elapsed_ms": 2.837888,
         "clock_ms": 4,
         "logs_dropped": 0,
         "logs": []
@@ -1377,8 +1377,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 40.48041,
-        "clock_ms": 40.48036,
+        "elapsed_ms": 41.911994,
+        "clock_ms": 41.911886,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1409,8 +1409,8 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 40.453739,
-        "clock_ms": 40.453709,
+        "elapsed_ms": 41.577213,
+        "clock_ms": 41.577091,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1441,8 +1441,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 1,
-        "elapsed_ms": 40.795822,
-        "clock_ms": 40.795772,
+        "elapsed_ms": 43.111445,
+        "clock_ms": 43.111334,
         "logs_dropped": 0,
         "logs": []
       }
@@ -1473,8 +1473,8 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 3.595033,
-        "clock_ms": 3.595003,
+        "elapsed_ms": 6.65097,
+        "clock_ms": 6.650909,
         "logs_dropped": 0,
         "logs": [
           {
@@ -1606,7 +1606,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.710453,
+        "elapsed_ms": 4.918808,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1643,7 +1643,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.514197,
+        "elapsed_ms": 3.724875,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -1680,7 +1680,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.642381,
+        "elapsed_ms": 2.956564,
         "clock_ms": 0,
         "logs_dropped": 8,
         "logs": [
@@ -3761,7 +3761,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.493936,
+        "elapsed_ms": 2.466078,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3798,7 +3798,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.472093,
+        "elapsed_ms": 2.750382,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3839,7 +3839,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.451342,
+        "elapsed_ms": 2.68907,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3876,7 +3876,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 8.438649,
+        "elapsed_ms": 30.870819,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": [
@@ -3913,7 +3913,7 @@
         "pending_promises": 65536,
         "promise_observation_overflow": true,
         "pending_tasks": 0,
-        "elapsed_ms": 18.985559,
+        "elapsed_ms": 122.305183,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -3945,7 +3945,7 @@
         "pending_promises": 0,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.568068,
+        "elapsed_ms": 2.876343,
         "clock_ms": 1,
         "logs_dropped": 0,
         "logs": [
@@ -3982,7 +3982,7 @@
         "pending_promises": 1,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 1.656113,
+        "elapsed_ms": 2.735283,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []
@@ -4014,7 +4014,7 @@
         "pending_promises": 3,
         "promise_observation_overflow": false,
         "pending_tasks": 0,
-        "elapsed_ms": 0.650603,
+        "elapsed_ms": 3.810998,
         "clock_ms": 0,
         "logs_dropped": 0,
         "logs": []

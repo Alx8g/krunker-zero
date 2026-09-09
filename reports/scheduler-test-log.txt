@@ -1,8 +1,8 @@
-Internal ctest changing into directory: /mnt/data/krunker-zero-work/build/standalone
-Test project /mnt/data/krunker-zero-work/build/standalone
+Internal ctest changing into directory: /mnt/data/krunker-zero-dev/build/standalone
+Test project /mnt/data/krunker-zero-dev/build/standalone
     Start 1: native_scheduler
-1/1 Test #1: native_scheduler .................   Passed    0.00 sec
+1/1 Test #1: native_scheduler .................   Passed    0.01 sec
 
 100% tests passed, 0 tests failed out of 1
 
-Total Test time (real) =   0.00 sec
+Total Test time (real) =   0.02 sec

@@ -33,7 +33,7 @@ def read_input(path: Path) -> tuple[bytes, dict]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('scripts', nargs='+', type=Path)
-    parser.add_argument('--profile', choices=['bare','core'], default='bare')
+    parser.add_argument('--profile', choices=['bare','core','graphics'], default='bare')
     parser.add_argument('--virtual-time', action='store_true')
     parser.add_argument('--timeout-ms', type=int, default=2000)
     parser.add_argument('--max-tasks', type=int, default=10000)

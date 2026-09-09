@@ -1,0 +1,24 @@
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Found Python3: /opt/pyvenv/bin/python3 (found version "3.13.5") found components: Interpreter
+-- Configuring done (9.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/krunker-zero-dev/build/minimal
+[ 12%] Building CXX object CMakeFiles/zero_scheduler.dir/native/task_queue.cc.o
+[ 25%] Linking CXX static library libzero_scheduler.a
+[ 25%] Built target zero_scheduler
+[ 37%] Generating generated/core_prelude.h
+[ 50%] Building CXX object CMakeFiles/zero_scheduler_tests.dir/tests/task_queue_test.cc.o
+[ 62%] Linking CXX executable zero_scheduler_tests
+[ 75%] Building CXX object CMakeFiles/zero.dir/native/main.cc.o
+[ 75%] Built target zero_scheduler_tests
+[ 87%] Building CXX object CMakeFiles/zero.dir/native/host.cc.o
+[100%] Linking CXX executable zero
+[100%] Built target zero

@@ -29,6 +29,29 @@ test_post_not_imported (test_acquisition.CaptureTests.test_post_not_imported) ..
 test_redirect_blocked (test_acquisition.CaptureTests.test_redirect_blocked) ... ok
 test_response_missing_detected (test_acquisition.CaptureTests.test_response_missing_detected) ... ok
 test_text_fidelity_marked (test_acquisition.CaptureTests.test_text_fidelity_marked) ... ok
+test_body_fidelity (test_capture_browser.CaptureTests.test_body_fidelity) ... ok
+test_debugger_loopback_only (test_capture_browser.CaptureTests.test_debugger_loopback_only) ... ok
+test_deduplication_preserves_source_records (test_capture_browser.CaptureTests.test_deduplication_preserves_source_records) ... ok
+test_dynamic_source_keeps_scope_and_is_not_wire_bytes (test_capture_browser.CaptureTests.test_dynamic_source_keeps_scope_and_is_not_wire_bytes) ... ok
+test_explicit_html_script_mime_is_failure (test_capture_browser.CaptureTests.test_explicit_html_script_mime_is_failure) ... ok
+test_extension_context_ignored (test_capture_browser.CaptureTests.test_extension_context_ignored) ... ok
+test_failed_loading_is_evidence (test_capture_browser.CaptureTests.test_failed_loading_is_evidence) ... ok
+test_html_cannot_masquerade_as_javascript (test_capture_browser.CaptureTests.test_html_cannot_masquerade_as_javascript) ... ok
+test_http_failure_not_javascript (test_capture_browser.CaptureTests.test_http_failure_not_javascript) ... ok
+test_incomplete_response_reported (test_capture_browser.CaptureTests.test_incomplete_response_reported) ... ok
+test_invalid_body_rejected (test_capture_browser.CaptureTests.test_invalid_body_rejected) ... ok
+test_kind_filter_no_fonts (test_capture_browser.CaptureTests.test_kind_filter_no_fonts) ... ok
+test_network_hash_and_secret_omission (test_capture_browser.CaptureTests.test_network_hash_and_secret_omission) ... ok
+test_origin_rules (test_capture_browser.CaptureTests.test_origin_rules) ... ok
+test_pending_request_and_finish_idempotence (test_capture_browser.CaptureTests.test_pending_request_and_finish_idempotence) ... ok
+test_post_and_foreign_origin_not_captured (test_capture_browser.CaptureTests.test_post_and_foreign_origin_not_captured) ... ok
+test_failed_or_truncated_renderer_rejected (test_render_probe.PixelTests.test_failed_or_truncated_renderer_rejected) ... ok
+test_flip_matches_gl_origin (test_render_probe.PixelTests.test_flip_matches_gl_origin) ... ok
+test_missing_or_duplicate_row_rejected (test_render_probe.PixelTests.test_missing_or_duplicate_row_rejected) ... ok
+test_no_pixels_without_native_drawing_evidence (test_render_probe.PixelTests.test_no_pixels_without_native_drawing_evidence) ... ok
+test_png_chunks_crc_and_pixel_bytes (test_render_probe.PixelTests.test_png_chunks_crc_and_pixel_bytes) ... ok
+test_png_invalid_length_rejected (test_render_probe.PixelTests.test_png_invalid_length_rejected) ... ok
+test_row_and_frame_bounds (test_render_probe.PixelTests.test_row_and_frame_bounds) ... ok
 test_comments_not_scripts (test_tools.InspectorTests.test_comments_not_scripts) ... ok
 test_first_base_only (test_tools.InspectorTests.test_first_base_only) ... ok
 test_inline_hash_without_source (test_tools.InspectorTests.test_inline_hash_without_source) ... ok
@@ -40,7 +63,7 @@ test_html_is_not_a_bundle (test_tools.ProbeInputTests.test_html_is_not_a_bundle)
 test_invalid_utf8_rejected (test_tools.ProbeInputTests.test_invalid_utf8_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 40 tests in 0.017s
+Ran 63 tests in 0.038s
 
 OK
 PASS: bare_ecmascript

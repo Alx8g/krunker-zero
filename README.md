@@ -1,119 +1,123 @@
-# Krunker Zero — 0.2 bring-up
+# Krunker Zero — 0.3 native graphics bring-up
 
-**Delete the browser. Keep the JavaScript engine. Add host behavior only when evidence requires it.**
+**Delete the browser. Keep the JavaScript engine. Add only evidenced host behavior.**
 
-## What works now
+## Current result
 
-A real **standalone Linux x86-64 executable** initializes V8, runs local classic
-JavaScript unchanged, processes microtasks and native V8 engine tasks, and emits
-structured diagnostics. This has been linked and executed without Node, Chromium,
-Electron, CEF, a WebView, or a DOM library. No existing Krunker client was imported.
+A standalone Linux x86-64 V8 host now executes real shaders, uploads vertex/index
+buffers, draws triangles and reads back their pixels through native EGL/OpenGL ES.
+The optional graphics target contains no Chromium, Electron, Node or DOM library.
+The default build still excludes graphics entirely.
 
-The native suite passes **61/61 integration cases**, including asynchronous
-WebAssembly compiling and returning an actual value. Acquisition tools pass
-**40 Python tests**, and the separate scheduler executable passes **12 checks**.
-The optional Node development adapter passes **55/55 applicable cases**; it is
-not used by the standalone binary and does not validate WebAssembly execution.
+**Krunker itself is not running.** No current original game bootstrap has been
+acquired or executed. The triangle is independent test code, not a game frame.
+There is no window presentation, mouse/keyboard integration, audio, guest network
+stack, complete WebGL implementation, server session, or measured speedup.
 
-**Krunker itself has not been loaded.** No graphics, native mouse/keyboard, audio,
-HTTP/WebSocket guest backend, or game assets exist yet. There is no playability
-or speedup claim. The implemented browser-facing operations remain fixture-proven,
-not an established minimum required by Krunker.
+The actual renderer observed here is Mesa **llvmpipe**, a software renderer. The
+code calls real EGL/GLES; this is not a mocked renderer or proof of hardware GPU
+performance. See [the rendered pixels](reports/native-triangle.png) and their
+[execution/readback report](reports/render-probe.json).
 
-## Build and test without dependency networking
+## Offline build and run
 
-Use Python 3.10+, CMake 3.20+, a C++20 compiler, Linux x86-64, and the accompanying
-`v8-13.6.233.17-linux-x64.zip`. No Node install is needed for these commands.
+Requires Linux x86-64, Python 3.10+, Git, CMake 3.20+, a C++20 compiler and the
+accompanying `v8-13.6.233.17-linux-x64.zip`. Graphics additionally needs a working
+system EGL/GLES driver supporting surfaceless pbuffers. No graphics development
+headers, Node or browser are needed to compile or execute the native host.
 
 ```sh
+# Verify and install the matching V8 SDK, then build the minimal host.
 python3 tools/bootstrap_v8.py --archive ../v8-13.6.233.17-linux-x64.zip --build
+
+# Opt in to the experimental native renderer.
+cmake -S . -B build/standalone -DZERO_BUILD_GRAPHICS=ON
+cmake --build build/standalone -j2
+
+# Test the host and actual graphics operations, then write the framebuffer PNG.
 python3 tools/test.py --host build/standalone/zero
-build/standalone/zero --engine-info
-build/standalone/zero --profile core fixtures/wasm-async.js
+python3 tools/test_graphics.py --host build/standalone/zero
+python3 tools/test_graphics_failures.py --host build/standalone/zero
+python3 tools/render_probe.py --host build/standalone/zero
 ```
 
-The dependency bootstrap verifies the outer ZIP and inner archive hashes, rejects
-unsafe archive entries, installs matching V8 headers/library, then builds and runs
-scheduler tests. Repeated setup verifies existing SDK files against the archive;
-a changed SDK is rejected, not trusted from a receipt. An internet-connected
-machine can substitute `--download` for `--archive` to fetch the pinned release.
+`render_probe.py` runs the supplied JavaScript fixture and encodes its verified
+readback bytes as PNG with Python's standard library. It does not generate an
+illustration, use a browser screenshot or substitute a reference image.
 
-Expected Wasm fixture log: `wasm 42`. This fixture is original test code, not game
-code. To see the first absent host API in another synthetic fixture:
+A system without an appropriate EGL driver gets an explicit failure. No fallback
+browser is launched. `-DZERO_BUILD_GRAPHICS=OFF` removes the graphics profile; in
+both builds the `bare` and `core` profiles leave `OffscreenCanvas` absent.
+
+## What has been checked
+
+| Check | Result |
+|---|---|
+| Standalone engine/timing/Wasm integration | 61/61 cases |
+| Native EGL graphics | 50/50 cases |
+| Explicitly broken-EGL fault injection | 2/2 failure-handling cases |
+| Python acquisition, input and pixel tools | 63/63 tests |
+| Native scheduler | 12 checks, CTest 1/1 |
+| Real browser capture-to-native round trip | **BLOCKED, not passed** |
+
+The graphics tests cover actual pixel values, indexed drawing, typed-array offsets,
+upload ownership, bounds checks, deleted and forged resources, cross-context
+rejection, shader/link failures, stale uniform locations, resize clearing, memory
+release, and hidden-state protection against guest prototype replacement. These
+are custom regression cases, not WebGL conformance certification.
+
+## The outstanding game-input gate
+
+Direct original-site acquisition failed in this environment. The new optional
+capture helper connects to a fresh local browser's DevTools endpoint, but actual
+navigation here returns `net::ERR_BLOCKED_BY_ADMINISTRATOR`, even for a localhost
+fixture. The [integration report](reports/capture-integration.json) records zero
+response bodies and zero compiled sources. That is a blocked test, not a success.
+
+On a machine permitted to access the game, the development-only helper can be run
+as a normal, non-root user:
 
 ```sh
-python3 tools/probe.py --host build/standalone/zero fixtures/needs-dom.js
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-capture.txt
+.venv/bin/python tools/capture_browser.py --url https://krunker.io/ \
+  --seconds 30 --out input/krunker-capture
 ```
 
-This intentionally exits 2 with `missing_global: document`; it does not invent a
-canvas or fake successful graphics calls.
+Use `.venv\Scripts\python.exe` on Windows. A current installed Chrome/Chromium
+executable is required for this acquisition tool only. `--browser` selects its
+path. Additional permitted asset origins require explicit `--allow-origin` flags.
+This does **not** add a browser to the native runtime. It saves available script
+and asset bodies plus compiled inline/eval source snapshots without rewriting
+scripts, reusing a logged-in profile, hiding DevTools or bypassing checks.
 
-## Important engine distinction
+Keep `input/` private and out of Git: bodies and URLs can contain secrets even
+though cookies, authorization headers and POST data are omitted. Captured source
+snapshots are not assumed to be separate runnable scripts or an execution order.
+See [capture fidelity and limitations](docs/CAPTURE.md). Existing direct HTTPS and
+HAR-with-response-contents routes remain in `tools/capture.py`.
 
-The acquired SDK contains V8 **13.6.233.17**, built by `kitten3d/v8-builds` from the
-V8 subtree vendored in Node v24.20.0. **Node's runtime is not linked or launched.**
-The final executable's dynamic dependencies are the ordinary C/C++ system libraries.
-The dependency lock retains source/archive hashes, builder revision and artifact ID.
+## Runtime boundaries and dependencies
 
-This particular SDK has **V8 sandbox and ICU/Intl disabled upstream**. It is an
-experimental bring-up dependency, not a hardened shipping choice. There has been
-no independent source rebuild, complete third-party redistribution audit, or
-security assessment. Do not treat a V8 context or watchdog as an OS sandbox.
-Production isolation and engine configuration remain separate acceptance gates.
+`bare` exposes engine facilities only. `core` adds documented console/timing
+operations and `window/self` aliases, not a Window or document implementation.
+`graphics` adds the explicit, limited surface documented in
+[GRAPHICS.md](docs/GRAPHICS.md). Unsupported operations remain absent or return a
+specific error; there are no success-returning texture/audio/network placeholders.
 
-## Acquire actual original inputs
+V8 13.6.233.17 is statically linked. Its source came from a V8 subtree vendored in
+Node, but the Node runtime is not linked or launched. The optional graphics path
+loads EGL and the system driver's dependencies dynamically. The binary audit
+records both ELF dependencies and **runtime-loaded libraries**, not merely `ldd`.
 
-On a machine with ordinary access to the original site:
+The acquired SDK has **V8 sandbox and ICU/Intl disabled**. This is an experimental
+bring-up dependency, not a hardened shipping configuration. A context, buffer
+checks and watchdog are not an OS sandbox or a total memory limit; a stalled
+native driver call cannot be interrupted by the JavaScript watchdog. Independent
+SDK rebuilding, security/isolation work and a full redistribution-notice audit
+remain open.
 
-```sh
-python3 tools/capture.py --url https://krunker.io/ --out input/live
-```
-
-This saves the original HTML and explicitly discovered allowed-origin scripts,
-not a browser implementation. It does not execute inline scripts or infer dynamic
-loads. Additional asset origins require explicit `--allow-origin https://…`.
-Denied requests, unsupported encodings, HTML returned for scripts, and missing
-bodies are reported, never replaced with dummy JavaScript.
-
-An authorized HAR export **with response contents** is the offline alternative:
-
-```sh
-python3 tools/capture.py --har /path/to/capture.har --url https://krunker.io/ --out input/imported
-```
-
-The importer omits cookies, authorization headers, POST bodies and unrelated
-origins. URLs and script bodies may still contain secrets: keep `input/` private.
-It distinguishes base64-decoded response bodies from text re-encoded as UTF-8;
-text-mode HAR is not advertised as exact original network bytes. Contradictory
-bodies for one URL are retained and flagged. Neither HAR network order nor HTML
-tag order establishes script execution order.
-
-Select and order the actual classic script inputs explicitly before `tools/probe.py`.
-Do not run every captured advertisement or assume module scripts work as classics.
-Inputs stay unchanged and outside Git. No authentication, anti-cheat or integrity
-checks are bypassed.
-
-## Runtime boundary
-
-Default `bare` contains engine facilities only. The optional `core` profile adds
-small console/timing bindings, cancellation, headless frame callbacks and
-`window/self` aliases. It does not supply DOM/layout/canvas, WebGL, networking,
-audio, input, storage, workers or module resolution.
-
-The standalone host now pumps V8's foreground tasks and observes pending Promises
-without replacing JS built-ins. Unsettled Promises produce a bounded incomplete
-result, rather than a false completed result. This is conservative probe policy,
-not browser liveness semantics; Promise tracking is diagnostic overhead.
-
-See [runtime contract](docs/CONTRACT.md), [build details](docs/BUILD.md),
-[next gates](docs/NEXT.md), and [validation](reports/VALIDATION.md).
-
-The old development-only test route remains available:
-
-```sh
-python3 tools/test.py
-```
-
-It must never become the shipping runtime. No existing client repository, including
-Wok, was read. This is still a local Git repository; no GitHub repository or remote
-fork was created or modified.
+See [validation](reports/VALIDATION.md), [build instructions](docs/BUILD.md),
+[runtime contract](docs/CONTRACT.md), [next gates](docs/NEXT.md) and
+[provenance](docs/PROVENANCE.md). No Wok material was inspected. This remains a
+local Git repository; no remote repository or fork was created.
